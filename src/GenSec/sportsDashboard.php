@@ -48,7 +48,6 @@
                 echo "<script>alert('Error in prepared statement');window.location='sportsEvent.php'</script>";
             }
         }
-    mysqli_close($conn);
 ?>
 <!doctype html>
 <html>
@@ -306,6 +305,7 @@
                                         <h5 class="mb-0 text-lg font-bold text-gray-600">
                                         <?php  
                                              $queryuser= "SELECT * FROM user";
+                                             $result=mysqli_query($conn,$queryuser); 
                                              $queryuser=mysqli_num_rows($result);
                                              echo $queryuser;
                                             ?></h5>
