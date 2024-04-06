@@ -1,5 +1,5 @@
 <?php
-    require_once('config.php');
+    include('config.php');
     $query="SELECT * from eventcategory";
     $result=mysqli_query($conn,$query);
 ?>
@@ -287,7 +287,12 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Event</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                            <?=  
+                                             $query= "SELECT * FROM $table";
+                                             $result= mysqli_query($conn, $query);
+                                             $totalCount=mysqli_num_rows($result);
+                                            ?></h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -298,7 +303,7 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Account</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600"><?=getCount('user') ?></h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -309,7 +314,7 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Venue</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600"><?=getCount('venue') ?></h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -320,7 +325,7 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Point</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600"><?=getCount('points') ?></h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
