@@ -11,8 +11,8 @@
 </head>
     <body class="bg-gray-100">
         <!--headerrrrr-->
-        <header class="p-4 dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
-            <div class="bg-white shadow-md rounded-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <header class="dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
+            <div class="bg-gray-100 flex flex-wrap items-center justify-between mx-auto p-4">
                 <!--left side of the header-->
                 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span class="sr-only">Open sidebar</span>
@@ -22,7 +22,7 @@
                 </button>
 
                 <!-- Breadcrumb -->
-                <nav class="md:flex hidden px-5 py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+                <nav class="md:flex hidden py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         <li class="inline-flex items-center">
                             <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -169,20 +169,20 @@
         </header>
 
         <!--SideBarrrrrrrrr-->
-        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-            <div class="h-full p-4">
-                <div class="h-full px-3 py-4 rounded-lg overflow-y-auto bg-gray-800 dark:bg-gray-800 shadow-md">
+        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <div class="h-full">
+                <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
                     <div class="p-4 mb-3">
                         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SPIS</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-800">SPIS</span>
                         </a>
                     </div>
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="#" class="flex items-center px-3 py-3 bg-gradient-to-tr from-blue-600 to-blue-400 text-white disabled:shadow-none shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
@@ -190,8 +190,8 @@
                                 </a>
                             </li>
                             <li>
-                                <button type="button" class="flex items-center w-full p-3 text-base text-white hover:text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <button type="button" class="flex text-sm items-center w-full p-3 text-blue-600 bg-blue-100 transition ease-in-out duration-300 rounded-lg group dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Event</span>
@@ -199,24 +199,33 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                 </button>
-                                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                                <ul id="dropdown-example" class="hidden py-1 space-y-1">
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sport</a>
+                                        <a href="./sportsEvent.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Sport</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Venue</a>
+                                        <a href="./sportsVenue.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Venue</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Points</a>
+                                        <a href="./sportsPoints.php" class="flex text-sm items-center w-full p-3 text-blue-600 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Points</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center p-3 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sportsDepartment.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path d="M377 52c11-13.8 8.8-33.9-5-45s-33.9-8.8-45 5L288 60.8 249 12c-11-13.8-31.2-16-45-5s-16 31.2-5 45l48 60L12.3 405.4C4.3 415.4 0 427.7 0 440.4V464c0 26.5 21.5 48 48 48H288 528c26.5 0 48-21.5 48-48V440.4c0-12.7-4.3-25.1-12.3-35L329 112l48-60zM288 448H168.5L288 291.7 407.5 448H288z"/>
+                                    </svg>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Department</span>
                                 </a>
                             </li>
                         </ul>
@@ -225,54 +234,58 @@
             </div>
         </aside>
 
-        <main class="px-4 py-0 sm:ml-80" style="margin-left: 320px;">
+        <main class=" sm:ml-80" style="margin-left: 320px;">
             <div class="container">
-                <div class="flex w-full gap-4 relative">
-                    <!--left side, compose of utilitites-->
-                    <div class="h-28 sticky top-28 z-10" style="width:290px;">
-                        <div class="shadow-md p-4 rounded-xl bg-white dark:bg-gray-800">    
-                            <div class="mb-4 border-b-2 ">
-                                <div class="text-3xl font-bold text-gray-800 mb-1">Points</div>
-                                <p class="text-sm text-gray-500 font-semibold mb-4">Details of points for the sports</p>   
-                            </div> 
-
-                            <!-- Search bar -->
-                            <div class="flex items-center justify-between gap-2 mb-4"> 
-                                <form class="max-w-md w-full">   
-                                    <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                            </svg>
-                                        </div>
-                                        <input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
-                                    </div>
-                                </form>
-                                <!--add-->
-                                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200  hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 focus:ring-4 dark:focus:ring-cyan-800 hover:shadow-lg hover:shadow-cyan-500 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-4 py-3 text-center ease-in-out transition-transform transform-gpu hover:scale-105">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-
-                            <button type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 font-normal w-full rounded-lg text-sm px-3 py-3 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ease-in-out transition-transform transform-gpu hover:scale-105">
-                                <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                                </svg>
-                                Sort A-Z descending
-                            </button>
-                        </div>
-                    </div>
+                <div class="pr-4 flex w-full gap-4 relative">
                     <!--righ side, list of sports-->
                     <div class="flex-1">
-                        <div class="overflow-y-auto"> 
-                            <div class="bg-white shadow-lg mb-5 mt-1 p-5 rounded-lg w-full">
+                        <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Points</div>
+                            <p class="px-2 text-sm text-gray-500 mt-1 mb-4">Details for points</p>
+                            <div class="overflow-y-auto">
+                                <div class="bg-white p-4 mt-1 mb-4 rounded-lg shadow-md">
+                                    <div class="flex justify-between">
+
+                                        <!-- Search Bar -->
+                                        <div class="flex items-center justify-between gap-4"> 
+                                            <form class="max-w-md w-56">   
+                                                <label for="venue-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search Venues</label>
+                                                <div class="relative">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                        </svg>
+                                                    </div>
+                                                    <input type="search" id="venue-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Venues..." required />
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    <button type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 font-medium rounded-lg text-xs px-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Sort A-Z descending
+                                        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
+                                            <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-white shadow-lg mb-5 mt-1 p-4 rounded-lg w-full">
                                 <!--top side of the content-->
                                 <div class="flex items-center justify-between mb-4">
-                                    <h1 class="text-2xl font-bold text-gray-800">Points</h1>
+                                    <h1 class="text-lg font-bold text-gray-800"><span id="cardCount">0</span> Points</h1>
                                 </div>
                                 <!-- list of venue -->         
-                                <div id="venueContainer" class="grid grid-cols-3 gap-5 items-center justify-center">
+                                <div id="venueContainer" class="grid grid-cols-3 gap-5">
+                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center hover:border-blue-500 ">
+                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-300 border-4 border-dashed hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                            <i class="fa-solid fa-circle-plus text-3xl"></i>
+                                            <span class="sr-only">Icon description</span>
+                                        </button>
+                                        <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            Add new venue
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
                                     <div class="max-w-sm bg-white w-full border-2 p-6 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col  hover:border-blue-500  transition-transform transform-gpu hover:scale-105">
                                         <div class="relative overflow-x-auto">
                                             <div class="flex justify-between">
@@ -366,14 +379,14 @@
                                             <div class="flex justify-between">
                                                 <h1 class="text-lg text-gray-800 font-bold mb-4">Minor</h1>
                                                 <div>
-                                                    <button id="dropdownButton1" data-dropdown-toggle="dropdown1" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                                                    <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                                                         <span class="sr-only">Open dropdown</span>
                                                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
                                                             <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
                                                         </svg>
                                                     </button>                                   
-                                                    <div id="dropdown1" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">
-                                                        <ul class="p-2" aria-labelledby="dropdownButton1">
+                                                    <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">
+                                                        <ul class="p-2" aria-labelledby="dropdownButton">
                                                             <li>
                                                                 <button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-sm w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>
                                                             </li>
@@ -402,7 +415,7 @@
                                                         <i class="fa-solid fa-trophy text-yellow-400 mr-2"></i>1st
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            35
+                                                            30
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-white dark:bg-gray-800 text-center">
@@ -410,7 +423,7 @@
                                                         <i class="fa-solid fa-trophy text-gray-400 mr-2"></i>2nd
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            30
+                                                            25
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-white dark:bg-gray-800 text-center">
@@ -418,7 +431,7 @@
                                                         <i class="fa-solid fa-trophy mr-2 text-yellow-800"></i>3rd
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            25
+                                                            20
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-white dark:bg-gray-800 text-center">
@@ -426,7 +439,7 @@
                                                         <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>4th
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            20
+                                                            15
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-white dark:bg-gray-800 text-center">
@@ -434,7 +447,7 @@
                                                         <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>5th
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            15
+                                                            10
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-white dark:bg-gray-800 text-center">
@@ -442,102 +455,123 @@
                                                         <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>6th
                                                         </th>
                                                         <td class="px-6 py-4 font-medium">
-                                                            10
+                                                            5
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="max-w-sm bg-white w-full border-2 p-6 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col  hover:border-blue-500  transition-transform transform-gpu hover:scale-105">
-                                        <div class="relative overflow-x-auto">
-                                            <div class="flex justify-between">
-                                                <h1 class="text-lg text-gray-800 font-bold mb-4">Minor</h1>
-                                                <div>
-                                                    <button id="dropdownButton1" data-dropdown-toggle="dropdown1" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                                                        <span class="sr-only">Open dropdown</span>
-                                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                                                        </svg>
-                                                    </button>                                   
-                                                    <div id="dropdown1" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">
-                                                        <ul class="p-2" aria-labelledby="dropdownButton1">
-                                                            <li>
-                                                                <button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-sm w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>
-                                                            </li>
-                                                            <li>
-                                                                <a href="" class="block px-4 rounded-md py-2 text-sm font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-trash-can mr-2"></i>Delete</a>
-                                                            </li>
-                                                        </ul>
+                                    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                            Add Venue
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                    <!-- Modal body -->
+                                                    <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                                        <div class="grid gap-4 mb-4 grid-cols-2">
 
-                                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                <thead class="text-xs text-gray-900 uppercase dark:text-gray-400 text-center">
-                                                    <tr>
-                                                        <th scope="col" class="px-6 py-3">
-                                                            Rank
-                                                        </th>
-                                                        <th scope="col" class="px-6 py-3">
-                                                            Points
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-trophy text-yellow-400 mr-2"></i>1st
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            35
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-trophy text-gray-400 mr-2"></i>2nd
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            30
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-trophy mr-2 text-yellow-800"></i>3rd
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            25
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>4th
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            20
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>5th
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            15
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-white dark:bg-gray-800 text-center">
-                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <i class="fa-solid fa-medal mr-2 text-yellow-700"></i>6th
-                                                        </th>
-                                                        <td class="px-6 py-4 font-medium">
-                                                            10
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        <div class="col-span-2 mt-2">
+                                                            <div class="flex items-center justify-center w-full">
+                                                                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                    <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                        </svg>
+                                                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                    </div>
+                                                                    <input id="dropzone-file" type="file" class="hidden" />
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-span-2">
+                                                            <label for="venue_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
+                                                            <input type="text" name="venue_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                        </div>
+
+                                                        <div class="col-span-2">
+                                                            <label for="venue_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Description</label>
+                                                            <input type="text" name="venue_description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                        </div>
+
+                                                    </div>
+                                                    <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                                        Add Sport
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
+ 
+                                <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative p-4 w-full max-w-md max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                    Update Sport
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                                <div class="grid gap-4 mb-4 grid-cols-2">
+                                                    <div class="col-span-2 mt-2">
+                                                        <input type="hidden" name="venue_id" id="venue_id" value="">
+
+                                                        <div class="flex items-center justify-center w-full">
+                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                    </svg>
+                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                </div>
+                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col-span-2">
+                                                            <label for="venue_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
+                                                            <input type="text" name="venue_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                        </div>
+
+                                                        <div class="col-span-2">
+                                                            <label for="venue_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Description</label>
+                                                            <input type="text" name="venue_description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                                        Update Venue
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>        
                         </div>
                     </div>

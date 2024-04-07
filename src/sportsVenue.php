@@ -62,8 +62,8 @@
 </head>
     <body class="bg-gray-100">
         <!--headerrrrr-->
-        <header class="p-4 dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
-            <div class="bg-white shadow-md rounded-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <header class="dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
+            <div class="bg-gray-100 flex flex-wrap items-center justify-between mx-auto p-4">
                 <!--left side of the header-->
                 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span class="sr-only">Open sidebar</span>
@@ -73,7 +73,7 @@
                 </button>
 
                 <!-- Breadcrumb -->
-                <nav class="md:flex hidden px-5 py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+                <nav class="md:flex hidden py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         <li class="inline-flex items-center">
                             <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -220,20 +220,20 @@
         </header>
 
         <!--SideBarrrrrrrrr-->
-        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-            <div class="h-full p-4">
-                <div class="h-full px-3 py-4 rounded-lg overflow-y-auto bg-gray-800 dark:bg-gray-800 shadow-md">
+        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <div class="h-full">
+                <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
                     <div class="p-4 mb-3">
                         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SPIS</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-800">SPIS</span>
                         </a>
                     </div>
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="#" class="flex items-center px-3 py-3 bg-gradient-to-tr from-blue-600 to-blue-400 text-white disabled:shadow-none shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
@@ -241,8 +241,8 @@
                                 </a>
                             </li>
                             <li>
-                                <button type="button" class="flex items-center w-full p-3 text-base text-white hover:text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <button type="button" class="flex text-sm items-center w-full p-3 text-blue-600 bg-blue-100 transition ease-in-out duration-300 rounded-lg group dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Event</span>
@@ -250,24 +250,33 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                 </button>
-                                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                                <ul id="dropdown-example" class="hidden py-1 space-y-1">
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sport</a>
+                                        <a href="./sportsEvent.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Sport</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Venue</a>
+                                        <a href="./sportsVenue.php" class="flex text-sm items-center w-full p-3 text-blue-600 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Venue</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Points</a>
+                                        <a href="./sportsPoints.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Points</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center p-3 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sportsDepartment.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path d="M377 52c11-13.8 8.8-33.9-5-45s-33.9-8.8-45 5L288 60.8 249 12c-11-13.8-31.2-16-45-5s-16 31.2-5 45l48 60L12.3 405.4C4.3 415.4 0 427.7 0 440.4V464c0 26.5 21.5 48 48 48H288 528c26.5 0 48-21.5 48-48V440.4c0-12.7-4.3-25.1-12.3-35L329 112l48-60zM288 448H168.5L288 291.7 407.5 448H288z"/>
+                                    </svg>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Department</span>
                                 </a>
                             </li>
                         </ul>
@@ -276,31 +285,31 @@
             </div>
         </aside>
 
-        <main class="px-4 py-0 sm:ml-80" style="margin-left: 320px;">
+        <main class=" sm:ml-80" style="margin-left: 320px;">
             <div class="container">
-                <div class="flex w-full gap-4 relative">
+                <div class="pr-4 flex w-full gap-4 relative">
                     <!--righ side, list of sports-->
                     <div class="flex-1">
-                        <div class="px-4 pt-4 text-3xl font-bold text-gray-800">Venue</div>
-                        <p class="px-4 text-sm text-gray-500 mb-4 font-semibold">List of Venue</p>
-                        <div class="overflow-y-auto">
-                            <div class="bg-white p-4 mt-1 mb-4 rounded-lg shadow-md">
-                                <div class="flex justify-between">
+                        <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Venue</div>
+                            <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of Venue</p>
+                            <div class="overflow-y-auto">
+                                <div class="bg-white p-4 mt-1 mb-4 rounded-lg shadow-md">
+                                    <div class="flex justify-between">
 
-                                    <!-- Search Bar -->
-                                    <div class="flex items-center justify-between gap-4"> 
-                                        <form class="max-w-md w-56">   
-                                            <label for="venue-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search Venues</label>
-                                            <div class="relative">
-                                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                                    </svg>
+                                        <!-- Search Bar -->
+                                        <div class="flex items-center justify-between gap-4"> 
+                                            <form class="max-w-md w-56">   
+                                                <label for="venue-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search Venues</label>
+                                                <div class="relative">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                        </svg>
+                                                    </div>
+                                                    <input type="search" id="venue-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Venues..." required />
                                                 </div>
-                                                <input type="search" id="venue-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Venues..." required />
-                                            </div>
-                                        </form>
-                                    </div>
+                                            </form>
+                                        </div>
 
                                     <button type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 font-medium rounded-lg text-xs px-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         Sort A-Z descending
@@ -314,11 +323,11 @@
                             <div class="bg-white shadow-lg mb-5 mt-1 p-4 rounded-lg w-full">
                                 <!--top side of the content-->
                                 <div class="flex items-center justify-between mb-4">
-                                    <h1 class="text-2xl font-bold text-gray-800"><span id="cardCount">0</span> Venues</h1>
+                                    <h1 class="text-lg font-bold text-gray-800"><span id="cardCount">0</span> Venues</h1>
                                 </div>
                                 <!-- list of venue -->         
                                 <div id="venueContainer" class="grid grid-cols-5 gap-5">
-                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center hover:border-blue-500  transition-transform transform-gpu hover:scale-105">
+                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center hover:border-blue-500 ">
                                         <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-300 border-4 border-dashed hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
                                             <i class="fa-solid fa-circle-plus text-3xl"></i>
                                             <span class="sr-only">Icon description</span>
@@ -400,7 +409,7 @@
                                                 $generated_id = $row['generated_id'];
 
                                                 // Output HTML for each card with dynamic data
-                                                echo '<div id="venue-' . $venue_id . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500 transition-transform transform-gpu hover:scale-105 " data-venue-id="' . $venue_id . '" data-venue-name="' . htmlspecialchars($venue_name) . '" data-venue-description="' . htmlspecialchars($venue_description) . '">';
+                                                echo '<div id="venue-' . $venue_id . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500" data-venue-id="' . $venue_id . '" data-venue-name="' . htmlspecialchars($venue_name) . '" data-venue-description="' . htmlspecialchars($venue_description) . '">';
                                                 echo '<div class="flex items-center justify-between pb-3">';
                                                 echo '<span class="text-sm text-gray-500 dark:text-gray-400">ID: ' . $generated_id . '</span>';
                                                 // Dropdown button

@@ -61,8 +61,8 @@
 
 </head>
     <body class="bg-gray-100">
-        <header class="p-4 dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
-            <div class="bg-white shadow-md rounded-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <header class="dark:bg-gray-900 sticky top-0  z-10" style="margin-left: 320px;">
+            <div class="bg-gray-100 flex flex-wrap items-center justify-between mx-auto p-4">
                 <!--left side of the header-->
                 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span class="sr-only">Open sidebar</span>
@@ -72,7 +72,7 @@
                 </button>
 
                 <!-- Breadcrumb -->
-                <nav class="md:flex hidden px-5 py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+                <nav class="md:flex hidden py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         <li class="inline-flex items-center">
                             <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -219,20 +219,20 @@
         </header>
 
         <!--SideBarrrrrrrrr-->
-        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-            <div class="h-full p-4">
-                <div class="h-full px-3 py-4 rounded-lg overflow-y-auto bg-gray-800 dark:bg-gray-800 shadow-md">
+        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <div class="h-full">
+                <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
                     <div class="p-4 mb-3">
                         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SPIS</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-800">SPIS</span>
                         </a>
                     </div>
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="#" class="flex items-center px-3 py-3 bg-gradient-to-tr from-blue-600 to-blue-400 text-white disabled:shadow-none shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
@@ -240,8 +240,8 @@
                                 </a>
                             </li>
                             <li>
-                                <button type="button" class="flex items-center w-full p-3 text-base text-white hover:text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <button type="button" class="flex text-sm items-center w-full p-3 text-blue-600 bg-blue-100 transition ease-in-out duration-300 rounded-lg group dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Event</span>
@@ -249,24 +249,33 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                 </button>
-                                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                                <ul id="dropdown-example" class="hidden py-1 space-y-1">
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sport</a>
+                                        <a href="./sportsEvent.php" class="flex text-sm items-center w-full p-3 text-blue-600 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Sport</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Venue</a>
+                                        <a href="./sportsVenue.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Venue</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Points</a>
+                                        <a href="./sportsPoints.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Points</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center p-3 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sportsDepartment.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path d="M377 52c11-13.8 8.8-33.9-5-45s-33.9-8.8-45 5L288 60.8 249 12c-11-13.8-31.2-16-45-5s-16 31.2-5 45l48 60L12.3 405.4C4.3 415.4 0 427.7 0 440.4V464c0 26.5 21.5 48 48 48H288 528c26.5 0 48-21.5 48-48V440.4c0-12.7-4.3-25.1-12.3-35L329 112l48-60zM288 448H168.5L288 291.7 407.5 448H288z"/>
+                                    </svg>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Department</span>
                                 </a>
                             </li>
                         </ul>
@@ -275,13 +284,15 @@
             </div>
         </aside>
 
-        <main class="px-4 py-0 sm:ml-80" style="margin-left: 320px;">
+        <main class="pr-4 sm:ml-80" style="margin-left: 320px;">
             <div class="container">
+                <h1 class="px-2 pt-4 text-3xl font-bold text-gray-800">Sports</h1>
+                <p class="px-2 text-gray-500 text-sm mt-1 mb-4">List of sports</p>
                 <div class="flex w-full gap-4 relative">
                     <!--left side, compose of utilitites-->
-                    <div class="h-28 sticky top-28 z-10" style="width:290px;">
-                        <div class="shadow-md p-4 rounded-xl bg-white dark:bg-gray-800">    
-                            <h1 class="text-2xl font-bold text-gray-800 mt-1 mb-5">Sports</h1>
+                    <div class="h-28" style="width:290px;">
+                        <div class="shadow-md p-4 rounded-xl bg-white dark:bg-gray-800">   
+                            <p class="text-lg mb-2.5 font-semibold text-gray-800"><span>12 </span>Sports</p> 
                             <!-- Search bar -->
                             <div class="flex items-center justify-between gap-4 mb-4"> 
                                 <form class="max-w-md w-full">   
@@ -299,55 +310,71 @@
 
                             <!-- Filter-->
                             <div>
-                                <h1 class="text-gray-800 text-md font-medium">Filter by Category:</h1>
-                                <p class="text-gray-500 text-sm font-normal">Total number of sports: <span id="cardCount">0</span></p>
+                                <h1 class="text-gray-800 text-md font-medium">Filter by</h1>
+                                <p class="text-gray-500 text-sm font-normal">Category:</p>
                                 <div class="flex flex-wrap gap-2 mt-2">
-                                    <ul class="flex flex-wrap w-full gap-2 md:grid-cols-3">
-                                        <li>
+                                    <ul class="grid grid-cols-1 w-full gap-2">
+                                        <li class="col-span-1">
                                             <input type="checkbox" id="men" value="" class="hidden peer" required="">
-                                            <label for="men" class="inline-flex items-center justify-between w-full gap-2 text-gray-500 p-2 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30   dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <i class="fa-solid fa-person"></i>    
-                                                <div class="block">
-                                                    <div class="w-full text-sm font-semibold">Men</div>
+                                            <label for="men" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30   dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
+                                                <div class="inline-flex items-center">
+                                                    <i class="fa-solid fa-person mr-3"></i>    
+                                                    <div class="block">
+                                                        <div class="w-full text-sm font-semibold">Men</div>
+                                                    </div>
                                                 </div>
+                                                <span class="text-sm font-semibold">19</span>
                                             </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="women" value="" class="hidden peer" required="">
-                                            <label for="women" class="inline-flex items-center justify-between w-full gap-2 text-gray-500 p-2 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-blue-600 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <i class="fa-solid fa-person-dress"></i>
-                                                <div class="block">
-                                                    <div class="w-full text-sm font-semibold">Women</div>
+                                            <label for="women" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-blue-600 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
+                                                <div class="inline-flex items-center">
+                                                    <i class="fa-solid fa-person-dress mr-3"></i>
+                                                    <div class="block">
+                                                        <div class="w-full text-sm font-semibold">Women</div>
+                                                    </div>
                                                 </div>
+                                                <span class="text-sm font-semibold">8</span>
                                             </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="mixed" value="" class="hidden peer" required="">
-                                            <label for="mixed" class="inline-flex items-center justify-between w-full gap-2 text-gray-500 p-2 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <i class="fa-solid fa-person-half-dress"></i>
-                                                <div class="block">
-                                                    <div class="w-full text-sm font-semibold">Mixed</div>
+                                            <label for="mixed" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
+                                                <div class="inline-flex items-center">
+                                                    <i class="fa-solid fa-person-half-dress mr-3"></i>
+                                                    <div class="block">
+                                                        <div class="w-full text-sm font-semibold">Mixed</div>
+                                                    </div>
                                                 </div>
+                                                <span class="text-sm font-semibold">11</span>
                                             </label>
                                         </li>
                                     </ul>
-                                    <ul class="flex flex-wrap w-full gap-2 md:grid-cols-3">
+                                    <p class="text-gray-500 text-sm font-normal">Type:</p>
+                                    <ul class="grid grid-cols-1 w-full gap-2">
                                         <li>
                                             <input type="checkbox" id="minor" value="" class="hidden peer" required="">
-                                            <label for="minor" class="inline-flex items-center justify-between w-full gap-2 text-gray-500 p-2 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <i class="fa-solid fa-medal"></i>
-                                                <div class="block">
-                                                    <div class="w-full text-sm font-semibold">Minor</div>
+                                            <label for="minor" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
+                                                <div class="inline-flex items-center">
+                                                    <i class="fa-solid fa-medal mr-3"></i>
+                                                    <div class="block">
+                                                        <div class="w-full text-sm font-semibold">Minor</div>
+                                                    </div>
                                                 </div>
+                                                <span class="text-sm font-semibold">2</span>
                                             </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="major" value="" class="hidden peer" required="">
-                                            <label for="major" class="inline-flex items-center justify-between w-full gap-2 p-2 bg-gray-100 text-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-500 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <i class="fa-solid fa-trophy"></i>
-                                                <div class="block">
-                                                    <div class="w-full text-sm font-semibold">Major</div>
+                                            <label for="major" class="inline-flex justify-between items-center w-full gap-2 p-2.5 bg-gray-100 text-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-500 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
+                                                <div class="inline-flex items-center">
+                                                    <i class="fa-solid fa-trophy mr-3"></i>
+                                                    <div class="block">
+                                                        <div class="w-full text-sm font-semibold">Major</div>
+                                                    </div>
                                                 </div>
+                                                <span class="text-sm font-semibold">13</span>
                                             </label>
                                         </li>
                                     </ul>
@@ -355,98 +382,42 @@
                             </div>
 
                             <!-- YEar-->
-                            <div>
-                                <div class="flex justify-between items-center mt-4">
-                                    <p class="text-md text-gray-800 font-medium">Event Year</p>
-                                </div>
+                            <div class="mt-3">
+                                <p class="text-md text-gray-700 mb-2">Event year</p>
+                                <button type="button" class="text-white w-full bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 flex justify-between me-2 mb-2 transition-transform transform-gpu hover:scale-105">Activate<i class="fa-solid fa-cloud-arrow-up mt-1"></i></button>
+                                                                
+                                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-700 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Activated year 
+                                <i class="fa-solid fa-location-arrow"></i>
+                                </button>
 
-                                <div class="mt-2">
-                                    <ul class="flex flex-wrap gap-2">
-                                        <li>
-                                            <input type="radio" id="year1" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="year1" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">Default</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2019" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2019" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2019</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2020" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2020" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2020</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2021" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2021" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2021</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2022" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2022" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2022</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2023" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2023" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2023</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="2024" name="hosting" value="hosting-small" class="hidden peer" required />
-                                            <label for="2024" class="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="flex gap-2 items-center">
-                                                    <i class="fa-regular fa-calendar-check"></i>
-                                                    <div class="w-full text-sm font-semibold">2024</div>
-                                                </div>
-                                            </label>
-                                        </li>
+                                <!-- Dropdown menu -->
+                                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2019</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2020</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2021</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2022</a>
+                                    </li>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                     <!--righ side, list of sports-->
                     <div class="flex-1">
                         <div class="overflow-y-auto">
-                            <div class="bg-white shadow-lg mb-4 mt-1 p-4 rounded-lg w-full">
+                            <div class="bg-white shadow-lg mb-4 p-5 rounded-lg w-full">
                                 <!--top side of the content-->
-                                <div class="flex items-center justify-between mb-3">
-                                    <h1 class="text-2xl font-bold text-gray-800">List of Sports</h1>
+                                <div class="flex items-center justify-between">
                                     <div class="add">
-                                        <div>
-                                            
-                                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="text-gray-800 bg-gray-100 hover:text-blue-700 hover:bg-blue-200 focus:ring-4 dark:focus:ring-cyan-800 hover:shadow-lg hover:shadow-cyan-500 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 ease-in-out transition-transform transform-gpu hover:scale-105">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                            <button data-modal-target="crud-modal1" data-modal-toggle="crud-modal1" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class=" text-gray-800 bg-gray-100 hover:text-blue-700 hover:bg-blue-200 focus:ring-4 dark:focus:ring-cyan-800 hover:shadow-lg hover:shadow-cyan-500 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 ease-in-out transition-transform transform-gpu hover:scale-105">
-                                                <span><i class="fa-solid fa-key mr-2"></i>Activate</span>
-                                            </button>
-                                        </div>
                                         <!--Add Modal-->
                                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -514,15 +485,20 @@
                                                 </div>
                                             </div>
                                         </div> 
-
-                                        <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-lg shadow-sm opacity-0 tooltip">
-                                            Add
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- list of sports -->         
-                                <div id="sportsContainer" class="grid grid-cols-4 gap-4">
+                                <div id="sportsContainer" class="grid grid-cols-4 gap-5">
+                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center hover:border-blue-500">
+                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-200 border-4 border-dashed border-gray-200 hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                            <i class="fa-solid fa-circle-plus text-3xl"></i>
+                                            <span class="sr-only">Icon description</span>
+                                        </button>
+                                        <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            Add new venue
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
                                     <?php
                                         include("config.php");
 
@@ -542,8 +518,8 @@
 
                                                 // Output HTML for each card with dynamic data
                                                 // Output HTML for each card with dynamic data and data attributes
-                                                echo '<div id="event-' . $eventcat_ID . '" class="max-w-sm bg-white border p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " data-event-id="' . $eventcat_ID . '" data-event-name="' . htmlspecialchars($event_name) . '" data-event-type="' . htmlspecialchars($event_type) . '" data-event-category="' . htmlspecialchars($event_category) . '" data-venueName="Venue Name" data-venueDescription="Venue Description">';
-                                                    echo '<div class="flex justify-end pb-3">';
+                                                echo '<div id="event-' . $eventcat_ID . '" class="max-w-sm bg-white border h-44 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " data-event-id="' . $eventcat_ID . '" data-event-name="' . htmlspecialchars($event_name) . '" data-event-type="' . htmlspecialchars($event_type) . '" data-event-category="' . htmlspecialchars($event_category) . '" data-venueName="Venue Name" data-venueDescription="Venue Description">';
+                                                    echo '<div class="flex justify-end pb-4">';
                                                         echo '<button id="dropdownButton-' . $eventcat_ID . '" data-dropdown-toggle="dropdown-' . $eventcat_ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
                                                             echo '<span class="sr-only">Open dropdown</span>';
                                                                 echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
@@ -773,75 +749,68 @@
         </script>
 
     <!--Filter-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.getElementById("default-search");
-            const sportsContainer = document.getElementById("sportsContainer").getElementsByClassName("max-w-sm");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("default-search");
+        const sportsCards = document.querySelectorAll(".max-w-sm");
 
-            // Add event listener to the search input
-            searchInput.addEventListener("input", function () {
-                const searchValue = this.value.toLowerCase();
+        // Function to filter cards based on search input
+        function filterBySearchInput() {
+            const searchValue = searchInput.value.toLowerCase();
 
-                // Loop through each sports card and filter based on search input
-                for (let i = 0; i < sportsContainer.length; i++) {
-                    const card = sportsContainer[i];
-                    const eventName = card.dataset.eventName.toLowerCase();
-                    const eventType = card.dataset.eventType.toLowerCase();
-                    const eventCategory = card.dataset.eventCategory.toLowerCase();
+            sportsCards.forEach(function(card) {
+                const eventName = card.dataset.eventName.toLowerCase();
+                const eventType = card.dataset.eventType.toLowerCase();
+                const eventCategory = card.dataset.eventCategory.toLowerCase();
 
-                    // Check if any of the card's data attributes contain the search value
-                    if (eventName.includes(searchValue) || eventType.includes(searchValue) || eventCategory.includes(searchValue)) {
-                        card.style.display = "block"; // Show the card
-                    } else {
-                        card.style.display = "none"; // Hide the card
-                    }
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const checkboxes = document.querySelectorAll("input[type='checkbox']");
-            const sportsCards = document.querySelectorAll(".max-w-sm");
+                console.log("Event Name:", eventName);
+                console.log("Event Type:", eventType);
+                console.log("Event Category:", eventCategory);
 
-            // Function to filter cards based on selected checkboxes
-            function filterCards() {
-                const selectedFilters = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
-                                            .map(checkbox => checkbox.id);
-
-                // If no checkboxes are selected, show all cards
-                if (selectedFilters.length === 0) {
-                    sportsCards.forEach(function(card) {
-                        card.style.display = "block";
-                    });
+                if (eventName.includes(searchValue) || eventType.includes(searchValue) || eventCategory.includes(searchValue)) {
+                    card.style.display = "block"; // Show the card
                 } else {
-                    // Show cards that match any of the selected filters
-                    sportsCards.forEach(function(card) {
-                        const cardCategories = [card.dataset.eventType.toLowerCase(), card.dataset.eventCategory.toLowerCase()];
-
-                        // Check if any of the card categories match any of the selected filters
-                        const showCard = selectedFilters.some(filter => {
-                            // For "minor", check if it's present in any category combination
-                            if (filter === "minor") {
-                                return cardCategories.some(category => category.includes("minor"));
-                            } else {
-                                // For other filters, simply check if they're present in the categories
-                                return cardCategories.includes(filter);
-                            }
-                        });
-
-                        // Show or hide the card accordingly
-                        card.style.display = showCard ? "block" : "none";
-                    });
+                    card.style.display = "none"; // Hide the card
                 }
-            }
-
-            // Event listener for checkboxes
-            checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener("change", filterCards);
             });
+        }
+
+        // Add event listener to the search input
+        searchInput.addEventListener("input", filterBySearchInput);
+
+        // Function to filter cards based on selected checkboxes
+        function filterByCheckboxes() {
+            const selectedFilters = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+                .map(checkbox => checkbox.id);
+
+            sportsCards.forEach(function(card) {
+                const cardCategories = [card.dataset.eventType.toLowerCase(), card.dataset.eventCategory.toLowerCase()];
+
+                const showCard = selectedFilters.some(filter => {
+                    if (filter === "minor") {
+                        return cardCategories.some(category => category.includes("minor"));
+                    } else {
+                        return cardCategories.includes(filter);
+                    }
+                });
+
+                card.style.display = showCard ? "block" : "none";
+            });
+        }
+
+        // Add event listener to checkboxes
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", filterByCheckboxes);
         });
-    </script>
+
+        // Initial filtering on page load
+        filterBySearchInput();
+        filterByCheckboxes();
+    });
+
+
+</script>
 
     <!--number of cards counter-->
     <script>
