@@ -434,7 +434,7 @@
                                     ?>
 
                                     <div id="<?= $ID ?>" class="card z-1 max-w-sm relative bg-white border-2 shadow-md p-4 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700  " data-id="<?= $ID ?>" data-firstname="<?= $firstname ?>" data-lastname="<?= $lastname ?>" data-username="<?= $username ?>" data-email="<?= $email ?>" data-job="<?= $job ?>" data-password="<?= $password ?>">
-                                        <img class="w-full h-56 object-cover rounded-lg mb-3" src="./image/user.jpg" alt="">
+                                        
                                         <div class="flex items-center justify-between pb-3">
                                             <span class="text-sm text-gray-500 dark:text-gray-400"><?= $ID ?></span>
                                             
