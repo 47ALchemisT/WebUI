@@ -1,55 +1,4 @@
-<?php
-    require_once('config.php');
-    $query="SELECT * from eventcategory";
-    $result=mysqli_query($conn,$query);
-?>
-<?php
-    // Add event  
-    include("config.php");
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
-        $event_name = mysqli_real_escape_string($conn, $_POST['event_name']);
-        $event_type = mysqli_real_escape_string($conn, $_POST['event_type']);
-        $event_category = mysqli_real_escape_string($conn, $_POST['event_category']);
-
-            // Insert the new event without specifying eventcat_ID column
-            $sql = "INSERT INTO eventcategory (event_name, event_type, event_category) VALUES (?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $sql);
-
-            if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "sss", $event_name, $event_type, $event_category);
-                $result = mysqli_stmt_execute($stmt);
-        
-
-                if ($result) {
-                    // Get the auto-incremented eventcat_ID
-                    $eventcat_ID= mysqli_insert_id($conn);
-
-                    // Generate the generated_id
-                    $generated_id = strtoupper(substr($event_name, 0, 3)) . ($eventcat_ID + 100); // Start from 101
-
-                    // Update the generated_id in the database
-                    $update_sql = "UPDATE eventcategory SET generated_id = ? WHERE eventcat_ID = ?";
-                    $update_stmt = mysqli_prepare($conn, $update_sql);
-
-                    if ($update_stmt) {
-                        mysqli_stmt_bind_param($update_stmt, "si", $generated_id, $eventcat_ID);
-                        mysqli_stmt_execute($update_stmt);
-                        mysqli_stmt_close($update_stmt);
-                    }
-
-                    echo "<script>alert('Event added successfully');window.location='sportsEvent.php'</script>";
-                } else {
-                    echo "<script>alert('Error in executing prepared statement');window.location='sportsEvent.php'</script>";
-                }
-
-                mysqli_stmt_close($stmt);
-            } else {
-                echo "<script>alert('Error in prepared statement');window.location='sportsEvent.php'</script>";
-            }
-        }
-    mysqli_close($conn);
-?>
 <!doctype html>
 <html>
 <head>
@@ -61,8 +10,9 @@
 
 </head>
     <body class="bg-gray-100">
-        <header class="p-4 dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
-            <div class="bg-white shadow-md rounded-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <!--headerrrrr-->
+        <header class="dark:bg-gray-900 sticky top-0 z-10" style="margin-left: 320px;">
+            <div class="bg-gray-100 flex flex-wrap items-center justify-between mx-auto p-4">
                 <!--left side of the header-->
                 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span class="sr-only">Open sidebar</span>
@@ -72,15 +22,14 @@
                 </button>
 
                 <!-- Breadcrumb -->
-                <nav class="md:flex hidden px-5 py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+                <nav class="md:flex hidden py-3 text-gray-700 rounded-lg dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         <li class="inline-flex items-center">
                             <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-    
-                            <svg class="flex-shrink-0 w-4 h-4 mr-1 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
+                            <svg class="flex-shrink-0 w-4 h-4 mr-1  transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                             </svg>
-                            Event
+                            Dashboard
                             </a>
                         </li>
                         <li>
@@ -88,7 +37,7 @@
                             <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
-                            <a href="#" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Sports</a>
+                            <a href="#" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Home</a>
                             </div>
                         </li>
                     </ol>
@@ -191,7 +140,7 @@
                     <!--User profile-->
                     <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-blue-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-10 h-10 rounded-full object-cover" src="./image/user.jpg" alt="user photo">
+                        <img class="w-10 h-10 rounded-full object-cover" src="./user.jpg" alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -219,20 +168,20 @@
         </header>
 
         <!--SideBarrrrrrrrr-->
-        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-            <div class="h-full p-4">
-                <div class="h-full px-3 py-4 rounded-lg overflow-y-auto bg-gray-800 dark:bg-gray-800 shadow-md">
+        <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <div class="h-full">
+                <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 shadow-md">
                     <div class="p-4 mb-3">
                         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SPIS</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-800">SPIS</span>
                         </a>
                     </div>
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="#" class="flex items-center px-3 py-3 bg-gradient-to-tr from-blue-600 to-blue-400 text-white disabled:shadow-none shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100 transition duration-75  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
@@ -240,8 +189,8 @@
                                 </a>
                             </li>
                             <li>
-                                <button type="button" class="flex items-center w-full p-3 text-base text-white hover:text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <button type="button" class="flex text-sm items-center w-full p-3 text-gray-800 hover:text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Event</span>
@@ -249,24 +198,33 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                 </button>
-                                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                                <ul id="dropdown-example" class="hidden py-1 space-y-1">
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sport</a>
+                                        <a href="./sportsEvent.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Sport</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Venue</a>
+                                        <a href="./sportsVenue.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Venue</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center w-full p-2 text-white hover:text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Points</a>
+                                        <a href="./sportsPoints.php" class="flex text-sm items-center w-full p-3 text-gray-500 hover:text-gray-800 transition duration-75 rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-caret-right mr-3"></i>Points</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center p-3 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-blue-600 bg-blue-100 rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sportsDepartment.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path d="M377 52c11-13.8 8.8-33.9-5-45s-33.9-8.8-45 5L288 60.8 249 12c-11-13.8-31.2-16-45-5s-16 31.2-5 45l48 60L12.3 405.4C4.3 415.4 0 427.7 0 440.4V464c0 26.5 21.5 48 48 48H288 528c26.5 0 48-21.5 48-48V440.4c0-12.7-4.3-25.1-12.3-35L329 112l48-60zM288 448H168.5L288 291.7 407.5 448H288z"/>
+                                    </svg>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Department</span>
                                 </a>
                             </li>
                         </ul>
@@ -275,11 +233,11 @@
             </div>
         </aside>
 
-        <main class="px-4 py-0 sm:ml-80" style="margin-left: 320px;">
+        <main class="py-0 sm:ml-80" style="margin-left: 320px;">
             <div class="container">
-                <div class="w-full gap-4 relative">
-                    <h1 class="px-4 pt-4 text-3xl font-bold text-gray-800">Dashboard</h1>
-                    <div class="bg-white rounded-lg shadow-md p-5">
+                <div class="w-full gap-4 pr-4 relative">
+                    <h1 class="px-2 pt-4 text-3xl font-bold text-gray-800 mb-4">Dashboard</h1>
+                    <div class="bg-white rounded-lg shadow-md mb-5 p-5">
                         <!--right side cards-->
                         <div class="grid grid-cols-2 gap-5">
                             <!--right side cards-->
@@ -291,7 +249,7 @@
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-regular fa-calendar-minus  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-trophy  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -302,7 +260,7 @@
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-regular fa-calendar-minus  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-user  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +271,7 @@
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-regular fa-calendar-minus  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-map-location-dot  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -324,16 +282,36 @@
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-regular fa-calendar-minus  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-flag-checkered  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-span-2 bg-white border-2 rounded-lg">    
+                                    
+                                    <div class=" w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                                        <div class="flex justify-between mb-5">
+                                            <div>
+                                            <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">CMAS</h5>
+                                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Rank 1st</p>
+                                            </div>
+                                            <div
+                                            class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                                            23%
+                                            <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+                                            </svg>
+                                            </div>
+                                        </div>
+                                        <div id="data-labels-chart"></div>
+                                    </div>
+         
                                 </div>
                             </div>
                             <!--left side cards-->
                             <div>
                                 <div class="bg-white border-2 h-full rounded-lg">
                                     <div class="flex justify-end h-full items-end">
-                                        <img class="w-44 h-44" src="./image/vecteezy_3d-male-character-happy-working-on-a-laptop_24387908.png" alt="">
+                                        <img class="w-44 h-44" src="./image" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -347,6 +325,111 @@
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+        <script>
+            const options = {
+            // enable and customize data labels using the following example, learn more from here: https://apexcharts.com/docs/datalabels/
+            dataLabels: {
+            enabled: true,
+            // offsetX: 10,
+            style: {
+                cssClass: 'text-xs text-white font-medium'
+            },
+            },
+            grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+                left: 16,
+                right: 16,
+                top: -26
+            },
+            },
+            series: [
+            {
+                name: "SMFT",
+                data: [12, 23, 53, 60, 89, 125, 402],
+                color: "#1A56DB",
+            },
+            {
+                name: "CESS",
+                data: [10, 15, 70, 59, 72, 173,371],
+                color: "#7E3BF2",
+            },
+            {
+                name: "CAFES",
+                data: [5, 23, 65, 78, 99, 157, 321],
+                color: "#20de16",
+            },
+            {
+                name: "IDS",
+                data: [23, 30,80, 60, 120, 200, 300],
+                color: "#ff85c8",
+            },
+            ],
+            chart: {
+            height: "100%",
+            maxWidth: "100%",
+            type: "area",
+            fontFamily: "Inter, sans-serif",
+            dropShadow: {
+                enabled: false,
+            },
+            toolbar: {
+                show: false,
+            },
+            },
+            tooltip: {
+            enabled: true,
+            x: {
+                show: false,
+            },
+            },
+            legend: {
+            show: true
+            },
+            fill: {
+            type: "gradient",
+            gradient: {
+                opacityFrom: 0.55,
+                opacityTo: 0,
+                shade: "#1C64F2",
+                gradientToColors: ["#1C64F2"],
+            },
+            },
+            stroke: {
+            width: 6,
+            },
+            xaxis: {
+            categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+            labels: {
+                show: false,
+            },
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            },
+            },
+            yaxis: {
+            show: false,
+            labels: {
+                formatter: function (value) {
+                return value;
+                }
+            }
+            },
+            }
+
+            if (document.getElementById("data-labels-chart") && typeof ApexCharts !== 'undefined') {
+            const chart = new ApexCharts(document.getElementById("data-labels-chart"), options);
+            chart.render();
+            }
+
+
+        </script>
 
     </body>
 </html>
