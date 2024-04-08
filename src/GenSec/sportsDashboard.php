@@ -1,3 +1,9 @@
+<?php
+
+include ('config.php');
+
+?>
+
 
 <!doctype html>
 <html>
@@ -63,7 +69,7 @@
                                 <li class="px-2">
                                     <a href="#" class="block p-4 text-sm rounded-lg text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                         <div class="flex items-center gap-4">
-                                            <img class="w-12 h-12 object-cover rounded-full" src="/image/user.jpg" alt="">
+                                            <img class="w-12 h-12 object-cover rounded-full" src="image/user.jpg" alt="">
                                             <div class="font-medium dark:text-white">
                                                 <div class="text-sm font-medium mb-1 text-gray-600 dark:text-gray-400"><span class="font-bold text-gray-800">New Message</span> from Bryan</div>
                                                 <div class="flex items-center gap-2 text-sm font-light text-gray-500">
@@ -77,7 +83,7 @@
                                 <li class="px-2">
                                     <a href="#" class="block p-4 text-sm rounded-lg text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                         <div class="flex items-center gap-4">
-                                            <img class="w-12 h-12 object-cover rounded-full" src="/image/user.jpg" alt="">
+                                            <img class="w-12 h-12 object-cover rounded-full" src="image/user.jpg" alt="">
                                             <div class="font-medium dark:text-white">
                                                 <div class="text-sm font-medium mb-1 text-gray-600 dark:text-gray-400"><span class="font-bold text-gray-800">New Message</span> from Bryan</div>
                                                 <div class="flex items-center gap-2 text-sm font-light text-gray-500">
@@ -140,7 +146,7 @@
                     <!--User profile-->
                     <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-blue-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-10 h-10 rounded-full object-cover" src="./user.jpg" alt="user photo">
+                        <img class="w-10 h-10 rounded-full object-cover" src="image/user.jpg" alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -159,7 +165,7 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                                <a href="../login.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                             </li>
                         </ul>
                     </div>
@@ -180,12 +186,12 @@
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100 transition duration-75  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center p-3 text-blue-600 bg-blue-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+                                <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18"> 
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
-                                    <span class="ms-3">Dashboard</span>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
                                 </a>
                             </li>
                             <li>
@@ -211,11 +217,11 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-blue-600 bg-blue-100 rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white dark:hover:bg-gray-700 transition duration-75 group">
+                                <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
-                                    <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                    <span class="ms-3 ">Users</span>
                                 </a>
                             </li>
                             <li>
@@ -245,7 +251,16 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Event</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                            <?php 
+                                            
+                                            $queryevent= "SELECT * FROM eventcategory";
+                                            $result=mysqli_query($conn,$queryevent); 
+                                            $queryevent=mysqli_num_rows($result);
+                                            echo $queryevent;
+                                            
+                                            ?>
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -256,7 +271,14 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Account</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                        <?php
+                                        $queryuser= "SELECT * FROM user";
+                                             $result=mysqli_query($conn,$queryuser); 
+                                             $queryuser=mysqli_num_rows($result);
+                                             echo $queryuser;
+                                        ?>
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -267,7 +289,14 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Venue</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                        <?php
+                                        $queryvenue= "SELECT * FROM venue";
+                                             $result=mysqli_query($conn,$queryvenue); 
+                                             $queryvenue=mysqli_num_rows($result);
+                                             echo $queryvenue;
+                                        ?>
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -278,7 +307,14 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Point</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                        <?php
+                                            $querypoints= "SELECT * FROM points";
+                                             $result=mysqli_query($conn,$querypoints); 
+                                             $querypoints=mysqli_num_rows($result);
+                                             echo $querypoints;
+                                        ?>
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -311,7 +347,7 @@
                             <div>
                                 <div class="bg-white border-2 h-full rounded-lg">
                                     <div class="flex justify-end h-full items-end">
-                                        <img class="w-44 h-44" src="./image" alt="">
+                                        <img class="w-44 h-44" src="./image/Persin-lappy.png" alt="">
                                     </div>
                                 </div>
                             </div>

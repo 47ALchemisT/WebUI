@@ -1,6 +1,6 @@
 <?php
 
-include('config.php');
+include ('config.php');
 
 if(isset($_POST['login_Btn'])){
     $username = $_POST['username'];
@@ -125,7 +125,7 @@ $conn->close();
                     <div class="details d-flex flex-column justify-content-between py-4 px-4">
                       <div class="title d-flex gap-2 mb-4 fw-medium align-items-center">
                         <div style="height: 30px; width: 30px;">
-                            <img src="image/logo.jpg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
+                            <img src="css/images/ssc.jpg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
                         </div>
                         <div class="d-flex justify-content-center align-items-center">
                             <p class="m-0 text-white">Supreme Student Council</p>
@@ -149,7 +149,7 @@ $conn->close();
               <div class="container card-body px-5 w-100">
                 <div class="d-flex align-items-center gap-1 mb-4">
                   <div style="height: 35px; width: 35px;">
-                    <img src="image/sdd.jpeg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
+ <!--logo natong tulo--><img src="css/images/.jpg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
                   </div>
                   <div class="fs-6">JKB</div>
                 </div>
