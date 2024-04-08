@@ -180,8 +180,8 @@
                     <div class="mt-4 p-2">
                         <ul class="space-y-2 font-medium">
                             <li>
-                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-gray-800 hover:bg-gray-100 transition duration-75  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
-                                    <svg class="w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                <a href="./sportsDashboard.php" class="flex text-sm items-center px-3 py-3 text-blue-600 bg-blue-100 transition duration-75  rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                                    <svg class="w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                                     </svg>
@@ -211,8 +211,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-blue-600 bg-blue-100 rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:bg-gray-100 rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-100 transition duration-75 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
                                     <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
@@ -237,7 +237,7 @@
             <div class="container">
                 <div class="w-full gap-4 pr-4 relative">
                     <h1 class="px-2 pt-4 text-3xl font-bold text-gray-800 mb-4">Dashboard</h1>
-                    <div class="bg-white rounded-lg shadow-md mb-5 p-5">
+                    <div class=" rounded-lg mb-5">
                         <!--right side cards-->
                         <div class="grid grid-cols-2 gap-5">
                             <!--right side cards-->
@@ -308,10 +308,21 @@
                                 </div>
                             </div>
                             <!--left side cards-->
-                            <div>
-                                <div class="bg-white border-2 h-full rounded-lg">
+                            <div class="grid grid-cols-1 grid-rows-2 h-full gap-5">
+                                <div class="row-span-1 bg-white border-2 h-full rounded-lg">
+                                    <div class="flex justify-between h-full">
+                                        <div class="p-5">
+                                            <h1 class="text-2xl font-bold text-gray-800">Hi Admin!</h1>
+                                            <p class="text-sm font-normal text-gray-600">Welcome back...</p>
+                                        </div>
+                                        <div class="flex justify-end h-full items-end">
+                                            <img class="w-72 h-72 " src="./Persin-lappy.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-span-1 bg-white border-2 h-full rounded-lg">
                                     <div class="flex justify-end h-full items-end">
-                                        <img class="w-44 h-44" src="./image" alt="">
+                                        <img class="w-52 h-52 " src="./Persin-lappy.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -331,96 +342,96 @@
             const options = {
             // enable and customize data labels using the following example, learn more from here: https://apexcharts.com/docs/datalabels/
             dataLabels: {
-            enabled: true,
-            // offsetX: 10,
-            style: {
-                cssClass: 'text-xs text-white font-medium'
-            },
-            },
-            grid: {
-            show: false,
-            strokeDashArray: 4,
-            padding: {
-                left: 16,
-                right: 16,
-                top: -26
-            },
-            },
-            series: [
-            {
-                name: "SMFT",
-                data: [12, 23, 53, 60, 89, 125, 402],
-                color: "#1A56DB",
-            },
-            {
-                name: "CESS",
-                data: [10, 15, 70, 59, 72, 173,371],
-                color: "#7E3BF2",
-            },
-            {
-                name: "CAFES",
-                data: [5, 23, 65, 78, 99, 157, 321],
-                color: "#20de16",
-            },
-            {
-                name: "IDS",
-                data: [23, 30,80, 60, 120, 200, 300],
-                color: "#ff85c8",
-            },
-            ],
-            chart: {
-            height: "100%",
-            maxWidth: "100%",
-            type: "area",
-            fontFamily: "Inter, sans-serif",
-            dropShadow: {
-                enabled: false,
-            },
-            toolbar: {
+                enabled: true,
+                // offsetX: 10,
+                style: {
+                    cssClass: 'text-xs text-white font-medium'
+                },
+                },
+                grid: {
                 show: false,
-            },
-            },
-            tooltip: {
-            enabled: true,
-            x: {
+                strokeDashArray: 4,
+                padding: {
+                    left: 16,
+                    right: 16,
+                    top: -26
+                },
+                },
+                series: [
+                {
+                    name: "SMFT",
+                    data: [12, 23, 53, 60, 89, 125, 402],
+                    color: "#1A56DB",
+                },
+                {
+                    name: "CESS",
+                    data: [10, 15, 70, 59, 72, 173,371],
+                    color: "#7E3BF2",
+                },
+                {
+                    name: "CAFES",
+                    data: [5, 23, 65, 78, 99, 157, 321],
+                    color: "#20de16",
+                },
+                {
+                    name: "IDS",
+                    data: [23, 30,80, 60, 120, 200, 300],
+                    color: "#ff85c8",
+                },
+                ],
+                chart: {
+                height: "100%",
+                maxWidth: "100%",
+                type: "area",
+                fontFamily: "Inter, sans-serif",
+                dropShadow: {
+                    enabled: false,
+                },
+                toolbar: {
+                    show: false,
+                },
+                },
+                tooltip: {
+                enabled: true,
+                x: {
+                    show: false,
+                },
+                },
+                legend: {
+                show: true
+                },
+                fill: {
+                type: "gradient",
+                gradient: {
+                    opacityFrom: 0.55,
+                    opacityTo: 0,
+                    shade: "#1C64F2",
+                    gradientToColors: ["#1C64F2"],
+                },
+                },
+                stroke: {
+                width: 6,
+                },
+                xaxis: {
+                categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                labels: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false,
+                },
+                },
+                yaxis: {
                 show: false,
-            },
-            },
-            legend: {
-            show: true
-            },
-            fill: {
-            type: "gradient",
-            gradient: {
-                opacityFrom: 0.55,
-                opacityTo: 0,
-                shade: "#1C64F2",
-                gradientToColors: ["#1C64F2"],
-            },
-            },
-            stroke: {
-            width: 6,
-            },
-            xaxis: {
-            categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-            labels: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-            },
-            yaxis: {
-            show: false,
-            labels: {
-                formatter: function (value) {
-                return value;
+                labels: {
+                    formatter: function (value) {
+                    return value;
+                    }
                 }
-            }
-            },
+                },
             }
 
             if (document.getElementById("data-labels-chart") && typeof ApexCharts !== 'undefined') {
