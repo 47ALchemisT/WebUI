@@ -1,3 +1,8 @@
+<?php 
+include ('config.php');
+
+
+?>
 
 <!doctype html>
 <html>
@@ -256,7 +261,18 @@
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Account</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                    <?php 
+                                       
+                                       $queryuser="SELECT * FROM user";
+                                        $result=mysqli_query($conn,$queryuser);
+                                        $queryuser=mysqli_num_rows($result);
+                                        echo $queryuser;
+                                        
+                                    
+                                    ?>
+
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
