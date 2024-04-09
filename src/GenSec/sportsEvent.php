@@ -350,7 +350,7 @@
                                                         <div class="grid gap-4 mb-4 grid-cols-2">
                                                             <div class="col-span-2">
                                                                 <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                                <input type="text" name="event_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                                <input type="text" name="event_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type sports name" required="">
                                                             </div>
 
                                                             <div class="col-span-2 sm:col-span-1">
@@ -387,10 +387,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                                            Add Sport
-                                                        </button>
+                                                        <div class="w-full flex justify-end">
+                                                            <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                Add
+                                                            </button>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -399,6 +400,7 @@
                                 </div>
                                 <!-- list of sports -->
                                 <div id="default-styled-tab-content">
+                                    <!--Cards list-->
                                     <div class="hidden rounded-xl p-5 mt-4 bg-white shadow-lg dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
                                         <div class="flex">
                                             <div class="w-72">
@@ -474,7 +476,7 @@
                                             </div>   
                                             <div class="w-full">
                                                 <div class="w-full flex items-center justify-between">
-                                                    <h1 class="text-md text-gray-700 font-semibold"><span>12</span> Sports</h1>
+                                                    <h1 class="text-md text-gray-700 font-semibold"><span id="cardCount"></span> Sports</h1>
                                                     <button class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
                                                         <i class='bx bx-sort-up'></i>
                                                     </button>
@@ -543,77 +545,12 @@
                                                         mysqli_close($conn);
                                                     ?>
                                                     <!--Update Modal-->                          
-                                                    <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                        <div class="relative p-4 w-full max-w-md max-h-full">
-                                                            <!-- Modal content -->
-                                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                                <!-- Modal header -->
-                                                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                                        Update Sport
-                                                                    </h3>
-                                                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
-                                                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                                        </svg>
-                                                                        <span class="sr-only">Close modal</span>
-                                                                    </button>
-                                                                </div>
-                                                                <!-- Modal body -->
-                                                                <form class="p-4 md:p-5" id="updateEventForm" action="sportsEvent-Update.php" method="POST" onsubmit="updateEvent(event)">
-                                                                    <div class="grid gap-4 mb-4 grid-cols-2">
-                                                                        <input type="hidden" name="eventcat_ID" id="eventcat_ID" value=""> 
-                                                                        <div class="col-span-2">
-                                                                            <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                                            <input type="text" name="event_name" id="event_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
-                                                                        </div>
 
-                                                                        <div class="col-span-2 sm:col-span-1">
-                                                                            <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                                                                            <select name="event_type" id="event_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                                <option selected="" disabled selected hidden required>Select</option>
-                                                                                <option value="Minor">Minor</option>
-                                                                                <option value="Major">Major</option>
-                                                                            </select>
-                                                                        </div>
-
-                                                                        <div class="col-span-2 sm:col-span-1">
-                                                                            <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                                            <select name="event_category" id="event_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                                <option selected="" disabled selected hidden required>Select</option>
-                                                                                <option value="Men">Men</option>
-                                                                                <option value="Women">Women</option>
-                                                                                <option value="Mixed">Mixed</option>
-                                                                            </select>
-                                                                        </div>
-
-                                                                        <div class="col-span-2 mt-2">
-                                                                            <div class="flex items-center justify-center w-full">
-                                                                                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                                    <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                                        </svg>
-                                                                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                                    </div>
-                                                                                    <input id="dropzone-file" type="file" class="hidden" />
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button type="submit" name="update_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                                                        Update Sport
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div> 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Table list-->
                                     <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -679,6 +616,73 @@
                                         </div>
 
                                     </div>
+                                        <!--Update Modal-->                          
+                                        <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <!-- Modal header -->
+                                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                        Update Sport
+                                                    </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsEvent-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                                    <div class="grid gap-4 mb-4 grid-cols-2">
+                                                    <input type="hidden" name="eventcat_ID" id="eventcat_ID" value=""> 
+                                                    <div class="col-span-2">
+                                                        <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                                        <input type="text" name="event_name" id="event_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                    </div>
+
+                                                    <div class="col-span-2 sm:col-span-1">
+                                                        <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                                                        <select name="event_type" id="event_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                            <option selected="" disabled selected hidden required>Select</option>
+                                                            <option value="Minor">Minor</option>
+                                                            <option value="Major">Major</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-span-2 sm:col-span-1">
+                                                        <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                                        <select name="event_category" id="event_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                            <option selected="" disabled selected hidden required>Select</option>
+                                                            <option value="Men">Men</option>                                                                    <option value="Women">Women</option>
+                                                            <option value="Mixed">Mixed</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-span-2 mt-2">
+                                                        <div class="flex items-center justify-center w-full">
+                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                    </svg>
+                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                </div>
+                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-full flex justify-end">
+                                                        <button type="submit" name="update_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            Save
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div> 
+                                    </div> 
                                 </div>
                             </div>        
                         </div>
@@ -716,65 +720,79 @@
             }
         </script>
 
-        <!--Update-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const crudModalUpdate = document.getElementById("crud-modal-update");
-                const updateEventForm = document.getElementById("updateEventForm");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const crudModalUpdate = document.getElementById("crud-modal-update");
+        const updateEventForm = document.getElementById("updateEventForm");
 
-                const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
+        const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
 
-                openModalButtons.forEach((button) => {
-                    button.addEventListener("click", function () {
-                        const eventId = this.closest(".max-w-sm").dataset.eventId;
-                        const eventName = this.closest(".max-w-sm").dataset.eventName;
-                        const eventType = this.closest(".max-w-sm").dataset.eventType;
-                        const eventCategory = this.closest(".max-w-sm").dataset.eventCategory;
+        openModalButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const eventCard = this.closest(".max-w-sm");
+                const eventId = eventCard.id.split("-")[1];
+                const eventName = eventCard.querySelector(".text-md").textContent.trim();
+                const eventType = eventCard.querySelector(".text-gray-500").textContent.trim();
+                const eventCategory = eventCard.querySelectorAll(".text-gray-500")[1].textContent.trim();
 
-                        // Populate the input fields with data from the clicked event
-                        updateEventForm.elements["eventcat_ID"].value = eventId;
-                        updateEventForm.elements["event_name"].value = eventName;
-                        updateEventForm.elements["event_type"].value = eventType;
-                        updateEventForm.elements["event_category"].value = eventCategory;
+                // Populate the input fields with data from the clicked event
+                updateEventForm.elements["eventcat_ID"].value = eventId;
+                updateEventForm.elements["event_name"].value = eventName;
 
-                        // Show the modal
-                        crudModalUpdate.classList.remove("hidden");
-                        crudModalUpdate.setAttribute("aria-hidden", "false");
-                    }); 
+                // Select the appropriate option in the event_type select element
+                const eventTypeSelect = updateEventForm.elements["event_type"];
+                [...eventTypeSelect.options].forEach(option => {
+                    if (option.value === eventType) {
+                        option.selected = true;
+                    }
                 });
 
-                // JavaScript function to handle the update event
-                function updateEvent(event) {
-                    event.preventDefault(); // Prevent form submission
+                // Select the appropriate option in the event_category select element
+                const eventCategorySelect = updateEventForm.elements["event_category"];
+                [...eventCategorySelect.options].forEach(option => {
+                    if (option.value === eventCategory) {
+                        option.selected = true;
+                    }
+                });
 
-                    const formData = new FormData(updateEventForm);
+                // Show the modal
+                crudModalUpdate.classList.remove("hidden");
+                crudModalUpdate.setAttribute("aria-hidden", "false");
+            }); 
+        });
 
-                    // Send AJAX request to the PHP script
-                    fetch(updateEventForm.action, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        return response.text();
-                    })
-                    .then(result => {
-                        if (result === "success") {
-                            alert("Sport updated successfully");
-                            // Redirect back to the page after successful update
-                            window.location.href = "sportsEvent.php"; // Replace "sportsEvent.php" with the actual URL of your page
-                        } else {
-                            alert("Failed to update sport");
-                            console.error("Failed to update sport");
-                        }
-                    })
+        // JavaScript function to handle the update event
+        function updateEvent(event) {
+            event.preventDefault(); // Prevent form submission
 
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert("An error occurred while updating the sport");
-                    });
+            const formData = new FormData(updateEventForm);
+
+            // Send AJAX request to the PHP script
+            fetch(updateEventForm.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                return response.text();
+            })
+            .then(result => {
+                if (result === "success") {
+                    alert("Sport updated successfully");
+                    // Redirect back to the page after successful update
+                    window.location.href = "sportsEvent.php"; // Replace "sportsEvent.php" with the actual URL of your page
+                } else {
+                    alert("Failed to update sport");
+                    console.error("Failed to update sport");
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while updating the sport");
             });
-        </script>
+        }
+    });
+</script>
+
 
         <!--Search-->
         <script>
@@ -807,21 +825,21 @@
 
         <!--number of cards counter-->
         <script>
+            // Wait for the DOM content to be loaded
             document.addEventListener("DOMContentLoaded", function () {
-                // Get the sports container
-                const sportsContainer = document.getElementById("sportsContainer");
-                // Get the span for displaying card count
-                const cardCountSpan = document.getElementById("cardCount");
+                // Select all elements with the class that represents your card container
+                const cardElements = document.querySelectorAll('.max-w-sm');
 
-                // Function to update card count
-                function updateCardCount() {
-                    // Get the number of cards inside the sports container
-                    const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
-                    // Update the text content of the span
-                    cardCountSpan.textContent = cardCount;
-                }
-                updateCardCount();
+                // Get the count of card elements
+                const cardCount = cardElements.length;
+
+                // Select the span element where you want to display the card count
+                const cardCountSpan = document.getElementById('cardCount');
+
+                // Update the content of the span element with the card count
+                cardCountSpan.textContent = cardCount.toString();
             });
         </script>
+
     </body>
 </html>
