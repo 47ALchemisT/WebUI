@@ -302,8 +302,6 @@ include ('config.php');
                                         $result=mysqli_query($conn,$queryvenue);
                                         $queryvenue=mysqli_num_rows($result);
                                         echo $queryvenue;
-                                        
-                                    
                                         ?>
 
                                         </h5>
