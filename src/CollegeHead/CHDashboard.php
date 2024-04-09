@@ -9,7 +9,7 @@ include ('config.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
+    <link href="./" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -216,41 +216,31 @@ include ('config.php');
                         <!--right side cards-->
                         <div class="grid grid-cols-2 gap-5">
                             <!--right side cards-->
-                            <div class="grid grid-cols-2 gap-10">          
-                                </div>
-                                <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="col-span-2 flex items-center justify-between h-full border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
-                                        <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Account</p>
+                                        <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Participant</p>
                                         <h5 class="mb-0 text-lg font-bold text-gray-600">
-                                    <?php 
-                                       
-                                       $querypar="SELECT * FROM participants";
-                                        $result=mysqli_query($conn,$querypar);
-                                        $querypar=mysqli_num_rows($result);
-                                        echo $querypar;
-                                        
-                                    
-                                    ?>
-
+                                            <?php 
+                                            $queryuser="SELECT * FROM user";
+                                                $result=mysqli_query($conn,$queryuser);
+                                                $queryuser=mysqli_num_rows($result);
+                                                echo $queryuser;
+                                                
+                                            
+                                            ?>
                                         </h5>
                                     </div>
-                                    
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-solid fa-map-location-dot  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-user  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
-                               
-                                    <div class="p-5">
-                                        <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
-                                            <i class="fa-solid fa-flag-checkered  text-xl relative top-4 text-gray-600" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-span-2 bg-white border-2 rounded-lg">    
                                     
-                                    <div class=" w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                                    <div class=" w-full h-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
                                         <div class="flex justify-between mb-5">
                                             <div>
                                             <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">CMAS</h5>
@@ -293,7 +283,6 @@ include ('config.php');
                 </div>
             </div>
         </main>
-        
         <!--Script-->
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

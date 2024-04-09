@@ -233,11 +233,11 @@ mysqli_close($conn);
                             </li>
                             <li>
                                 
-                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 text-gray-800 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-800 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <a href="./sportsAccount.php" class="flex text-sm items-center p-3 bg-blue-100 text-blue-600  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                    <svg class="flex-shrink-0 w-4 h-4 text-blue-600 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                                     </svg>
-                                    <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                                    <span class="flex-1 ms-3 whitespace-nowrap">Participants</span>
                                 </a>
                             </li>
                         </ul>
@@ -281,10 +281,6 @@ mysqli_close($conn);
                                                 </ul>
                                             </div>
 
-                                            <button class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                                <h1><i class="fa-solid fa-cloud-arrow-up text-md mr-2"></i>Activate</h1>
-                                            </button>
-
                                         </div>
                                         <!--Add Modal-->
                                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -294,7 +290,7 @@ mysqli_close($conn);
                                                     <!-- Modal header -->
                                                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                            Add Sport
+                                                            Add Participant
                                                         </h3>
                                                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                                                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -311,39 +307,17 @@ mysqli_close($conn);
                                                                 <input type="text" name="par_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type sports name" required="">
                                                             </div>
 
-                                                            <div class="col-span-2 sm:col-span-1">
-                                                                <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                                                                <select name="event_type" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Select</option>
-                                                                    <option value="Minor">Minor</option>
-                                                                    <option value="Major">Major</option>
-                                                                </select>
+                                                            <div class="col-span-2">
+                                                                <label for="par_yrlvl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year level</label>
+                                                                <input type="text" name="par_yrlvl" id="par_yrlvl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Year level" required="">
                                                             </div>
 
-                                                            <div class="col-span-2 sm:col-span-1">
-                                                                <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                                <select name="event_category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Select</option>
-                                                                    <option value="Men">Men</option>
-                                                                    <option value="Women">Women</option>
-                                                                    <option value="Mixed">Mixed</option>
-                                                                </select>
+                                                            <div class="col-span-2">
+                                                                <label for="par_department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
+                                                                <input type="text" name="par_department" id="par_department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="department" required="">
                                                             </div>
+                                                            
 
-                                                            <div class="col-span-2 mt-2">
-                                                                <div class="flex items-center justify-center w-full">
-                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                            </svg>
-                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                        </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                         <div class="w-full flex justify-end">
                                                             <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -359,15 +333,31 @@ mysqli_close($conn);
                                 <!-- list of sports -->
                                 <div id="default-styled-tab-content">
                                     <!--Cards list-->
-                                    <div class="hidden rounded-xl p-5 mt-4 bg-white shadow-lg dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
+                                    <div class="hidden rounded-xl mt-4  dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
                                         <div class="flex">
 
                                             <div class="w-full">
-                                                <div class="w-full flex items-center justify-between">
+                                                <div class="w-full items-center">
+                                                    <div class="flex justify-between items-center mb-3">
+                                                        <!-- Search bar -->
+                                                        <div class="flex items-center justify-between gap-4 mb-2"> 
+                                                            <form class="max-w-md w-full" id="searchForm">   
+                                                                <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                                <div class="relative">
+                                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <input type="search" id="default-search" class="block w-full p-2 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <button id="sortButton" class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                            <i class='bx bx-sort-up mb-1'></i>
+                                                        </button>
+                                                    </div>
                                                     <h1 class="text-md text-gray-700 font-semibold"><span id="cardCount"></span> Participants</h1>
-                                                    <button class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                                        <i class='bx bx-sort-up'></i>
-                                                    </button>
                                                 </div>
                                                 <div id="sportsContainer" class=" grid grid-cols-5  gap-5 w-full mt-3">
                                                     <?php
@@ -432,7 +422,56 @@ mysqli_close($conn);
                                                         // Close database connection
                                                         mysqli_close($conn);
                                                     ?>
-                                                    <!--Update Modal-->                          
+                                                    <!--Sorting the cards-->                          
+                                                    <script>
+                                                        document.addEventListener("DOMContentLoaded", function () {
+                                                            const sortButton = document.getElementById("sortButton");
+                                                            const sportsContainer = document.getElementById("sportsContainer");
+                                                            let originalOrder = [];
+                                                            let sortingOrder = 0; // 0: Original, 1: Ascending, 2: Descending
+
+                                                            // Store the original order of the cards when the page loads
+                                                            const cards = Array.from(sportsContainer.children);
+                                                            originalOrder = cards.slice(); // Make a copy of the array
+
+                                                            sortButton.addEventListener("click", function () {
+                                                                // Toggle sorting order
+                                                                sortingOrder = (sortingOrder + 1) % 3;
+
+                                                                if (sortingOrder === 0) {
+                                                                    // Revert to original order
+                                                                    renderCards(originalOrder);
+                                                                    sortButton.classList.remove("sorted", "sorted-descending");
+                                                                } else if (sortingOrder === 1) {
+                                                                    // Sort the cards alphabetically in ascending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventA.localeCompare(eventB);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted");
+                                                                } else {
+                                                                    // Sort the cards alphabetically in descending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventB.localeCompare(eventA);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted", "sorted-descending");
+                                                                }
+                                                            });
+
+                                                            // Function to render the cards
+                                                            function renderCards(cardsToRender) {
+                                                                sportsContainer.innerHTML = '';
+                                                                cardsToRender.forEach(card => {
+                                                                    sportsContainer.appendChild(card);
+                                                                });
+                                                            }
+                                                        });
+                                                    </script>                         
 
                                                 </div>
                                             </div>
@@ -527,41 +566,19 @@ mysqli_close($conn);
                                                     <input type="hidden" name="par_id" id="par_id" value=""> 
                                                     <div class="col-span-2">
                                                         <label for="par_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                        <input type="text" name="par_name" id="par_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                        <input type="text" name="par_name" id="par_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Name" required="">
+                                                    </div>
+                                                    
+                                                    <div class="col-span-2">
+                                                        <label for="par_yrlvl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year level</label>
+                                                        <input type="text" name="par_yrlvl" id="par_yrlvl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Year level" required="">
                                                     </div>
 
-                                                    <div class="col-span-2 sm:col-span-1">
-                                                        <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                                                        <select name="event_type" id="event_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                            <option selected="" disabled selected hidden required>Select</option>
-                                                            <option value="Minor">Minor</option>
-                                                            <option value="Major">Major</option>
-                                                        </select>
+                                                    <div class="col-span-2">
+                                                        <label for="par_department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
+                                                        <input type="text" name="par_department" id="par_department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="department" required="">
                                                     </div>
-                                                    <div class="col-span-2 sm:col-span-1">
-                                                        <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                        <select name="event_category" id="event_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                            <option selected="" disabled selected hidden required>Select</option>
-                                                            <option value="Men">Men</option>                                                                    <option value="Women">Women</option>
-                                                            <option value="Mixed">Mixed</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-span-2 mt-2">
-                                                        <div class="flex items-center justify-center w-full">
-                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                    </svg>
-                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="w-full flex justify-end">
                                                         <button type="submit" name="update_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                             Save

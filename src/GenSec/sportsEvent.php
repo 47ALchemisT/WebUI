@@ -401,10 +401,10 @@
                                 <!-- list of sports -->
                                 <div id="default-styled-tab-content">
                                     <!--Cards list-->
-                                    <div class="hidden rounded-xl p-5 mt-4 bg-white shadow-lg dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
+                                    <div class="hidden rounded-xl mt-4 dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
                                         <div class="flex">
                                             <div class="w-72">
-                                                <div class="rounded-xl bg-white dark:bg-gray-800 pr-5">   
+                                                <div class="rounded-xl  dark:bg-gray-800 pr-5">   
                                                     <!-- Filter-->
                                                     <div>
                                                         <!-- Search bar -->
@@ -796,7 +796,7 @@
                     // Rest of the updateEvent function remains unchanged
                 }
             });
-</script>
+        </script>
 
         <!--Search-->
         <script>
