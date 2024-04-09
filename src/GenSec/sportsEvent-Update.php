@@ -21,12 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($result) {
             // If update is successful, return success message
-            echo "<script>alert('Event added successfully');window.location='sportsEvent.php'</script>";
+            echo "<script>alert('Venue updated successfully');window.location='sportsEvent.php'</script>";
         } else {
             // If update fails, log the error
             echo "error: " . mysqli_error($conn);
-
-            // Log the SQL query for debugging
             error_log("SQL Error: " . $sql);
             error_log("SQL Error: " . mysqli_error($conn));
         }
@@ -36,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // If preparing the statement fails, log the error
         echo "error: Failed to prepare statement";
-
-        // Log the error for debugging
         error_log("Statement preparation error: " . mysqli_error($conn));
     }
 
@@ -45,3 +41,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($conn);
     exit;
 }
+?> 
