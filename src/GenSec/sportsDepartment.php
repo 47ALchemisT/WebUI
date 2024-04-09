@@ -523,10 +523,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form class="p-4 md:p-5" id="updatedepartmentForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
                                                     <div class="col-span-2 mt-2">
-                                                        <input type="hidden" name="depart_ID" id="depart_ID"  value="">
+                                                        <input type="hidden" name="depart_ID" id="depart_ID" value="">
 
                                                         <div class="flex items-center justify-center w-full">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -542,24 +542,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                         </div>
 
                                                         <div class="col-span-2">
-                                                            <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department Name</label>
-                                                            <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department name"  required="">
+                                                            <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
+                                                            <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department Name" required="">
                                                         </div>
 
                                                         <div class="col-span-2">
-                                                            <label for="teamname " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team Name</label>
-                                                            <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Team name"   required="">
+                                                            <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team Name</label>
+                                                            <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Team Name" required="">
                                                         </div>
 
                                                         <div class="col-span-2">
-                                                            <label for="description " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                                            <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Description"  required="">
+                                                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Description</label>
+                                                            <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Description" required="">
                                                         </div>
                                                     </div>
-                                                    <button type="submit" name="submit_department" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                                    Save
-                                                    </button>
+                                                    <div class="w-full flex justify-end">
+                                                        <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            Update Department
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -603,32 +604,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
         <!--Update-->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const updatedepartmentForm = document.getElementById("updatedepartmentForm");
-                const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
+            const crudModalUpdate = document.getElementById("crud-modal-update");
+            const updateEventForm = document.getElementById("updateEventForm");
 
-                openModalButtons.forEach((button) => {
-                    button.addEventListener("click", function () {
-                        const departID = this.closest(".max-w-sm").id.split("-")[1]; // Extract depart ID from card ID
-                        const departmentName = this.closest(".max-w-sm").querySelector(".text-md").textContent.trim();
-                        const teamName = this.closest(".max-w-sm").querySelectorAll("span")[0].textContent.trim();
-                        const description = this.closest(".max-w-sm").querySelectorAll("span")[2].textContent.trim();
-                        const generatedID = this.closest(".max-w-sm").id.split("-")[1];
-                        // Populate the input fields with data from the clicked event
-                        updatedepartmentForm.elements["depart_ID"].value = departID;
-                        updatedepartmentForm.elements["departmentname"].value = departmentName;
-                        updatedepartmentForm.elements["teamname"].value = teamName;
-                        updatedepartmentForm.elements["description"].value = description;
-                        updatedepartmentForm.elements["generated_id"].value = generatedID;
-                    }); 
-                });
+            const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
 
-                // Function to handle the update event
-                function updateEvent(event) {
-                    event.preventDefault(); // Prevent form submission
-                    // Rest of the updateEvent function remains unchanged
-                }
+            openModalButtons.forEach((button) => {
+                button.addEventListener("click", function () {
+                    const departId = this.closest(".max-w-sm").dataset.departId;
+                    const departmentName = this.closest(".max-w-sm").dataset.departmentName;
+                    const teamname = this.closest(".max-w-sm").dataset.teamname;
+                    const description = this.closest(".max-w-sm").dataset.description;
+                    const generatedId = this.closest(".max-w-sm").dataset.generatedId;
+
+                    // Populate the input fields with data from the clicked event
+                    updateEventForm.elements["depart_ID"].value = departId;
+                    updateEventForm.elements["departmentname"].value = departmentName;
+                    updateEventForm.elements["teamname"].value = teamname;
+                    updateEventForm.elements["description"].value = description;
+                    updateEventForm.elements["generated_id"].value = generatedId;
+
+                    // Show the modal
+                    crudModalUpdate.classList.remove("hidden");
+                    crudModalUpdate.setAttribute("aria-hidden", "false");
+                }); 
             });
-</script>
+        });
+        </script>
 
         <!--Search-->
         <script>

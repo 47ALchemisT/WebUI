@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($result) {
             // If update is successful, return success message
-            echo "<script>alert('Venue updated successfully');window.location='sportsDepartment.php'</script>";
+            echo "<script>alert('Department updated successfully');window.location='sportsDepartment.php'</script>";
         } else {
             // If update fails, log the error
             echo "error: " . mysqli_error($conn);
