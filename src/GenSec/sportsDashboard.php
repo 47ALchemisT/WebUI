@@ -320,7 +320,6 @@ include ('config.php');
                                         <h5 class="mb-0 text-lg font-bold text-gray-600">
 
                                         <?php 
-                                       
                                        $querypoints="SELECT * FROM points";
                                         $result=mysqli_query($conn,$querypoints);
                                         $querypoints=mysqli_num_rows($result);
