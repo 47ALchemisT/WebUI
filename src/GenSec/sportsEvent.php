@@ -58,11 +58,15 @@
     <link href="./output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-Ztmj4MKjqP0j+NWEUf7NDMn3kNWbpQ5NtqoTK8r+RyUPwyDj8zBIwWBPHlwW2ljC"
+        crossorigin="anonymous">
 
 </head>
-    <body class="bg-gray-100">
+    <body class="bg-gray-50">
         <header class="dark:bg-gray-900 sticky top-0  z-10" style="margin-left: 320px;">
-            <div class="bg-gray-100 flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="bg-gray-50 flex flex-wrap items-center justify-between mx-auto p-4">
                 <!--left side of the header-->
                 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span class="sr-only">Open sidebar</span>
@@ -289,135 +293,41 @@
                 <h1 class="px-2 pt-4 text-3xl font-bold text-gray-800">Sports</h1>
                 <p class="px-2 text-gray-500 text-sm mt-1 mb-4">List of sports</p>
                 <div class="flex w-full gap-4 relative">
-                    <!--left side, compose of utilitites-->
-                    <div class="h-28" style="width:290px;">
-                        <div class="shadow-md p-4 rounded-xl bg-white dark:bg-gray-800">   
-                            <p class="text-lg mb-2.5 font-semibold text-gray-800"><span>12 </span>Sports</p> 
-                            <!-- Search bar -->
-                            <div class="flex items-center justify-between gap-4 mb-4"> 
-                                <form class="max-w-md w-full">   
-                                    <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                            </svg>
-                                        </div>
-                                        <input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
-                                    </div>
-                                </form>
-                            </div>
 
-                            <!-- Filter-->
-                            <div>
-                                <h1 class="text-gray-800 text-md font-medium">Filter by</h1>
-                                <p class="text-gray-500 text-sm font-normal">Category:</p>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <ul class="grid grid-cols-1 w-full gap-2">
-                                        <li class="col-span-1">
-                                            <input type="checkbox" id="men" value="" class="hidden peer" required="">
-                                            <label for="men" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30   dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="inline-flex items-center">
-                                                    <i class="fa-solid fa-person mr-3"></i>    
-                                                    <div class="block">
-                                                        <div class="w-full text-sm font-semibold">Men</div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-sm font-semibold">19</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="women" value="" class="hidden peer" required="">
-                                            <label for="women" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-blue-600 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="inline-flex items-center">
-                                                    <i class="fa-solid fa-person-dress mr-3"></i>
-                                                    <div class="block">
-                                                        <div class="w-full text-sm font-semibold">Women</div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-sm font-semibold">8</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="mixed" value="" class="hidden peer" required="">
-                                            <label for="mixed" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="inline-flex items-center">
-                                                    <i class="fa-solid fa-person-half-dress mr-3"></i>
-                                                    <div class="block">
-                                                        <div class="w-full text-sm font-semibold">Mixed</div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-sm font-semibold">11</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                    <p class="text-gray-500 text-sm font-normal">Type:</p>
-                                    <ul class="grid grid-cols-1 w-full gap-2">
-                                        <li>
-                                            <input type="checkbox" id="minor" value="" class="hidden peer" required="">
-                                            <label for="minor" class="inline-flex justify-between items-center w-full gap-2 text-gray-500 p-2.5 bg-gray-100 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:text-gray-400  dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="inline-flex items-center">
-                                                    <i class="fa-solid fa-medal mr-3"></i>
-                                                    <div class="block">
-                                                        <div class="w-full text-sm font-semibold">Minor</div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-sm font-semibold">2</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="major" value="" class="hidden peer" required="">
-                                            <label for="major" class="inline-flex justify-between items-center w-full gap-2 p-2.5 bg-gray-100 text-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-500 peer-checked:text-blue-600 peer-checked:bg-blue-100 dark:peer-checked:text-gray-300 hover:bg-blue-500/10 hover:text-blue-500 active:bg-blue-500/30 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 transition-transform transform-gpu hover:scale-105">                           
-                                                <div class="inline-flex items-center">
-                                                    <i class="fa-solid fa-trophy mr-3"></i>
-                                                    <div class="block">
-                                                        <div class="w-full text-sm font-semibold">Major</div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-sm font-semibold">13</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- YEar-->
-                            <div class="mt-3">
-                                <p class="text-md text-gray-700 mb-2">Event year</p>
-                                <button type="button" class="text-white w-full bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 flex justify-between me-2 mb-2 transition-transform transform-gpu hover:scale-105">Activate<i class="fa-solid fa-cloud-arrow-up mt-1"></i></button>
-                                                                
-                                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-700 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex justify-between items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Activated year 
-                                <i class="fa-solid fa-location-arrow"></i>
-                                </button>
-
-                                <!-- Dropdown menu -->
-                                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2019</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2020</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2021</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2022</a>
-                                    </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--righ side, list of sports-->
+                    <!--main content, list of sports-->
                     <div class="flex-1">
                         <div class="overflow-y-auto">
-                            <div class="bg-white shadow-lg mb-4 p-5 rounded-lg w-full">
+                            <div class="bg-gray-50 mb-4 p-5 rounded-xl w-full">
                                 <!--top side of the content-->
-                                <div class="flex items-center justify-between">
-                                    <div class="add">
+                                <div class="flex items-center justify-between border-b-2 mb-2">
+                                    <div class="add flex justify-between w-full mb-3">
+                                        <div class="flex items-center space-x-3">
+                                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                <h1><i class="fa-solid fa-plus text-md mr-1"></i> Add</h1>
+                                                <span class="sr-only">Icon description</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center h-full">
+                                                <ul class="flex items-center space-x-3 mt-1.5"  id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                                            <i class='bx bxs-grid-alt'></i>
+                                                        </button>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
+                                                            <i class='bx bx-list-ul'></i>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <button class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                <h1><i class="fa-solid fa-cloud-arrow-up text-md mr-2"></i>Activate</h1>
+                                            </button>
+
+                                        </div>
                                         <!--Add Modal-->
                                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -487,146 +397,289 @@
                                         </div> 
                                     </div>
                                 </div>
-                                <!-- list of sports -->         
-                                <div id="sportsContainer" class="grid grid-cols-4 gap-5">
-                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center hover:border-blue-500">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-200 border-4 border-dashed border-gray-200 hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                            <i class="fa-solid fa-circle-plus text-3xl"></i>
-                                            <span class="sr-only">Icon description</span>
-                                        </button>
-                                        <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                            Add new venue
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                        include("config.php");
-
-                                        // Fetch data from the database
-                                        $sql = "SELECT * FROM eventcategory";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        // Check if records exist
-                                        if (mysqli_num_rows($result) > 0) {
-                                            // Loop through each row of data
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                // Extract data from the current row
-                                                $eventcat_ID = $row['eventcat_ID'];
-                                                $event_name = $row['event_name'];
-                                                $event_type = $row['event_type'];
-                                                $event_category = $row['event_category'];
-
-                                                // Output HTML for each card with dynamic data
-                                                // Output HTML for each card with dynamic data and data attributes
-                                                echo '<div id="event-' . $eventcat_ID . '" class="max-w-sm bg-white border h-44 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " data-event-id="' . $eventcat_ID . '" data-event-name="' . htmlspecialchars($event_name) . '" data-event-type="' . htmlspecialchars($event_type) . '" data-event-category="' . htmlspecialchars($event_category) . '" data-venueName="Venue Name" data-venueDescription="Venue Description">';
-                                                    echo '<div class="flex justify-end pb-4">';
-                                                        echo '<button id="dropdownButton-' . $eventcat_ID . '" data-dropdown-toggle="dropdown-' . $eventcat_ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
-                                                            echo '<span class="sr-only">Open dropdown</span>';
-                                                                echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
-                                                                echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
-                                                            echo '</svg>';
-                                                        echo '</button>';
-                                                        // Dropdown menu
-                                                        echo '<div id="dropdown-' . $eventcat_ID . '" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">';
-                                                            echo '<ul class="p-2" aria-labelledby="dropdownButton">';
-                                                                // Edit option with onclick event to call openEditModal function
-                                                                echo '<li>';
-                                                                    echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-sm w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
-                                                                echo '</li>';
-                                                                // Delete option with onclick event to call deleteEvent function
-                                                                echo '<li>';
-                                                                    echo '<a href="javascript:void(0);" onclick="deleteEvent(' . $eventcat_ID . ')" class="block px-4 rounded-md py-2 text-sm font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-trash-can mr-2"></i>Delete</a>';
-                                                                echo '</li>';
-                                                            echo '</ul>';
-                                                        echo '</div>';
-                                                        echo '</div>';
-
-                                                        echo '<div class="flex flex-col items-center pb-6">';
-                                                        echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $event_name . '</h5>';
-                                                        echo '<div class="flex gap-1">';
-                                                            echo '<span class="text-sm text-gray-500 dark:text-gray-400">' . $event_type . '</span>';
-                                                            echo '<span class="text-sm text-gray-500">/</span>';
-                                                            echo '<span class="text-sm text-gray-500 dark:text-gray-400">' . $event_category . '</span>';
-                                                        echo '</div>';
-                                                    echo '</div>';
-
-                                                echo '</div>'; // Close max-w-sm div
-                                            }
-                                        } else {
-                                            // Display a message if no records are found
-                                            echo "No sports found";
-                                        }
-
-                                        // Close database connection
-                                        mysqli_close($conn);
-                                    ?>
-                                <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative p-4 w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <!-- Modal header -->
-                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                    Update Sport
-                                                </h3>
-                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
-                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                    </svg>
-                                                    <span class="sr-only">Close modal</span>
-                                                </button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsEvent-Update.php" method="POST" onsubmit="updateEvent(event)">
-                                                <div class="grid gap-4 mb-4 grid-cols-2">
-                                                    <input type="hidden" name="eventcat_ID" id="eventcat_ID" value=""> 
-                                                    <div class="col-span-2">
-                                                        <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                        <input type="text" name="event_name" id="event_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
-                                                    </div>
-
-                                                    <div class="col-span-2 sm:col-span-1">
-                                                        <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                                                        <select name="event_type" id="event_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                            <option selected="" disabled selected hidden required>Select</option>
-                                                            <option value="Minor">Minor</option>
-                                                            <option value="Major">Major</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-span-2 sm:col-span-1">
-                                                        <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                        <select name="event_category" id="event_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                            <option selected="" disabled selected hidden required>Select</option>
-                                                            <option value="Men">Men</option>
-                                                            <option value="Women">Women</option>
-                                                            <option value="Mixed">Mixed</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-span-2 mt-2">
-                                                        <div class="flex items-center justify-center w-full">
-                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                    </svg>
-                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                <!-- list of sports -->
+                                <div id="default-styled-tab-content">
+                                    <div class="hidden rounded-xl p-5 mt-4 bg-white shadow-lg dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
+                                        <div class="flex">
+                                            <div class="w-72">
+                                                <div class="rounded-xl bg-white dark:bg-gray-800 pr-5">   
+                                                    <!-- Filter-->
+                                                    <div>
+                                                        <!-- Search bar -->
+                                                        <div class="flex items-center justify-between gap-4 mb-2"> 
+                                                            <form class="max-w-md w-full" id="searchForm">   
+                                                                <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                                <div class="relative">
+                                                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <input type="search" id="default-search" class="block w-full p-2 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
                                                                 </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
-                                                            </label>
+                                                            </form>
+                                                        </div>
+                                                        <p class="text-gray-500 text-xs font-normal mt-3">Category:</p>
+                                                        <div class="flex flex-wrap gap-2 mt-2">
+                                                            <ul class="grid grid-cols-1 w-full gap-2">
+                                                                <li>
+                                                                    <input type="radio" id="all" name="category" value="all" class="hidden peer" required />
+                                                                    <label for="all" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal w-24"><i class="fa-solid fa-people-group mr-2"></i>All</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="men" name="category" value="men" class="hidden peer" required />
+                                                                    <label for="men" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal"><i class="fa-solid fa-person mr-2"></i>Men</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="women" name="category" value="women" class="hidden peer" required />
+                                                                    <label for="women" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal"><i class="fa-solid fa-person-dress mr-2"></i>Women</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="mixed" name="category" value="mixed" class="hidden peer" required />
+                                                                    <label for="mixed" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal"><i class="fa-solid fa-person-half-dress mr-2"></i>Mixed</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                            <p class="text-gray-500 text-xs font-normal mt-3">Type:</p>
+                                                            <ul class="grid grid-cols-1 w-full gap-2">
+                                                                <li>
+                                                                    <input type="radio" id="Major" name="category" value="Major" class="hidden peer" required />
+                                                                    <label for="Major" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal"><i class="fa-solid fa-trophy mr-2"></i>Major</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="radio" id="Minor" name="category" value="Minor" class="hidden peer" required />
+                                                                    <label for="Minor" class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-400 bg-white border-2 border-gray-300 rounded-xl cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                                                                        <h1 class="text-sm font-normal"><i class="fa-solid fa-medal mr-2"></i>Minor</h1>
+                                                                        <span class="text-sm font-medium">12</span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" name="update_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                                    Update Sport
-                                                </button>
-                                            </form>
+                                            </div>   
+                                            <div class="w-full">
+                                                <div class="w-full flex items-center justify-between">
+                                                    <h1 class="text-md text-gray-700 font-semibold"><span>12</span> Sports</h1>
+                                                    <button class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                        <i class='bx bx-sort-up'></i>
+                                                    </button>
+                                                </div>
+                                                <div id="sportsContainer" class=" grid grid-cols-4 gap-5 w-full mt-3">
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM eventcategory";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $eventcat_ID = $row['eventcat_ID'];
+                                                                $event_name = $row['event_name'];
+                                                                $event_type = $row['event_type'];
+                                                                $event_category = $row['event_category'];
+
+                                                                // Output HTML for each card with dynamic data
+                                                                echo '<div id="event-' . $eventcat_ID . '" class="max-w-sm bg-white border h-44 p-3 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">';
+                                                                echo '<div class="flex justify-end pb-4">';
+                                                                echo '<button id="dropdownButton-' . $eventcat_ID . '" data-dropdown-toggle="dropdown-' . $eventcat_ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
+                                                                echo '<span class="sr-only">Open dropdown</span>';
+                                                                echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
+                                                                echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
+                                                                echo '</svg>';
+                                                                echo '</button>';
+                                                                // Dropdown menu
+                                                                echo '<div id="dropdown-' . $eventcat_ID . '" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">';
+                                                                echo '<ul class="p-2" aria-labelledby="dropdownButton">';
+                                                                // Edit option with onclick event to call openEditModal function
+                                                                echo '<li>';
+                                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 font-medium text-sm w-full text-left rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
+                                                                echo '</li>';
+                                                                // Delete option with onclick event to call deleteEvent function
+                                                                echo '<li>';
+                                                                echo '<a href="javascript:void(0);" onclick="deleteEvent(' . $eventcat_ID . ')" class="block px-4 rounded-md py-2 text-sm font-medium text-gray-500 hover:text-red-500  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-trash-can mr-2"></i>Delete</a>';
+                                                                echo '</li>';
+                                                                echo '</ul>';
+                                                                echo '</div>';
+                                                                echo '</div>';
+                                                                echo '<div class="flex flex-col items-center pb-6">';
+                                                                echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $event_name . '</h5>';
+                                                                echo '<div class="flex gap-1">';
+                                                                echo '<span class="text-sm text-gray-500 dark:text-gray-400">' . $event_type . '</span>';
+                                                                echo '<span class="text-sm text-gray-500">/</span>';
+                                                                echo '<span class="text-sm text-gray-500 dark:text-gray-400">' . $event_category . '</span>';
+                                                                echo '</div>';
+                                                                echo '</div>';
+                                                                echo '</div>'; // Close max-w-sm div
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo "No sports found";
+                                                        }
+
+                                                        // Close container for cards
+                                                        echo '</div>';
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                    <!--Update Modal-->                          
+                                                    <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                        <div class="relative p-4 w-full max-w-md max-h-full">
+                                                            <!-- Modal content -->
+                                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                                <!-- Modal header -->
+                                                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                                        Update Sport
+                                                                    </h3>
+                                                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
+                                                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                                        </svg>
+                                                                        <span class="sr-only">Close modal</span>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- Modal body -->
+                                                                <form class="p-4 md:p-5" id="updateEventForm" action="sportsEvent-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                                                    <div class="grid gap-4 mb-4 grid-cols-2">
+                                                                        <input type="hidden" name="eventcat_ID" id="eventcat_ID" value=""> 
+                                                                        <div class="col-span-2">
+                                                                            <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                                                            <input type="text" name="event_name" id="event_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                                        </div>
+
+                                                                        <div class="col-span-2 sm:col-span-1">
+                                                                            <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                                                                            <select name="event_type" id="event_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                                <option selected="" disabled selected hidden required>Select</option>
+                                                                                <option value="Minor">Minor</option>
+                                                                                <option value="Major">Major</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="col-span-2 sm:col-span-1">
+                                                                            <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                                                            <select name="event_category" id="event_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                                <option selected="" disabled selected hidden required>Select</option>
+                                                                                <option value="Men">Men</option>
+                                                                                <option value="Women">Women</option>
+                                                                                <option value="Mixed">Mixed</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="col-span-2 mt-2">
+                                                                            <div class="flex items-center justify-center w-full">
+                                                                                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                                    <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                                        </svg>
+                                                                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                                    </div>
+                                                                                    <input id="dropzone-file" type="file" class="hidden" />
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="submit" name="update_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                                                        Update Sport
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div> 
+                                    <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                <caption class="p-5 text-lg font-semibold text-left rtl:text-right mt-2 text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                                    Sports Events
+                                                </caption>
+                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Event Name
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Event Type
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Event Category
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Actions
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM eventcategory";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $event_name = $row['event_name'];
+                                                                $event_type = $row['event_type'];
+                                                                $event_category = $row['event_category'];
+                                                                $eventcat_ID = $row['eventcat_ID'];
+
+                                                                // Output HTML for each row in the table
+                                                                echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
+                                                                    echo '<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . $event_name . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $event_type . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $event_category . '</td>';
+                                                                    echo '<td class="px-6 py-4">';
+                                                                        echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>';
+                                                                        echo '<button onclick="deleteEvent(' . $eventcat_ID . ')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>';
+                                                                    echo '</td>';
+                                                                echo '</tr>';
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo '<tr><td colspan="4" class="px-6 py-4 text-center">No sports found</td></tr>';
+                                                        }
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>        
                         </div>
                     </div>
@@ -723,112 +776,52 @@
             });
         </script>
 
+        <!--Search-->
         <script>
-            // Get the search input element
-            const searchInput = document.getElementById('venue-search');
+            // Function to handle search functionality
+            function handleSearch() {
+                // Get the search query from the input field
+                const searchQuery = document.getElementById('default-search').value.toLowerCase();
 
-            // Get the container for the venue cards
-            const venueContainer = document.getElementById('venueContainer');
+                // Get all cards
+                const cards = document.querySelectorAll('#sportsContainer .max-w-sm');
 
-            // Add event listener for changes in the search input
-            searchInput.addEventListener('input', function () {
-                const searchText = this.value.trim().toLowerCase();
-                const venueCards = venueContainer.querySelectorAll('.max-w-sm');
+                // Loop through each card
+                cards.forEach(card => {
+                    const cardName = card.querySelector('.text-gray-900').textContent.toLowerCase();
+                    const cardType = card.querySelector('.text-gray-500').textContent.toLowerCase();
+                    const cardCategory = card.querySelector('.text-gray-500:last-child').textContent.toLowerCase();
 
-                // Loop through each card and hide/show based on search text
-                venueCards.forEach(function(card) {
-                    const venueName = card.dataset.venueName.toLowerCase();
-                    const venueDescription = card.dataset.venueDescription.toLowerCase();
-                    if (venueName.includes(searchText) || venueDescription.includes(searchText)) {
+                    // Show or hide card based on search query match
+                    if (cardName.includes(searchQuery) || cardType.includes(searchQuery) || cardCategory.includes(searchQuery)) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
                     }
                 });
-            });
+            }
+
+            // Add event listener to the search input field
+            document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
 
-    <!--Filter-->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.getElementById("default-search");
-        const sportsCards = document.querySelectorAll(".max-w-sm");
+        <!--number of cards counter-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the sports container
+                const sportsContainer = document.getElementById("sportsContainer");
+                // Get the span for displaying card count
+                const cardCountSpan = document.getElementById("cardCount");
 
-        // Function to filter cards based on search input
-        function filterBySearchInput() {
-            const searchValue = searchInput.value.toLowerCase();
-
-            sportsCards.forEach(function(card) {
-                const eventName = card.dataset.eventName.toLowerCase();
-                const eventType = card.dataset.eventType.toLowerCase();
-                const eventCategory = card.dataset.eventCategory.toLowerCase();
-
-                console.log("Event Name:", eventName);
-                console.log("Event Type:", eventType);
-                console.log("Event Category:", eventCategory);
-
-                if (eventName.includes(searchValue) || eventType.includes(searchValue) || eventCategory.includes(searchValue)) {
-                    card.style.display = "block"; // Show the card
-                } else {
-                    card.style.display = "none"; // Hide the card
+                // Function to update card count
+                function updateCardCount() {
+                    // Get the number of cards inside the sports container
+                    const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
+                    // Update the text content of the span
+                    cardCountSpan.textContent = cardCount;
                 }
+                updateCardCount();
             });
-        }
-
-        // Add event listener to the search input
-        searchInput.addEventListener("input", filterBySearchInput);
-
-        // Function to filter cards based on selected checkboxes
-        function filterByCheckboxes() {
-            const selectedFilters = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
-                .map(checkbox => checkbox.id);
-
-            sportsCards.forEach(function(card) {
-                const cardCategories = [card.dataset.eventType.toLowerCase(), card.dataset.eventCategory.toLowerCase()];
-
-                const showCard = selectedFilters.some(filter => {
-                    if (filter === "minor") {
-                        return cardCategories.some(category => category.includes("minor"));
-                    } else {
-                        return cardCategories.includes(filter);
-                    }
-                });
-
-                card.style.display = showCard ? "block" : "none";
-            });
-        }
-
-        // Add event listener to checkboxes
-        const checkboxes = document.querySelectorAll("input[type='checkbox']");
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener("change", filterByCheckboxes);
-        });
-
-        // Initial filtering on page load
-        filterBySearchInput();
-        filterByCheckboxes();
-    });
-
-
-</script>
-
-    <!--number of cards counter-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get the sports container
-            const sportsContainer = document.getElementById("sportsContainer");
-            // Get the span for displaying card count
-            const cardCountSpan = document.getElementById("cardCount");
-
-            // Function to update card count
-            function updateCardCount() {
-                // Get the number of cards inside the sports container
-                const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
-                // Update the text content of the span
-                cardCountSpan.textContent = cardCount;
-            }
-            updateCardCount();
-        });
-    </script>
+        </script>
     </body>
 </html>
