@@ -125,7 +125,7 @@ $conn->close();
                     <div class="details d-flex flex-column justify-content-between py-4 px-4">
                       <div class="title d-flex gap-2 mb-4 fw-medium align-items-center">
                         <div style="height: 30px; width: 30px;">
-                            <img src="image/logo.jpg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
+                            <img src="css/images/ssc.jpg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
                         </div>
                         <div class="d-flex justify-content-center align-items-center">
                             <p class="m-0 text-white">Supreme Student Council</p>
@@ -148,10 +148,9 @@ $conn->close();
             <div class="card border-0 rounded-3">
               <div class="container card-body px-5 w-100">
                 <div class="d-flex align-items-center gap-1 mb-4">
-                  <div style="height: 35px; width: 35px;">
-                    <img src="image/sdd.jpeg" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
+                  <div style="height: 100px; width: 100px;">
+                    <img src="css/images/jkb.png" alt="error" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%;">
                   </div>
-                  <div class="fs-6">JKB</div>
                 </div>
                 <div class="text-left mb-3 w-100">
                   <div class="h1 fs-1 fw-medium">Log In to your Account</div>

@@ -356,18 +356,18 @@
                                                     $generated_ID = $fetch_department['generated_id'];
                                                     $cardcount++;
                                                 ?>
-                                                <div id="venue-' . $venue_id . '" class="z-1 max-w-sm relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                                <div id="depart_ID' . $depart_ID. '" class="z-1 max-w-sm relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                                     <div class="flex items-center justify-between pb-3">
                                                         <p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400"><?= $depart_ID ?></p>
                                                         
-                                                        <button id="dropdownButton-' . $venue_id . '" data-dropdown-toggle="dropdown-' . $venue_id . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5 relative z-10" type="button">
+                                                        <button id="dropdownButton-' . $depart_ID. '" data-dropdown-toggle="dropdown-' . $depart_ID. '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5 relative z-10" type="button">
                                                             <span class="sr-only">Open dropdown</span>
                                                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
                                                                 <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
                                                             </svg>
                                                         </button>
 
-                                                        <div id="dropdown-' . $venue_id . '" class="absolute z-20 top-full left-0 mt-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-28 dark:bg-gray-700">
+                                                        <div id="dropdown-' . $depart_ID. '" class="absolute z-20 top-full left-0 mt-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-28 dark:bg-gray-700">
                                                             <ul class="p-2" aria-labelledby="dropdownButton">
 
                                                                 <li>
@@ -375,7 +375,7 @@
                                                                 </li>
 
                                                                 <li>
-                                                                    <a href="javascript:void(0);" onclick="deleteVenue(' . $venue_id . ')" class="block px-4 rounded-md py-2 text-xs font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                                                    <a href="javascript:void(0);" onclick="deleteVenue(' . $depart_ID. ')" class="block px-4 rounded-md py-2 text-xs font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                                         <i class="fa-solid fa-trash-can mr-2"></i>Delete
                                                                     </a>
                                                                 </li>
@@ -423,7 +423,7 @@
                                             <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
                                                     <div class="col-span-2 mt-2">
-                                                        <input type="hidden" name="venue_id" id="venue_id" value="">
+                                                        <input type="hidden" name="depart_ID" id="depart_ID" value="">
 
                                                         <div class="flex items-center justify-center w-full">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
