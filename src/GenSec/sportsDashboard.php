@@ -325,8 +325,6 @@ include ('config.php');
                                         $result=mysqli_query($conn,$querypoints);
                                         $querypoints=mysqli_num_rows($result);
                                         echo $querypoints;
-                                        
-                                    
                                         ?>
                                         </h5>
                                     </div>
