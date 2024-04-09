@@ -250,7 +250,19 @@ include ('config.php');
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Event</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+
+                                        <?php 
+                                       
+                                       $queryevent="SELECT * FROM eventcategory";
+                                        $result=mysqli_query($conn,$queryevent);
+                                        $queryevent=mysqli_num_rows($result);
+                                        echo $queryevent;
+                                        
+                                    
+                                    ?>  
+
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -283,7 +295,18 @@ include ('config.php');
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Venue</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+                                        <?php 
+                                       
+                                       $queryvenue="SELECT * FROM venue";
+                                        $result=mysqli_query($conn,$queryvenue);
+                                        $queryvenue=mysqli_num_rows($result);
+                                        echo $queryvenue;
+                                        
+                                    
+                                        ?>
+
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
@@ -294,7 +317,18 @@ include ('config.php');
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Point</p>
-                                        <h5 class="mb-0 text-lg font-bold text-gray-600">23</h5>
+                                        <h5 class="mb-0 text-lg font-bold text-gray-600">
+
+                                        <?php 
+                                       
+                                       $querypoints="SELECT * FROM points";
+                                        $result=mysqli_query($conn,$querypoints);
+                                        $querypoints=mysqli_num_rows($result);
+                                        echo $querypoints;
+                                        
+                                    
+                                        ?>
+                                        </h5>
                                     </div>
                                     <div class="p-5">
                                         <div class="inline-block w-14 h-14 text-center rounded-lg bg-gray-100 shadow-soft-2xl">
