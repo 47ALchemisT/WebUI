@@ -1,5 +1,104 @@
 <?php
     include 'connection.php';
+
+include('config.php');
+$query="SELECT * from department";
+$result=mysqli_query($conn,$query);
+?>
+
+<?php
+include("config.php");
+//add department
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
+    $departmentname = mysqli_real_escape_string($conn, $_POST['departmentname']);
+    $teamname = mysqli_real_escape_string($conn, $_POST['teamname']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    
+
+       // Check if file is uploaded picture
+       if($_FILES['department_image']['error'] === 5) {
+        echo  "<script>alert('Image does not Exist');</script>";
+       } else {
+        $file_name = $_FILES["department_image"]["name"];
+        $file_size = $_FILES["department_image"]["size"];
+        $file_tmp = $_FILES["department_image"]["tmp_name"];
+        $file_type = $_FILES["department_image"]["type"];
+        
+        $validImageExtension= ['jpg', 'jpeg', 'png'];
+        $imageExtension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        
+        if(!in_array($imageExtension, $validImageExtension)){
+            echo  "<script>alert('Invalid Image');</script>";
+        }else if($file_size > 10000000){
+            echo  "<script>alert('Image too large');</script>";
+        }else{
+             // Move uploaded file to a directory
+        
+        $imageExtension = ',' . $imageExtension;
+        $upload_directory = 'img/';
+
+        if (!file_exists($upload_directory)) {
+            mkdir($upload_directory, 0777, true); // Create the directory if it doesn't exist
+            }
+
+        $file_path = $upload_directory . $file_name;
+        if (move_uploaded_file($file_tmp, $file_path)) {
+            
+        } else {
+            echo "<script>alert('Failed to upload file');</script>";
+        }
+
+        $file_path = "img/" . $file_name;
+        move_uploaded_file($file_tmp, 'img/'. $file_path);
+
+        }
+        
+        }
+    // Check if the department already exists
+    $check_sql = "SELECT * FROM department WHERE departmentname = '$departmentname'";
+    $check_query = mysqli_query($conn, $check_sql);
+
+    if (mysqli_num_rows($check_query) > 0) {
+        echo "<script>alert('Department Already Exists!');window.location='departmentFinal.php'</script>";
+    } else {
+        // Insert the new department without specifying depart_ID column
+        $sql = "INSERT INTO department (department_image, departmentname, teamname, description) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "ssss",$file_path, $departmentname, $teamname, $description);
+            $result = mysqli_stmt_execute($stmt);
+      
+
+            if ($result) {
+                // Get the auto-incremented depart_ID
+                $depart_ID= mysqli_insert_id($conn);
+
+                // Generate the generated_id
+                $generated_id = strtoupper(substr($departmentname, 0, 3)) . ($depart_ID + 100); // Start from 101
+
+                // Update the generated_id in the database
+                $update_sql = "UPDATE department SET generated_id = ? WHERE depart_ID = ?";
+                $update_stmt = mysqli_prepare($conn, $update_sql);
+
+                if ($update_stmt) {
+                    mysqli_stmt_bind_param($update_stmt, "si", $generated_id, $depart_ID);
+                    mysqli_stmt_execute($update_stmt);
+                    mysqli_stmt_close($update_stmt);
+                }
+
+                echo "<script>alert('Department added successfully');window.location='sportsDepartment.php'</script>";
+            } else {
+                echo "<script>alert('Error in executing prepared statement');window.location='sportsDepartment.php'</script>";
+            }
+
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "<script>alert('Error in prepared statement');window.location='sportsDepartment.php'</script>";
+        }
+    }
+}
+
 ?>
 
 <!--Html file-->
@@ -237,7 +336,7 @@
                     <div class="flex-1">
                         <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Department</div>
                             <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of Department</p>
-                            <div class="overflow-y-auto">
+                            
                                 <div class=" px-5 py-4 mt-1 ">
                                     <div class="flex justify-between border-b-2 pb-3">
                                         <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
@@ -262,7 +361,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+    
                             
                             <div class="mb-5 px-5 rounded-lg w-full">
                                 <div id="default-styled-tab-content">
@@ -649,7 +748,6 @@
             // Add event listener to the search input field
             document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
-
         <!--counter-->
         <script>
             // Count the number of cards and update the span element
