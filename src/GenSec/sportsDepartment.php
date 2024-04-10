@@ -439,7 +439,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 $description = $row['description'];
                                                 $generated_id= $row['generated_id'];
 
-                                               
+                                            }
+                                        }
 
                                         // Close database connection
                                         mysqli_close($conn);
