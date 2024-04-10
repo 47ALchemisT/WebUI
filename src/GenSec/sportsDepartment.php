@@ -109,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
     <link href="./output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
     <body class="bg-gray-100">
@@ -327,58 +328,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             </div>
         </aside>
 
-        <main class="pr-4 py-0 sm:ml-80" style="margin-left: 320px;">
+        <main class=" sm:ml-80" style="margin-left: 320px;">
             <div class="container">
-                <div class="flex w-full gap-4 relative">
+                <div class="pr-4 flex w-full gap-4 relative">
                     <!--righ side, list of sports-->
                     <div class="flex-1">
                         <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Department</div>
-                        <p class="px-2 mt-1 text-sm text-gray-500 mb-4">List of department</p>
-                        <div class="overflow-y-auto">
-                            <div class="bg-white p-4 mt-1 mb-4 rounded-lg shadow-md">
-                                <div class="flex justify-between">
-
-                                    <!-- Search Bar -->
-                                    <div class="flex items-center justify-between gap-4">  
-                                        <form class="max-w-md w-56">   
-                                            <label for="venue-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search account</label>
-                                            <div class="relative">
-                                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                                    </svg>
-                                                </div>
-                                                <input type="search" id="venue-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search account..." required />
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <button type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 font-medium rounded-lg text-xs px-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Sort A-Z descending
-                                        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
-                                            <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="bg-white shadow-lg mb-5 mt-1 p-5 rounded-lg w-full">
-                                <!--top side of the content-->
-                                <div class="flex items-center justify-between mb-4">
-                                    <h1 class="text-2xl font-bold text-gray-800"><span id="cardCount">0</span> Venues</h1>
-                                </div>
-                                <!-- list of venue -->         
-                                <div id="venueContainer" class="grid grid-cols-5 gap-5">
-                                    <div class="max-w-sm bg-white h-full border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-300 border-4 border-dashed hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                            <i class="fa-solid fa-circle-plus text-3xl"></i>
+                            <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of Department</p>
+                            <div class="overflow-y-auto">
+                                <div class=" px-5 py-4 mt-1 ">
+                                    <div class="flex justify-between border-b-2 pb-3">
+                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                            <h1><i class="fa-solid fa-plus text-md mr-1"></i> Add</h1>
                                             <span class="sr-only">Icon description</span>
                                         </button>
-                                        <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                            Add new venue
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center h-full">
+                                                <ul class="flex items-center space-x-3 mt-1.5"  id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                                            <i class='bx bxs-grid-alt'></i>
+                                                        </button>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
+                                                            <i class='bx bx-list-ul'></i>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+=======
                                     <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative p-4 w-full max-w-md max-h-full">
                                                 <!-- Modal content -->
@@ -505,8 +487,304 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                         // Close database connection
                                         mysqli_close($conn);
                                     ?>
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                 </div>
- 
+                            </div>
+                            
+                            <div class="mb-5 px-5 rounded-lg w-full">
+                                <div id="default-styled-tab-content">
+                                    <!--Cards list-->
+                                    <div class="hidden rounded-xl dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
+                                        <div class="flex">
+                                            <div class="w-full">
+                                                <div class="w-full flex items-center justify-between">
+                                                    <!-- Search bar -->
+                                                    <div class="flex items-center justify-between gap-4 mb-2"> 
+                                                        <form class="max-w-md w-full" id="searchForm">   
+                                                            <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                            <div class="relative">
+                                                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                                    </svg>
+                                                                </div>
+                                                                <input type="search" id="default-search" class="block w-full p-2 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
+                                                            </div>
+                                                        </form>
+                                                    </div>        
+                                                    <div class="flex items-center space-x-4">
+                                                        <h1 class="text-md text-gray-700 font-bold"><span id="card-count">0</span> Departments</h1>
+                                                        <!--Sort button-->                                            
+                                                        <button id="sortButton" class="text-gray-700 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                            <i class='bx bx-sort-up text-2xl pb-1'></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div id="sportsContainer" class=" grid grid-cols-4 gap-5 w-full mt-3">
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM department";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $generated_id = $row['generated_id'];
+                                                                $departmentname = $row['departmentname'];
+                                                                $teamname = $row['teamname'];
+                                                                $description = $row['description'];
+                                                                $generated_id = $row['generated_id'];
+                                                                $department_image = $row['department_image'];
+
+                                                                // Output HTML for each card with dynamic data
+                                                                echo '<div id="event-' . $generated_id . '" class="max-w-sm bg-white border p-3 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">';
+                                                                    echo '<img src="' . $department_image . '" class="w-full h-34 object-cover" alt="' . $departmentname . '">'; // Display the image
+                                                                    echo '<div class="flex justify-between items-center pb-4">';
+                                                                    echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $departmentname . '</h5>';
+
+                                                                    echo '<button id="dropdownButton-' . $generated_id . '" data-dropdown-toggle="dropdown-' . $generated_id . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
+                                                                        echo '<span class="sr-only">Open dropdown</span>';
+                                                                        echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
+                                                                        echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
+                                                                        echo '</svg>';
+                                                                    echo '</button>';
+                                                                    // Dropdown menu
+                                                                    echo '<div id="dropdown-' . $generated_id . '" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">';
+                                                                    echo '<ul class="p-2" aria-labelledby="dropdownButton">';
+                                                                    // Edit option with onclick event to call openEditModal function
+                                                                    echo '<li>';
+                                                                    echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 font-medium text-sm w-full text-left rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
+                                                                    echo '</li>';
+                                                                    // Delete option with onclick event to call deleteEvent function
+                                                                    echo '<li>';
+                                                                    echo '<a href="javascript:void(0);" onclick="deleteEvent(' . $generated_id . ')" class="block px-4 rounded-md py-2 text-sm font-medium text-gray-500 hover:text-red-500  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-trash-can mr-2"></i>Delete</a>';
+                                                                    echo '</li>';
+                                                                    echo '</ul>';
+                                                                    echo '</div>';
+                                                                    echo '</div>';
+                                                                    echo '<div class="flex flex-col items-center mt-4 pb-6">';
+                                                                        echo '<h5 class="mb-1 text-sm text-center font-medium text-gray-900 dark:text-white">' . $description . '</h5>';
+                                                                        echo '<div class="flex flex-col items-center justify-center">';
+                                                                        echo '<span class="text-sm text-center text-gray-500 dark:text-gray-400">' . $teamname . '</span>';
+                                                                        echo '<span class="text-sm text-gray-500"></span>';
+                                                                    echo '</div>';
+                                                                    echo '</div>';
+                                                                echo '</div>'; // Close max-w-sm div
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo "No sports found";
+                                                        }
+
+                                                        // Close container for cards
+                                                        echo '</div>';
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                    <!--Sorting the cards-->                          
+                                                    <script>
+                                                        document.addEventListener("DOMContentLoaded", function () {
+                                                            const sortButton = document.getElementById("sortButton");
+                                                            const sportsContainer = document.getElementById("sportsContainer");
+                                                            let originalOrder = [];
+                                                            let sortingOrder = 0; // 0: Original, 1: Ascending, 2: Descending
+
+                                                            // Store the original order of the cards when the page loads
+                                                            const cards = Array.from(sportsContainer.children);
+                                                            originalOrder = cards.slice(); // Make a copy of the array
+
+                                                            sortButton.addEventListener("click", function () {
+                                                                // Toggle sorting order
+                                                                sortingOrder = (sortingOrder + 1) % 3;
+
+                                                                if (sortingOrder === 0) {
+                                                                    // Revert to original order
+                                                                    renderCards(originalOrder);
+                                                                    sortButton.classList.remove("sorted", "sorted-descending");
+                                                                } else if (sortingOrder === 1) {
+                                                                    // Sort the cards alphabetically in ascending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventA.localeCompare(eventB);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted");
+                                                                } else {
+                                                                    // Sort the cards alphabetically in descending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventB.localeCompare(eventA);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted", "sorted-descending");
+                                                                }
+                                                            });
+
+                                                            // Function to render the cards
+                                                            function renderCards(cardsToRender) {
+                                                                sportsContainer.innerHTML = '';
+                                                                cardsToRender.forEach(card => {
+                                                                    sportsContainer.appendChild(card);
+                                                                });
+                                                            }
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Table-->
+                                    <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                <caption class="p-5 text-lg font-semibold text-left rtl:text-right mt-2 text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                                    Sports Events
+                                                </caption>
+                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            ID
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Department name
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Department
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Team name
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Actions
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM department";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $generated_id = $row['generated_id'];
+                                                                $departmentname = $row['departmentname'];
+                                                                $teamname = $row['teamname'];
+                                                                $description = $row['description'];
+                                                                $generated_id = $row['generated_id'];
+                                                                $department_image = $row['department_image'];
+
+                                                                // Output HTML for each row in the table
+                                                                echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
+                                                                    echo '<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . $generated_id . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $description . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $departmentname . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $teamname . '</td>';
+                                                                    echo '<td class="px-6 py-4">';
+                                                                        echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>';
+                                                                        echo '<button onclick="deleteEvent(' . $generated_id . ')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>';
+                                                                    echo '</td>';
+                                                                echo '</tr>';
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo '<tr><td colspan="4" class="px-6 py-4 text-center">No sports found</td></tr>';
+                                                        }
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+                    
+                                <!--Add Modal-->
+                                <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative p-4 w-full max-w-md max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+<<<<<<< HEAD
+                                                    Add Venue
+=======
+                                                    Update Department
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                            <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+<<<<<<< HEAD
+                                            <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+=======
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
+                                                <div class="grid gap-4 mb-4 grid-cols-2">
+
+                                                    <div class="col-span-2 mt-2">
+                                                        <div class="flex items-center justify-center w-full">
+                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                    </svg>
+                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                </div>
+                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+<<<<<<< HEAD
+                                                    <div class="col-span-2">
+                                                        <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
+                                                        <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
+                                                    </div>
+
+                                                    <div class="col-span-2">
+                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter description" required="">
+                                                    </div>
+
+                                                    <div class="col-span-2">
+                                                        <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
+                                                        <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter team name" required="">
+                                                    </div>
+
+                                                </div>
+                                                <div class="w-full flex justify-end">
+                                                    <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Add
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <!--Update Modal-->
                                 <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
                                         <!-- Modal content -->
@@ -524,11 +802,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
+                                                    <input type="hidden" name="generated_id" id="generated_id" value="">
                                                     <div class="col-span-2 mt-2">
-                                                        <input type="hidden" name="depart_ID" id="depart_ID" value="">
-
                                                         <div class="flex items-center justify-center w-full">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                                                 <div class="flex flex-col items-center justify-center pt-4 pb-5">
@@ -541,7 +818,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                 <input id="dropzone-file" type="file" class="hidden" />
                                                             </label>
                                                         </div>
+                                                    </div>
 
+                                                    <div class="col-span-2">
+                                                        <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
+                                                        <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
+                                                    </div>
+
+                                                    <div class="col-span-2">
+                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter description" required="">
+                                                    </div>
+
+                                                    <div class="col-span-2">
+                                                        <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
+                                                        <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter team name" required="">
+                                                    </div>
+
+                                                </div>
+                                                    <div class="w-full flex justify-end">
+                                                        <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            Save
+=======
                                                         <div class="col-span-2">
                                                             <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
                                                             <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department Name" required="">
@@ -560,6 +858,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                     <div class="w-full flex justify-end">
                                                         <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                             Update Department
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                         </button>
                                                     </div>
                                                 </div>
@@ -573,11 +872,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 </div>
             </div>
         </main>
-        
         <!--Script-->
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<<<<<<< HEAD
+        
+        <!--Search-->
+        <script>
+            // Function to handle search functionality
+            function handleSearch() {
+                // Get the search query from the input field
+                const searchQuery = document.getElementById('default-search').value.toLowerCase();
+
+=======
         <!--delete sport-->
         <script>
             // Function to handle delete event
@@ -640,6 +948,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 // Get the search query from the input field
                 const searchQuery = document.getElementById('default-search').value.toLowerCase();
 
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                 // Get all cards
                 const cards = document.querySelectorAll('#sportsContainer .max-w-sm');
 
@@ -662,6 +971,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
 
+<<<<<<< HEAD
+        <!--counter-->
+        <script>
+            // Count the number of cards and update the span element
+            document.addEventListener("DOMContentLoaded", function () {
+                var cardCount = document.querySelectorAll('.max-w-sm').length;
+                document.getElementById('card-count').textContent = cardCount;
+            });
+        </script>
+=======
         <!--number of cards counter-->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -682,5 +1001,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
         </script>
     </body>
 </html>
+>>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
     </body>
 </html>

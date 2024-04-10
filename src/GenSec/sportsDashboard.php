@@ -244,9 +244,9 @@ include ('config.php');
                     <h1 class="px-2 pt-4 text-3xl font-bold text-gray-800 mb-4">Dashboard</h1>
                     <div class=" rounded-lg mb-5">
                         <!--right side cards-->
-                        <div class="grid grid-cols-2 gap-5">
+                        <div class="grid grid-cols-2 gap-5 ">
                             <!--right side cards-->
-                            <div class="grid grid-cols-2 gap-5">
+                            <div class="grid grid-cols-2 gap-5 h-full">
                                 <div class="flex items-center justify-between h-24 border-2 bg-white rounded-xl dark:bg-gray-800">
                                     <div class="p-5 ">
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm text-gray-800 dark:opacity-60">Event</p>
@@ -331,26 +331,24 @@ include ('config.php');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-span-2 bg-white border-2 rounded-lg">    
-                                    
-                                    <div class=" w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                                <div class="col-span-2 bg-white border-2 h-full rounded-lg">    
+                                    <div class="w-full bg-white rounded-lg shadow h-full dark:bg-gray-800 p-4 md:p-6">
                                         <div class="flex justify-between mb-5">
                                             <div>
-                                            <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">CMAS</h5>
-                                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Rank 1st</p>
+                                                <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">CMAS</h5>
+                                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Rank 1st</p>
                                             </div>
-                                            <div
-                                            class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
-                                            23%
-                                            <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-                                            </svg>
+                                            <div class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                                                23%
+                                                <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+                                                </svg>
                                             </div>
                                         </div>
-                                        <div id="data-labels-chart"></div>
+                                        <div id="labels-chart" class="relative"></div>
                                     </div>
-         
                                 </div>
+
                             </div>
                             <!--left side cards-->
                             <div class="grid grid-cols-1 grid-rows-2 h-full gap-5">
@@ -385,105 +383,119 @@ include ('config.php');
 
         <script>
             const options = {
-            // enable and customize data labels using the following example, learn more from here: https://apexcharts.com/docs/datalabels/
-            dataLabels: {
-                enabled: true,
-                // offsetX: 10,
-                style: {
-                    cssClass: 'text-xs text-white font-medium'
-                },
-                },
-                grid: {
-                show: false,
-                strokeDashArray: 4,
-                padding: {
-                    left: 16,
-                    right: 16,
-                    top: -26
-                },
-                },
-                series: [
-                {
-                    name: "SMFT",
-                    data: [12, 23, 53, 60, 89, 125, 402],
-                    color: "#1A56DB",
-                },
-                {
-                    name: "CESS",
-                    data: [10, 15, 70, 59, 72, 173,371],
-                    color: "#7E3BF2",
-                },
-                {
-                    name: "CAFES",
-                    data: [5, 23, 65, 78, 99, 157, 321],
-                    color: "#20de16",
-                },
-                {
-                    name: "IDS",
-                    data: [23, 30,80, 60, 120, 200, 300],
-                    color: "#ff85c8",
-                },
-                ],
-                chart: {
-                height: "100%",
-                maxWidth: "100%",
-                type: "area",
-                fontFamily: "Inter, sans-serif",
-                dropShadow: {
-                    enabled: false,
-                },
-                toolbar: {
-                    show: false,
-                },
-                },
-                tooltip: {
-                enabled: true,
-                x: {
-                    show: false,
-                },
-                },
-                legend: {
-                show: true
-                },
-                fill: {
-                type: "gradient",
-                gradient: {
-                    opacityFrom: 0.55,
-                    opacityTo: 0,
-                    shade: "#1C64F2",
-                    gradientToColors: ["#1C64F2"],
-                },
-                },
-                stroke: {
-                width: 6,
-                },
                 xaxis: {
-                categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-                labels: {
-                    show: false,
-                },
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false,
-                },
+                    show: true,
+                    categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                    labels: {
+                        show: true,
+                        style: {
+                            fontFamily: "Inter, sans-serif",
+                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                        }
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
                 },
                 yaxis: {
-                show: false,
-                labels: {
-                    formatter: function (value) {
-                    return value;
+                    show: true,
+                    labels: {
+                        show: true,
+                        style: {
+                            fontFamily: "Inter, sans-serif",
+                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                        },
+                        formatter: function (value) {
+                            return value;
+                        },
+                        offsetY: -10, // Adjust the offset to increase or decrease space between numbers
+
                     }
-                }
+                },
+                series: [
+                    {
+                        name: "CMAS",
+                        data: [1, 11, 22, 33,44, 55],
+                        color: "#1A56DB",
+                    },
+                    {
+                        name: "SMFT",
+                        data: [3, 13, 26, 39, 51, 69],
+                        color: "#7E3BF2",
+                    },
+                    {
+                        name: "CBAA",
+                        data: [5, 15, 25, 40, 50, 73],
+                        color: "#1A56DB",
+                    },
+                    {
+                        name: "CESS",
+                        data: [2, 12, 30, 45, 55, 69],
+                        color: "#7E3BF2",
+                    },
+                    {
+                        name: "CAFES",
+                        data: [4, 18, 22, 39, 60, 75],
+                        color: "#1A56DB",
+                    },
+                    {
+                        name: "IDS",
+                        data: [7, 20, 25, 41, 62, 70],
+                        color: "#7E3BF2",
+                    },
+                ],
+                chart: {
+                    height: "100%",
+                    width: "100%",
+                    type: "area",
+                    fontFamily: "Inter, sans-serif",
+                    dropShadow: {
+                        enabled: false,
+                    },
+                    toolbar: {
+                        show: false,
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    x: {
+                        show: false,
+                    },
+                },
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        opacityFrom: 0.55,
+                        opacityTo: 0,
+                        shade: "#1C64F2",
+                        gradientToColors: ["#1C64F2"],
+                    },
+                },
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        cssClass: 'text-xs text-white font-medium'
+                    },
+                },
+                stroke: {
+                    width: 6,
+                },
+                legend: {
+                    show: true,
+                    position: 'top', // Position the legend at the top of the chart
+                },
+                grid: {
+                    show: false,
                 },
             }
 
-            if (document.getElementById("data-labels-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("data-labels-chart"), options);
-            chart.render();
+            if (document.getElementById("labels-chart") && typeof ApexCharts !== 'undefined') {
+                const chart = new ApexCharts(document.getElementById("labels-chart"), options);
+                chart.render();
             }
-
 
         </script>
 
