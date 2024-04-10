@@ -335,7 +335,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                     <div class="flex-1">
                         <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Department</div>
                             <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of Department</p>
-                            <div class="overflow-y-auto">
+                            
                                 <div class=" px-5 py-4 mt-1 ">
                                     <div class="flex justify-between border-b-2 pb-3">
                                         <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
@@ -359,8 +359,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             </div>
                                         </div>
                                     </div>
-<<<<<<< HEAD
-=======
                                     <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative p-4 w-full max-w-md max-h-full">
                                                 <!-- Modal content -->
@@ -441,55 +439,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 $description = $row['description'];
                                                 $generated_id= $row['generated_id'];
 
-                                                // Output HTML for each card with dynamic data
-                                                echo '<div id="department-' . $depart_ID . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500" data-venue-id="' . $depart_ID . '" data-department-image="' . $department_image . '" data-department-name="' . htmlspecialchars($departmentname) . '" data-teamname="' . htmlspecialchars($teamname) .'" data-description="' . htmlspecialchars($description) . '">';
-                                                echo '<div class="flex items-center justify-between pb-3">';
-                                                echo '<span class="text-sm text-gray-500 dark:text-gray-400">ID: ' . $generated_id . '</span>';
-                                                // Dropdown button
-                                                echo '<button id="dropdownButton-' . $depart_ID . '" data-dropdown-toggle="dropdown-' . $depart_ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5 relative z-10" type="button">';
-                                                echo '<span class="sr-only">Open dropdown</span>';
-                                                echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
-                                                echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
-                                                echo '</svg>';
-                                                echo '</button>';
-                                                // Dropdown menu
-                                                echo '<div id="dropdown-' . $depart_ID. '" class="absolute z-20 top-full left-0 mt-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-28 dark:bg-gray-700">';
-                                                echo '<ul class="p-2" aria-labelledby="dropdownButton">';
-                                                // Edit option with onclick event to call openEditModal function
-                                                echo '<li>';
-                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-xs w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
-                                                echo '</li>';
-                                                // Delete option with onclick event to call deleteVenue function
-                                                echo '<li>';
-                                                echo '<a href="javascript:void(0);" onclick="deleteVenue(' . $depart_ID . ')" class="block px-4 rounded-md py-2 text-xs font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">';
-                                                echo '<i class="fa-solid fa-trash-can mr-2"></i>Delete';
-                                                echo '</a>';
-                                                echo '</li>';
-                                                
-                                                echo '</ul>';
-                                                echo '</div>';
-                                                echo '</div>';
-                                                
-                                                echo '<div class="flex flex-col items-center pb-6">';
-                                                echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $departmentname . '</h5>';
-                                                echo '<p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">' . $teamname . '</p>';
-                                                echo '<p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">' . $description . '</p>';
-                                                echo '</div>';
-                                                
-                                                echo '</div>'; // Close max-w-sm div
-                                                
-                                            }
-                                        } else {
-                                            // Display a message if no records are found
-                                            echo "No venues found";
-                                        }
+                                               
 
                                         // Close database connection
                                         mysqli_close($conn);
                                     ?>
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                 </div>
-                            </div>
+    
                             
                             <div class="mb-5 px-5 rounded-lg w-full">
                                 <div id="default-styled-tab-content">
