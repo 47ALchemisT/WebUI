@@ -28,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
         $imageExtension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
         
         if(!in_array($imageExtension, $validImageExtension)){
-            echo  "<script>alert('Invalid Image');</script>";
+            echo  "<script>alert('Invalid Image');window.location='sportsDepartment.php'</script>";
         }else if($file_size > 10000000){
-            echo  "<script>alert('Image too large');</script>";
+            echo  "<script>alert('Image too large');window.location='sportsDepartment.php'</script>";
         }else{
              // Move uploaded file to a directory
         
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
     $check_query = mysqli_query($conn, $check_sql);
 
     if (mysqli_num_rows($check_query) > 0) {
-        echo "<script>alert('Department Already Exists!');window.location='departmentFinal.php'</script>";
+        echo "<script>alert('Department Already Exists!');window.location='sportsDepartment.php'</script>";
     } else {
         // Insert the new department without specifying depart_ID column
         $sql = "INSERT INTO department (department_image, departmentname, teamname, description) VALUES (?, ?, ?, ?)";
@@ -396,13 +396,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                             </div>
 
                                                             <div class="col-span-2">
-                                                                <label for="department_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
-                                                                <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                                                                <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
+                                                                <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Department Name" required="">
                                                             </div>
 
                                                             <div class="col-span-2">
-                                                                <label for="team_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
-                                                                <input type="text" name="teamname" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                                                                <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
+                                                                <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Team Name" required="">
                                                             </div>
 
                                                             <div class="col-span-2">
@@ -493,12 +493,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                             // Loop through each row of data
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                                 // Extract data from the current row
-                                                                $generated_id = $row['generated_id'];
+                                                                $depart_ID = $row['depart_ID'];
+                                                                $department_image = $row['department_image'];
                                                                 $departmentname = $row['departmentname'];
                                                                 $teamname = $row['teamname'];
                                                                 $description = $row['description'];
                                                                 $generated_id = $row['generated_id'];
-                                                                $department_image = $row['department_image'];
+                                                               
 
                                                                 // Output HTML for each card with dynamic data
                                                                 echo '<div id="event-' . $generated_id . '" class="max-w-sm bg-white border p-3 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">';
@@ -640,19 +641,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                             // Loop through each row of data
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                                 // Extract data from the current row
-                                                                $generated_id = $row['generated_id'];
+                                                                $depart_ID = $row['depart_ID'];
+                                                                $department_image = $row['department_image'];
                                                                 $departmentname = $row['departmentname'];
                                                                 $teamname = $row['teamname'];
                                                                 $description = $row['description'];
                                                                 $generated_id = $row['generated_id'];
-                                                                $department_image = $row['department_image'];
+                                                               
 
                                                                 // Output HTML for each row in the table
                                                                 echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
                                                                     echo '<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . $generated_id . '</td>';
-                                                                    echo '<td class="px-6 py-4">' . $description . '</td>';
                                                                     echo '<td class="px-6 py-4">' . $departmentname . '</td>';
                                                                     echo '<td class="px-6 py-4">' . $teamname . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $description . '</td>';
                                                                     echo '<td class="px-6 py-4">';
                                                                         echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>';
                                                                         echo '<button onclick="deleteEvent(' . $generated_id . ')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>';
@@ -672,69 +674,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                         </div>
                                 </div>
                     
-                                <!--Add Modal-->
-                                <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative p-4 w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <!-- Modal header -->
-                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                    Add Venue
-                                                    Update Department
-                                                </h3>
-                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                    </svg>
-                                            <span class="sr-only">Close modal</span>
-                                                </button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
-                                                <div class="grid gap-4 mb-4 grid-cols-2">
-
-                                                    <div class="col-span-2 mt-2">
-                                                        <div class="flex items-center justify-center w-full">
-                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                    </svg>
-                                                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-span-2">
-                                                        <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
-                                                        <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
-                                                    </div>
-
-                                                    <div class="col-span-2">
-                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter description" required="">
-                                                    </div>
-
-                                                    <div class="col-span-2">
-                                                        <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
-                                                        <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter team name" required="">
-                                                    </div>
-
-                                                </div>
-                                                <div class="w-full flex justify-end">
-                                                    <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                        Add
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div> 
                                 <!--Update Modal-->
                                 <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
@@ -753,9 +692,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
-                                                    <input type="hidden" name="generated_id" id="generated_id" value="">
+                                                    <input type="hidden" name="depart_ID" id="depart_ID" value="">
                                                     <div class="col-span-2 mt-2">
                                                         <div class="flex items-center justify-center w-full">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -766,48 +705,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                                                 </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                                <input id="dropzone-file" type="file" class="hidden" name="department_image" action="image/"  />
                                                             </label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-span-2">
                                                         <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
-                                                        <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
-                                                    </div>
-
-                                                    <div class="col-span-2">
-                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter description" required="">
+                                                        <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" value="<?php echo htmlspecialchars($departmentname); ?>" required="">
                                                     </div>
 
                                                     <div class="col-span-2">
                                                         <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
-                                                        <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter team name" required="">
+                                                        <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
                                                     </div>
 
+                                                    <div class="col-span-2">
+                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                        <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                                                    </div>                                         
                                                 </div>
+                                                   
                                                     <div class="w-full flex justify-end">
-                                                        <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            Save
-                                                        <div class="col-span-2">
-                                                            <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
-                                                            <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department Name" required="">
-                                                        </div>
-
-                                                        <div class="col-span-2">
-                                                            <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team Name</label>
-                                                            <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Team Name" required="">
-                                                        </div>
-
-                                                        <div class="col-span-2">
-                                                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Description</label>
-                                                            <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Description" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="w-full flex justify-end">
-                                                        <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            Update Department
+                                                        <button  type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                       
+                                                        Update Department
                                                         </button>
                                                     </div>
                                                 </div>
@@ -832,14 +754,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             function handleSearch() {
                 // Get the search query from the input field
                 const searchQuery = document.getElementById('default-search').value.toLowerCase();
-            </script>
+            }
+                </script>
         <!--delete sport-->
+        
         <script>
             // Function to handle delete event
+            
             function deleteEvent(depart_ID) {
                 // Send AJAX request to delete the event
                 $.ajax({
-                    url: 'sportsEvent-Delete.php',
+                    url: 'sportsDepartment-Delete.php',
                     type: 'POST',
                     data: { depart_ID: depart_ID, delete_event: true },
                     success: function(response) {
@@ -867,18 +792,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
 
             openModalButtons.forEach((button) => {
                 button.addEventListener("click", function () {
-                    const departId = this.closest(".max-w-sm").dataset.departId;
-                    const departmentName = this.closest(".max-w-sm").dataset.departmentName;
+                    console.log("Button clicked"); // Confirm button click
+                    const depart_ID = this.closest(".max-w-sm").dataset.depart_ID;
+                    const departmentname = this.closest(".max-w-sm").dataset.departmentname;
                     const teamname = this.closest(".max-w-sm").dataset.teamname;
                     const description = this.closest(".max-w-sm").dataset.description;
-                    const generatedId = this.closest(".max-w-sm").dataset.generatedId;
+                   
+                    // Log retrieved data for debugging
+                    console.log("depart_ID:", depart_ID);
+                    console.log("departmentname:", departmentname);
+                    console.log("teamname:", teamname);
+                    console.log("description:", description);
+              
 
                     // Populate the input fields with data from the clicked event
-                    updateEventForm.elements["depart_ID"].value = departId;
-                    updateEventForm.elements["departmentname"].value = departmentName;
+                    updateEventForm.elements["depart_ID"].value=depart_ID;
+                    updateEventForm.elements["departmentname"].value = departmentname;
                     updateEventForm.elements["teamname"].value = teamname;
                     updateEventForm.elements["description"].value = description;
-                    updateEventForm.elements["generated_id"].value = generatedId;
+          
 
                     // Show the modal
                     crudModalUpdate.classList.remove("hidden");
@@ -912,7 +844,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                     }
                 });
             }
-        }
+        
 
             // Add event listener to the search input field
             document.getElementById('default-search').addEventListener('input', handleSearch);
