@@ -20,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($result) {
             // If update is successful, return success message
-            echo "<script>alert('Venue updated successfully');window.location='sportsVenue.php'</script>";
+            echo json_encode(["success" => true]);
         } else {
-            // If update fails, log the error
-            echo "error: " . mysqli_error($conn);
+            // If update fails, return error message
+            echo json_encode(["success" => false, "error" => "Failed to update venue"]);
 
             // Log the SQL query for debugging
             error_log("SQL Error: " . $sql);
@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Close the statement
         mysqli_stmt_close($stmt);
     } else {
-        // If preparing the statement fails, log the error
-        echo "error: Failed to prepare statement";
+        // If preparing the statement fails, return error message
+        echo json_encode(["success" => false, "error" => "Failed to prepare statement"]);
 
         // Log the error for debugging
         error_log("Statement preparation error: " . mysqli_error($conn));
@@ -42,6 +42,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Close the database connection
     mysqli_close($conn);
-    exit;
 }
 ?>

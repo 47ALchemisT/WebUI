@@ -1,50 +1,3 @@
-<?php    
-    include 'connection.php'; 
-    session_start();
-    
-    if(isset($_POST['submit_Btn'])){
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $job = $_POST['job'];
-        $password = $_POST['password'];
-        $password2 = $_POST['password2'];            
-    
-        if(trim($password) != trim($password2)) {
-            echo "<script>alert('Password does not match! please try again!')</script>";
-        } else {
-            $email = trim($_POST['email']);
-            $sql = "SELECT * FROM user WHERE email = :email";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-            $count = $stmt->rowCount();
-    
-            if ($count > 0) {
-                echo "<script>alert('Email Already Used, Please use another!!')</script>";
-            } else {
-                $sql = "INSERT INTO user (firstname, lastname, username, email, job, password)
-                        VALUES (:firstname, :lastname, :username, :email, :job, :password)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':firstname', $firstname);
-                $stmt->bindParam(':lastname', $lastname);
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':job', $job);
-                $stmt->bindParam(':password', $password);
-    
-                if ($stmt->execute()) {
-                    echo "<script> alert('Account registration successfully completed');window.location='sportsAccount.php' </script>";
-                } else {
-                    echo "<script> alert('Failed to register account, you might try it again :p'); </script>";
-                }
-            }
-        }
-    }
-?>
-
-
 <!--Html file-->
 <!doctype html>
 <html>
@@ -54,6 +7,7 @@
     <link href="./output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
     <body class="bg-gray-100">
@@ -280,289 +234,431 @@
             </div>
         </aside>
 
-        <main class="pr-4 sm:ml-80" style="margin-left: 320px;">
+        <main class=" sm:ml-80" style="margin-left: 320px;">
             <div class="container">
-                <div class="flex w-full gap-4 relative">
+                <div class="pr-4 flex w-full gap-4 relative">
                     <!--righ side, list of sports-->
                     <div class="flex-1">
-                        <div class="px-2 pt-4 text-3xl font-bold text-gray-800">User</div>
-                        <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of user accounts</p>
-                        <div class="overflow-y-auto">
-                            <div class="bg-white p-4 mt-1 mb-4 rounded-lg shadow-md">
-                                <div class="flex justify-between">
-
-                                    <!-- Search Bar -->
-                                    <div class="flex items-center justify-between gap-4">  
-                                        <form class="max-w-md w-56">   
-                                            <label for="venue-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search account</label>
-                                            <div class="relative">
-                                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                                    </svg>
-                                                </div>
-                                                <input type="search" id="venue-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search account..." required />
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <button type="button" class="text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-500/10 active:bg-blue-500/30 font-medium rounded-lg text-xs px-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Sort A-Z descending
-                                        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
-                                            <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H32c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="bg-white shadow-lg mb-5 mt-1 p-5 rounded-lg w-full">
-                                <!--top side of the content-->
-                                <div class="flex items-center justify-between mb-4">
-                                    <h1 class="text-2xl font-bold text-gray-800"><span id="cardCount">0</span> Venues</h1>
-                                </div>
-                                <!-- list of venue -->         
-                                <div id="venueContainer" class="grid grid-cols-4 gap-5">
-                                    <div class="max-w-sm bg-white h-full border-2 shadow-md p-3 border-gray-200 rounded-lg hover:shadow-blue-700 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-300 border-4 border-dashed hover:text-blue-600 hover:border-blue-500 font-medium rounded-full text-sm p-8 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                            <i class="fa-solid fa-circle-plus text-3xl"></i>
+                        <div class="px-2 pt-4 text-3xl font-bold text-gray-800">Account</div>
+                            <p class="px-2 text-sm text-gray-500 mt-1 mb-4">List of accounts</p>
+                            <div class="overflow-y-auto">
+                                <div class=" px-5 py-4 mt-1 ">
+                                    <div class="flex justify-between border-b-2 pb-3">
+                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                            <h1><i class="fa-solid fa-plus text-md mr-1"></i>Create account</h1>
                                             <span class="sr-only">Icon description</span>
                                         </button>
-                                        <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-blue-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                            Add new venue
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto fixed right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-full">
-                                        <div class="relative h-full w-full max-w-md">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                            Create Account
-                                                        </h3>
-                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                            </svg>
-                                                            <span class="sr-only">Close modal</span>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center h-full">
+                                                <ul class="flex items-center space-x-3 mt-1.5"  id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                                            <i class='bx bxs-grid-alt'></i>
                                                         </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                                        <div class="grid gap-4 mb-4 grid-cols-2">
-
-                                                        <div class="col-span-2 mt-2">
-                                                                <div class="flex items-center justify-center w-full">
-                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                            </svg>
-                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                        </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-span-2">
-                                                                <label for="job" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-                                                                <select name="job" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Job type</option>
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Admin_1">Admin 1</option>
-                                                                    <option value="Admin_2">Admin 2</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="relative col-span-1">
-                                                                <input type="text" id="firstname" name="firstname" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                                <label for="firstname" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">First name</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-1">
-                                                                <input type="text" id="lastname" name="lastname" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                                <label for="lastname" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Last name</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="email" id="email" name="email" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">E-mail</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="text" id="username" name="username" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="username" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Username</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="password" id="password" name="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="password" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="password" id="password2" name="password2" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="password2" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Re-type password</label>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="w-full flex justify-end">
-                                                            <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                                Create
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                        </div>
-                                    </div> 
-
-                                    <?php 
-                                        $select_user = $conn->prepare("SELECT * FROM `user`");
-                                        $select_user->execute();
-                                        if($select_user->rowCount() > 0){
-                                            while($fetch_user = $select_user->fetch(PDO::FETCH_ASSOC)){
-                                                $firstname = $fetch_user['firstname'];
-                                                $lastname = $fetch_user['lastname'];
-                                                $username = $fetch_user['username'];
-                                                $email = $fetch_user['email'];
-                                                $job = $fetch_user['job'];
-                                                $password = $fetch_user['password'];
-                                                $ID = $fetch_user['ID'];
-                                    ?>
-
-                                    <div id="<?= $ID ?>" class="card z-1 max-w-sm relative bg-white border-2 shadow-md p-4 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700  " data-id="<?= $ID ?>" data-firstname="<?= $firstname ?>" data-lastname="<?= $lastname ?>" data-username="<?= $username ?>" data-email="<?= $email ?>" data-job="<?= $job ?>" data-password="<?= $password ?>">
-                                        <img class="w-full h-56 object-cover rounded-lg mb-3" src="./image/user.jpg" alt="">
-                                        <div class="flex items-center justify-between pb-3">
-                                            <span class="text-sm text-gray-500 dark:text-gray-400"><?= $ID ?></span>
-                                            
-                                            <button id="dropdownButton<?= $ID ?>" data-dropdown-toggle="dropdown<?= $ID ?>" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                                                <span class="sr-only">Open dropdown</span>
-                                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                                                </svg>
-                                            </button>
-                                            <!-- Dropdown menu -->
-                                            <div id="dropdown<?= $ID ?>" class="absolute z-20 top-full left-0 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg p-2 shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">
-                                                <ul aria-labelledby="dropdownButton<?= $ID ?>">
-
-                                                    <li>
-                                                        <button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-sm w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>
                                                     </li>
-
-                                                    <li>
-                                                        <a href="javascript:void(0);" onclick="deleteVenue(' . $venue_id . ')" class="block px-4 rounded-md py-2 text-sm font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                            <i class="fa-solid fa-trash-can mr-2"></i>Delete
-                                                        </a>
+                                                    <li role="presentation">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
+                                                            <i class='bx bx-list-ul'></i>
+                                                        </button>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
-                                        
-                                        <div class="items-center pb-6 px-4">
-                                            <div class="flex items-center text-center justify-center w-full">
-                                                <h5 class="text-md font-bold text-gray-900 dark:text-white"><?= $firstname ?><span class="ml-2"><?= $lastname ?></span></h5>
-                                            </div>
-                                            <p class="mt-2 text-center text-xs text-gray-600 dark:text-gray-400"><?= $email ?></p>
-                                            <p class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400"><?= $job ?></p>
-                                        </div>
                                     </div>
-
-                                    <?php
-                                            }
-                                        } else {
-                                            echo '<p>no user found!</p>';
-                                        }
-                                    ?>
-
- 
-                                    <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto fixed right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-full">
-                                        <div class="relative h-full w-full max-w-md">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                            Edit Account
-                                                        </h3>
-                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
-                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                            </svg>
-                                                            <span class="sr-only">Close modal</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-5 px-5 rounded-lg w-full">
+                                <div id="default-styled-tab-content">
+                                    <!--Cards list-->
+                                    <div class="hidden rounded-xl dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">     
+                                        <div class="flex">
+                                            <div class="w-full">
+                                                <div class="w-full flex items-center justify-between">
+                                                    <!-- Search bar -->
+                                                    <div class="flex items-center justify-between gap-4 mb-2"> 
+                                                        <form class="max-w-md w-full" id="searchForm">   
+                                                            <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                            <div class="relative">
+                                                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                                    </svg>
+                                                                </div>
+                                                                <input type="search" id="default-search" class="block w-full p-2 ps-10 text-sm text-gray-900 border-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
+                                                            </div>
+                                                        </form>
+                                                    </div>        
+                                                    <div class="flex items-center space-x-4">
+                                                        <h1 class="text-md text-gray-700 font-bold"><span>12</span> Sports</h1>
+                                                        <!--Sort button-->                                            
+                                                        <button id="sortButton" class="text-gray-700 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                                            <i class='bx bx-sort-up text-2xl pb-1'></i>
                                                         </button>
                                                     </div>
-                                                    <!-- Modal body -->
-                                                    <form class="p-4 md:p-5" id="updateAccountForm"  action="sportsAccount-Update.php" method="POST" onsubmit="updateEvent(event)">
-                                                        <div class="grid gap-4 mb-4 grid-cols-2">
-
-                                                        <div class="col-span-2 mt-2">
-                                                                <div type="hidden" name="ID" id="ID"></div>
-                                                                <div class="flex items-center justify-center w-full">
-                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                            </svg>
-                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                        </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-span-2">
-                                                                <label for="job" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-                                                                <select name="job" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Job type</option>
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Admin_1">Admin 1</option>
-                                                                    <option value="Admin_2">Admin 2</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="relative col-span-1">
-                                                                <input type="text" id="firstname" name="firstname" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "/>
-                                                                <label for="firstname" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">First name</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-1">
-                                                                <input type="text" id="lastname" name="lastname" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "/>
-                                                                <label for="lastname" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Last name</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="email" id="email" name="email" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">E-mail</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="text" id="username" name="username" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="username" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Username</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="password" id="password" name="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="password" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
-                                                            </div>
-
-                                                            <div class="relative col-span-2">
-                                                                <input type="password" id="password2" name="password2" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                                                <label for="password2" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Re-type password</label>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="w-full flex justify-end">
-                                                            <button type="submit" name="submit_account" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                                Save
-                                                            </button>
-                                                        </div>
-                                                    </form>
                                                 </div>
+
+                                                <div id="sportsContainer" class=" grid grid-cols-4 gap-5 w-full mt-3">
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM user";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $ID = $row['ID'];
+                                                                $firstname = $row['firstname'];
+                                                                $lastname = $row['lastname'];
+                                                                $username = $row['username'];
+                                                                $email = $row['email'];
+                                                                $job = $row['job'];
+                                                                $password = $row['password'];
+
+                                                                // Output HTML for each card with dynamic data
+                                                                echo '<div id="event-' . $ID . '" class="max-w-sm bg-white border h-56 p-3 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">';
+                                                                echo '<div class="flex justify-end pb-4">';
+                                                                echo '<button id="dropdownButton-' . $ID . '" data-dropdown-toggle="dropdown-' . $ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
+                                                                echo '<span class="sr-only">Open dropdown</span>';
+                                                                echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
+                                                                echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
+                                                                echo '</svg>';
+                                                                echo '</button>';
+                                                                // Dropdown menu
+                                                                echo '<div id="dropdown-' . $ID . '" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-32 dark:bg-gray-700">';
+                                                                echo '<ul class="p-2" aria-labelledby="dropdownButton">';
+                                                                // Edit option with onclick event to call openEditModal function
+                                                                echo '<li>';
+                                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 font-medium text-sm w-full text-left rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
+                                                                echo '</li>';
+                                                                // Delete option with onclick event to call deleteEvent function
+                                                                echo '<li>';
+                                                                echo '<a href="javascript:void(0);" onclick="deleteEvent(' . $ID . ')" class="block px-4 rounded-md py-2 text-sm font-medium text-gray-500 hover:text-red-500  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-trash-can mr-2"></i>Delete</a>';
+                                                                echo '</li>';
+                                                                echo '</ul>';
+                                                                echo '</div>';
+                                                                echo '</div>';
+                                                                echo '<div class="flex flex-col items-center h-full mt-6 pb-4">';
+                                                                echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $firstname . ' <span>' . $lastname . '</span> </h5>';
+                                                                echo '<div class="flex flex-col items-center justify-center">';
+                                                                echo '<span class="text-xs text-gray-500 dark:text-gray-400">' . $email . '</span>';
+                                                                echo '<span class="text-sm text-gray-500"></span>';
+                                                                echo '</div>';
+                                                                echo '</div>';
+                                                                echo '</div>'; // Close max-w-sm div
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo "No sports found";
+                                                        }
+
+                                                        // Close container for cards
+                                                        echo '</div>';
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                    <!--Sorting the cards-->                          
+                                                    <script>
+                                                        document.addEventListener("DOMContentLoaded", function () {
+                                                            const sortButton = document.getElementById("sortButton");
+                                                            const sportsContainer = document.getElementById("sportsContainer");
+                                                            let originalOrder = [];
+                                                            let sortingOrder = 0; // 0: Original, 1: Ascending, 2: Descending
+
+                                                            // Store the original order of the cards when the page loads
+                                                            const cards = Array.from(sportsContainer.children);
+                                                            originalOrder = cards.slice(); // Make a copy of the array
+
+                                                            sortButton.addEventListener("click", function () {
+                                                                // Toggle sorting order
+                                                                sortingOrder = (sortingOrder + 1) % 3;
+
+                                                                if (sortingOrder === 0) {
+                                                                    // Revert to original order
+                                                                    renderCards(originalOrder);
+                                                                    sortButton.classList.remove("sorted", "sorted-descending");
+                                                                } else if (sortingOrder === 1) {
+                                                                    // Sort the cards alphabetically in ascending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventA.localeCompare(eventB);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted");
+                                                                } else {
+                                                                    // Sort the cards alphabetically in descending order
+                                                                    const sortedCards = originalOrder.slice().sort((a, b) => {
+                                                                        const eventA = a.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        const eventB = b.querySelector("h5").textContent.trim().toLowerCase();
+                                                                        return eventB.localeCompare(eventA);
+                                                                    });
+                                                                    renderCards(sortedCards);
+                                                                    sortButton.classList.add("sorted", "sorted-descending");
+                                                                }
+                                                            });
+
+                                                            // Function to render the cards
+                                                            function renderCards(cardsToRender) {
+                                                                sportsContainer.innerHTML = '';
+                                                                cardsToRender.forEach(card => {
+                                                                    sportsContainer.appendChild(card);
+                                                                });
+                                                            }
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div> 
+                                    </div>
+                                    <!--Table-->
+                                    <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                <caption class="p-5 text-lg font-semibold text-left rtl:text-right mt-2 text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                                    Sports Events
+                                                </caption>
+                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            ID
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Name
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Email
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Job Type
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3">
+                                                            Actions
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        // Include the database connection file
+                                                        include("config.php");
+
+                                                        // Fetch data from the database
+                                                        $sql = "SELECT * FROM user";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        // Check if records exist
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // Loop through each row of data
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                // Extract data from the current row
+                                                                $ID = $row['ID'];
+                                                                $firstname = $row['firstname'];
+                                                                $lastname = $row['lastname'];
+                                                                $username = $row['username'];
+                                                                $email = $row['email'];
+                                                                $job = $row['job'];
+                                                                $password = $row['password'];
+
+                                                                // Output HTML for each row in the table
+                                                                echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
+                                                                    echo '<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . $ID . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $firstname . '<span> ' . $lastname . '</span></td>';
+                                                                    echo '<td class="px-6 py-4">' . $email . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $job . '</td>';
+                                                                    echo '<td class="px-6 py-4">';
+                                                                        echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>';
+                                                                        echo '<button onclick="deleteEvent(' . $ID . ')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>';
+                                                                    echo '</td>';
+                                                                echo '</tr>';
+                                                            }
+                                                        } else {
+                                                            // Display a message if no records are found
+                                                            echo '<tr><td colspan="4" class="px-6 py-4 text-center">No sports found</td></tr>';
+                                                        }
+
+                                                        // Close database connection
+                                                        mysqli_close($conn);
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+                                <!--Add modal-->
+                                <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative w-full max-w-xl max-h-full"> <!-- Adjust max-w-xl to your desired width -->
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                    Create account
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                                <div class="mb-4">
+                                                    <div class="grid grid-cols-2 gap-5">
+                                                        <!-- File input -->
+                                                        <div class="flex items-center justify-center h-full w-full mb-4">
+                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                <div class="flex flex-col items-center justify-center px-4 pt-4 pb-5">
+                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                    </svg>
+                                                                    <p class="mb-2 text-sm font-semibold text-gray-500 dark:text-gray-400">Click to upload</p>
+                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">PNG or JPG (MAX. 800x400px)</p>
+                                                                </div>
+                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                            </label>
+                                                        </div>
+                                                        <div class="flex flex-col">
+                                                            <div class="col-span-1">
+                                                                <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+                                                                <input type="text" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter first name" required="">
+                                                            </div>
+
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+                                                                <input type="text" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter last name" required="">
+                                                            </div>
+
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="youremail@thedomain" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="mt-4 mb-2">
+                                                    <div class="grid grid-cols-2 gap-5">
+                                                        <div>
+                                                            <div class="col-span-1">
+                                                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                                                                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter username..." required="">
+                                                            </div>
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                                                <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="col-span-1">
+                                                                <label for="jobtype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job type</label>
+                                                                <input type="text" name="jobtype" id="jobtype" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter job type" required="">
+                                                            </div>
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="password2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Re-type password</label>
+                                                                <input type="password" name="password2" id="password2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full flex justify-end">
+                                                    <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Create
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Update Modal-->
+                                <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative p-4 w-full max-w-xl max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                    Update Sport
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal-update">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body --> <input type="hidden" name="ID" id="ID" value="">
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                                <div class="mb-4">
+                                                    <div class="grid grid-cols-2 gap-5">
+                                                        <input type="hidden" name="ID" id="ID" value="">
+                                                        <!-- File input -->
+                                                        <div class="flex items-center justify-center h-full w-full mb-4">
+                                                            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                <div class="flex flex-col items-center justify-center px-4 pt-4 pb-5">
+                                                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                    </svg>
+                                                                    <p class="mb-2 text-sm font-semibold text-gray-500 dark:text-gray-400">Click to upload</p>
+                                                                    <p class="text-xs text-gray-500 dark:text-gray-400">PNG or JPG (MAX. 800x400px)</p>
+                                                                </div>
+                                                                <input id="dropzone-file" type="file" class="hidden" />
+                                                            </label>
+                                                        </div>
+                                                        <div class="flex flex-col">
+                                                            <div class="col-span-1">
+                                                                <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+                                                                <input type="text" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter first name" required="">
+                                                            </div>
+
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+                                                                <input type="text" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter last name" required="">
+                                                            </div>
+
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="youremail@thedomain" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="mt-4 mb-2">
+                                                    <div class="grid grid-cols-2 gap-5">
+                                                        <div>
+                                                            <div class="col-span-1">
+                                                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                                                                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter username..." required="">
+                                                            </div>
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                                                <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="col-span-1">
+                                                                <label for="jobtype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job type</label>
+                                                                <input type="text" name="jobtype" id="jobtype" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter job type" required="">
+                                                            </div>
+                                                            <div class="col-span-1 mt-2">
+                                                                <label for="password2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Re-type password</label>
+                                                                <input type="password" name="password2" id="password2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full flex justify-end">
+                                                    <button type="submit" name="submit_update" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Save
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>        
                         </div>
                     </div>
@@ -575,53 +671,34 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+        <!--Search-->
         <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const crudModalUpdate = document.getElementById("crud-modal-update");
-    const updateEventForm = document.getElementById("updateAccountForm");
+            // Function to handle search functionality
+            function handleSearch() {
+                // Get the search query from the input field
+                const searchQuery = document.getElementById('default-search').value.toLowerCase();
 
-    const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
+                // Get all cards
+                const cards = document.querySelectorAll('#sportsContainer .max-w-sm');
 
-    openModalButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-            const card = this.closest(".card");
-            console.log(card.dataset); // Log dataset to see if it contains the expected data
+                // Loop through each card
+                cards.forEach(card => {
+                    const cardName = card.querySelector('.text-gray-900').textContent.toLowerCase();
+                    const cardType = card.querySelector('.text-gray-500').textContent.toLowerCase();
+                    const cardCategory = card.querySelector('.text-gray-500:last-child').textContent.toLowerCase();
 
-            // Assign dataset attributes to variables
-            const ID = card.dataset.id;
-            const firstname = card.dataset.firstname;
-            const lastname = card.dataset.lastname;
-            const username = card.dataset.username;
-            const email = card.dataset.email;
-            const job = card.dataset.job;
-            const password = card.dataset.password;
+                    // Show or hide card based on search query match
+                    if (cardName.includes(searchQuery) || cardType.includes(searchQuery) || cardCategory.includes(searchQuery)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
 
-            // Debugging: Log variables to ensure correct values
-            console.log("ID:", ID);
-            console.log("firstname:", firstname);
-            console.log("lastname:", lastname);
-            console.log("username:", username);
-            console.log("email:", email);
-            console.log("job:", job);
-            console.log("password:", password);
-
-            // Populate the input fields with data from the clicked event
-            updateEventForm.elements["ID"].value = ID;
-            updateEventForm.elements["firstname"].value = firstname;
-            updateEventForm.elements["lastname"].value = lastname;
-            updateEventForm.elements["username"].value = username;
-            updateEventForm.elements["email"].value = email;
-            updateEventForm.elements["job"].value = job;
-            updateEventForm.elements["password"].value = password;
-
-            // Show the modal
-            crudModalUpdate.classList.remove("hidden");
-            crudModalUpdate.setAttribute("aria-hidden", "false");
-        }); 
-    });
-});
-
-</script>
+            // Add event listener to the search input field
+            document.getElementById('default-search').addEventListener('input', handleSearch);
+        </script>
 
     </body>
 </html>
