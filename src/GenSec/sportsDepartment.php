@@ -1,6 +1,6 @@
 <?php
 
-require_once('config.php');
+include('config.php');
 $query="SELECT * from department";
 $result=mysqli_query($conn,$query);
 ?>
@@ -409,7 +409,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                                                             <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                                                         </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
+                                                                        <input id="dropzone-file" type="file" class="hidden" name=department_image accept="image/"/>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -453,13 +453,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 // Extract data from the current row
                                                 $depart_ID = $row['depart_ID'];
+                                                $department_image = $row['department_image'];
                                                 $departmentname = $row['departmentname'];
                                                 $teamname = $row['teamname'];
                                                 $description = $row['description'];
                                                 $generated_id= $row['generated_id'];
 
                                                 // Output HTML for each card with dynamic data
-                                                echo '<div id="department-' . $depart_ID . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500" data-venue-id="' . $depart_ID . '" data-department-name="' . htmlspecialchars($departmentname) . '" data-teamname="' . htmlspecialchars($teamname) .'" data-description="' . htmlspecialchars($description) . '">';
+                                                echo '<div id="department-' . $depart_ID . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500" data-venue-id="' . $depart_ID . '" data-department-image="' . $department_image . '" data-department-name="' . htmlspecialchars($departmentname) . '" data-teamname="' . htmlspecialchars($teamname) .'" data-description="' . htmlspecialchars($description) . '">';
                                                 echo '<div class="flex items-center justify-between pb-3">';
                                                 echo '<span class="text-sm text-gray-500 dark:text-gray-400">ID: ' . $generated_id . '</span>';
                                                 // Dropdown button
