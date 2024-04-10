@@ -679,11 +679,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             <!-- Modal header -->
                                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
                                                     Add Venue
-=======
                                                     Update Department
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                 </h3>
                                                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                                                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -693,11 +690,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-<<<<<<< HEAD
                                             <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-=======
                                             <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
 
                                                     <div class="col-span-2 mt-2">
@@ -715,7 +709,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                         </div>
                                                     </div>
 
-<<<<<<< HEAD
                                                     <div class="col-span-2">
                                                         <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
                                                         <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
@@ -796,7 +789,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                     <div class="w-full flex justify-end">
                                                         <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                             Save
-=======
                                                         <div class="col-span-2">
                                                             <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
                                                             <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department Name" required="">
@@ -815,7 +807,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                     <div class="w-full flex justify-end">
                                                         <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                             Update Department
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                         </button>
                                                     </div>
                                                 </div>
@@ -833,7 +824,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
         
         <!--Search-->
         <script>
@@ -841,8 +831,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             function handleSearch() {
                 // Get the search query from the input field
                 const searchQuery = document.getElementById('default-search').value.toLowerCase();
-
-=======
+            </script>
         <!--delete sport-->
         <script>
             // Function to handle delete event
@@ -905,7 +894,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 // Get the search query from the input field
                 const searchQuery = document.getElementById('default-search').value.toLowerCase();
 
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                 // Get all cards
                 const cards = document.querySelectorAll('#sportsContainer .max-w-sm');
 
@@ -927,8 +915,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             // Add event listener to the search input field
             document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
-
-<<<<<<< HEAD
+        }
         <!--counter-->
         <script>
             // Count the number of cards and update the span element
@@ -937,27 +924,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 document.getElementById('card-count').textContent = cardCount;
             });
         </script>
-=======
-        <!--number of cards counter-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Get the sports container
-                const sportsContainer = document.getElementById("sportsContainer");
-                // Get the span for displaying card count
-                const cardCountSpan = document.getElementById("cardCount");
-
-                // Function to update card count
-                function updateCardCount() {
-                    // Get the number of cards inside the sports container
-                    const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
-                    // Update the text content of the span
-                    cardCountSpan.textContent = cardCount;
-                }
-                updateCardCount();
-            });
-        </script>
-    </body>
-</html>
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
+        
     </body>
 </html>
