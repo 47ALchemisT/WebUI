@@ -1,3 +1,53 @@
+<?php    
+        include("config.php");
+        session_start();
+        if(isset($_POST['submit_Btn'])){
+          $firstname=(isset($_POST['firstname']));
+          $lastname=(isset($_POST['lastname']));
+          $username=(isset($_POST['username']));
+          $email=(isset($_POST['email']));
+          $job=(isset($_POST['job']));
+          $password=(isset($_POST['password']));
+          $password2=(isset($_POST['password2']));
+        
+        
+          
+          if(trim($password) != trim($password2)) {
+            echo "<script>alert('Password does not match! please try again!')</script>";
+        } else {
+            $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+    
+            $sql = "SELECT * FROM user WHERE email = '$email'";
+    
+            $query = mysqli_query($conn, $sql);
+            $email = mysqli_num_rows($query);
+    
+            if ($email == 1) {
+                echo "<script>alert('Username Already Used, Please use another!!')</script>";
+            } else {
+                $firstname = mysqli_real_escape_string($conn, trim($_POST['firstname']));
+                $lastname = mysqli_real_escape_string($conn, trim($_POST['lastname']));
+                $username = mysqli_real_escape_string($conn, trim($_POST['username']));
+                $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+                $job = mysqli_real_escape_string($conn, trim($_POST['job']));
+                $password = mysqli_real_escape_string($conn, trim($_POST['password']));
+    
+                $sql = "INSERT INTO user (firstname, lastname, username, email, job , password)
+              VALUES ('$firstname', '$lastname','$username','$email', '$job','$password')";
+    
+                if (mysqli_query($conn, $sql)) {
+                echo "<script> alert('Account registration successfully completed');window.location='accountFinal.php' </script>";
+            } else {
+                        echo "<script> alert('Failed to register account, you might try it again :p'); </script>";
+                    }
+    
+            }
+    }
+    }
+    
+?>
+
+
 <!--Html file-->
 <!doctype html>
 <html>
@@ -245,7 +295,7 @@
                                 <div class=" px-5 py-4 mt-1 ">
                                     <div class="flex justify-between border-b-2 pb-3">
                                         <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-tooltip-target="tooltip-animation" type="button"  type="button" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                            <h1><i class="fa-solid fa-plus text-md mr-1"></i>Create account</h1>
+                                            <h1><i class="fa-solid fa-plus text-md mr-2"></i>Create account</h1>
                                             <span class="sr-only">Icon description</span>
                                         </button>
                                         <div class="flex items-center space-x-3">

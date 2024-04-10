@@ -1,103 +1,5 @@
 <?php
-
-require_once('config.php');
-$query="SELECT * from department";
-$result=mysqli_query($conn,$query);
-?>
-
-<?php
-include("config.php");
-//add department
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
-    $departmentname = mysqli_real_escape_string($conn, $_POST['departmentname']);
-    $teamname = mysqli_real_escape_string($conn, $_POST['teamname']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
-    
-
-       // Check if file is uploaded picture
-       if($_FILES['department_image']['error'] === 5) {
-        echo  "<script>alert('Image does not Exist');</script>";
-       } else {
-        $file_name = $_FILES["department_image"]["name"];
-        $file_size = $_FILES["department_image"]["size"];
-        $file_tmp = $_FILES["department_image"]["tmp_name"];
-        $file_type = $_FILES["department_image"]["type"];
-        
-        $validImageExtension= ['jpg', 'jpeg', 'png'];
-        $imageExtension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        
-        if(!in_array($imageExtension, $validImageExtension)){
-            echo  "<script>alert('Invalid Image');</script>";
-        }else if($file_size > 10000000){
-            echo  "<script>alert('Image too large');</script>";
-        }else{
-             // Move uploaded file to a directory
-        
-        $imageExtension = ',' . $imageExtension;
-        $upload_directory = 'img/';
-
-        if (!file_exists($upload_directory)) {
-            mkdir($upload_directory, 0777, true); // Create the directory if it doesn't exist
-            }
-
-        $file_path = $upload_directory . $file_name;
-        if (move_uploaded_file($file_tmp, $file_path)) {
-            
-        } else {
-            echo "<script>alert('Failed to upload file');</script>";
-        }
-
-        $file_path = "img/" . $file_name;
-        move_uploaded_file($file_tmp, 'img/'. $file_path);
-
-        }
-        
-        }
-    // Check if the department already exists
-    $check_sql = "SELECT * FROM department WHERE departmentname = '$departmentname'";
-    $check_query = mysqli_query($conn, $check_sql);
-
-    if (mysqli_num_rows($check_query) > 0) {
-        echo "<script>alert('Department Already Exists!');window.location='departmentFinal.php'</script>";
-    } else {
-        // Insert the new department without specifying depart_ID column
-        $sql = "INSERT INTO department (department_image, departmentname, teamname, description) VALUES (?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ssss",$file_path, $departmentname, $teamname, $description);
-            $result = mysqli_stmt_execute($stmt);
-      
-
-            if ($result) {
-                // Get the auto-incremented depart_ID
-                $depart_ID= mysqli_insert_id($conn);
-
-                // Generate the generated_id
-                $generated_id = strtoupper(substr($departmentname, 0, 3)) . ($depart_ID + 100); // Start from 101
-
-                // Update the generated_id in the database
-                $update_sql = "UPDATE department SET generated_id = ? WHERE depart_ID = ?";
-                $update_stmt = mysqli_prepare($conn, $update_sql);
-
-                if ($update_stmt) {
-                    mysqli_stmt_bind_param($update_stmt, "si", $generated_id, $depart_ID);
-                    mysqli_stmt_execute($update_stmt);
-                    mysqli_stmt_close($update_stmt);
-                }
-
-                echo "<script>alert('Department added successfully');window.location='sportsDepartment.php'</script>";
-            } else {
-                echo "<script>alert('Error in executing prepared statement');window.location='sportsDepartment.php'</script>";
-            }
-
-            mysqli_stmt_close($stmt);
-        } else {
-            echo "<script>alert('Error in prepared statement');window.location='sportsDepartment.php'</script>";
-        }
-    }
-}
-
+    include 'connection.php';
 ?>
 
 <!--Html file-->
@@ -254,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                             </li>
                             <li>
-                                <a href="../login.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                             </li>
                         </ul>
                     </div>
@@ -359,134 +261,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             </div>
                                         </div>
                                     </div>
-<<<<<<< HEAD
-=======
-                                    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                        <div class="relative p-4 w-full max-w-md max-h-full">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                            Add Department
-                                                        </h3>
-                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                            </svg>
-                                                            <span class="sr-only">Close modal</span>
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                                        <div class="grid gap-4 mb-4 grid-cols-2">
-
-                                                        <div class="col-span-2 mt-2">
-                                                                <div class="flex items-center justify-center w-full">
-                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                            </svg>
-                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                        </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-span-2">
-                                                                <label for="department_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
-                                                                <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
-                                                            </div>
-
-                                                            <div class="col-span-2">
-                                                                <label for="team_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team name</label>
-                                                                <input type="text" name="teamname" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
-                                                            </div>
-
-                                                            <div class="col-span-2">
-                                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                                                <input type="description" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="E.g., College of Department Name" required="">
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="flex justify-end">
-                                                            <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                                Save
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                        </div>
-                                    </div> 
-
-                                    <?php
-                                        include("config.php");
-
-                                        // Fetch data from the database
-                                        $sql = "SELECT * FROM department";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        // Check if records exist
-                                        if (mysqli_num_rows($result) > 0) {
-                                            // Loop through each row of data
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                // Extract data from the current row
-                                                $depart_ID = $row['depart_ID'];
-                                                $departmentname = $row['departmentname'];
-                                                $teamname = $row['teamname'];
-                                                $description = $row['description'];
-                                                $generated_id= $row['generated_id'];
-
-                                                // Output HTML for each card with dynamic data
-                                                echo '<div id="department-' . $depart_ID . '" class="z-1 max-w-sm h-44 relative bg-white border-2 p-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border-blue-500" data-venue-id="' . $depart_ID . '" data-department-name="' . htmlspecialchars($departmentname) . '" data-teamname="' . htmlspecialchars($teamname) .'" data-description="' . htmlspecialchars($description) . '">';
-                                                echo '<div class="flex items-center justify-between pb-3">';
-                                                echo '<span class="text-sm text-gray-500 dark:text-gray-400">ID: ' . $generated_id . '</span>';
-                                                // Dropdown button
-                                                echo '<button id="dropdownButton-' . $depart_ID . '" data-dropdown-toggle="dropdown-' . $depart_ID . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5 relative z-10" type="button">';
-                                                echo '<span class="sr-only">Open dropdown</span>';
-                                                echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
-                                                echo '<path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>';
-                                                echo '</svg>';
-                                                echo '</button>';
-                                                // Dropdown menu
-                                                echo '<div id="dropdown-' . $depart_ID. '" class="absolute z-20 top-full left-0 mt-2 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-md border-2 border-gray-200 w-28 dark:bg-gray-700">';
-                                                echo '<ul class="p-2" aria-labelledby="dropdownButton">';
-                                                // Edit option with onclick event to call openEditModal function
-                                                echo '<li>';
-                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 bg-blue-50 font-medium text-xs w-full text-left rounded-md text-blue-500 hover:bg-blue-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
-                                                echo '</li>';
-                                                // Delete option with onclick event to call deleteVenue function
-                                                echo '<li>';
-                                                echo '<a href="javascript:void(0);" onclick="deleteVenue(' . $depart_ID . ')" class="block px-4 rounded-md py-2 text-xs font-medium text-red-500 bg-red-50  hover:bg-red-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">';
-                                                echo '<i class="fa-solid fa-trash-can mr-2"></i>Delete';
-                                                echo '</a>';
-                                                echo '</li>';
-                                                
-                                                echo '</ul>';
-                                                echo '</div>';
-                                                echo '</div>';
-                                                
-                                                echo '<div class="flex flex-col items-center pb-6">';
-                                                echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $departmentname . '</h5>';
-                                                echo '<p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">' . $teamname . '</p>';
-                                                echo '<p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">' . $description . '</p>';
-                                                echo '</div>';
-                                                
-                                                echo '</div>'; // Close max-w-sm div
-                                                
-                                            }
-                                        } else {
-                                            // Display a message if no records are found
-                                            echo "No venues found";
-                                        }
-
-                                        // Close database connection
-                                        mysqli_close($conn);
-                                    ?>
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                 </div>
                             </div>
                             
@@ -721,11 +495,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             <!-- Modal header -->
                                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
                                                     Add Venue
-=======
-                                                    Update Department
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                 </h3>
                                                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                                                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -735,11 +505,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-<<<<<<< HEAD
                                             <form class="p-4 md:p-5" id="addVenueForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-=======
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
 
                                                     <div class="col-span-2 mt-2">
@@ -757,7 +523,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                         </div>
                                                     </div>
 
-<<<<<<< HEAD
                                                     <div class="col-span-2">
                                                         <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department name</label>
                                                         <input type="text" name="departmentname" id="departmentname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter department name" required="">
@@ -838,26 +603,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                     <div class="w-full flex justify-end">
                                                         <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                             Save
-=======
-                                                        <div class="col-span-2">
-                                                            <label for="departmentname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Name</label>
-                                                            <input type="text" name="departmentname" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Department Name" required="">
-                                                        </div>
-
-                                                        <div class="col-span-2">
-                                                            <label for="teamname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team Name</label>
-                                                            <input type="text" name="teamname" id="teamname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Team Name" required="">
-                                                        </div>
-
-                                                        <div class="col-span-2">
-                                                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue Description</label>
-                                                            <input type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Description" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="w-full flex justify-end">
-                                                        <button type="submit" name="submit_venue" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            Update Department
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                                                         </button>
                                                     </div>
                                                 </div>
@@ -875,7 +620,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
         
         <!--Search-->
         <script>
@@ -884,70 +628,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 // Get the search query from the input field
                 const searchQuery = document.getElementById('default-search').value.toLowerCase();
 
-=======
-        <!--delete sport-->
-        <script>
-            // Function to handle delete event
-            function deleteEvent(depart_ID) {
-                // Send AJAX request to delete the event
-                $.ajax({
-                    url: 'sportsEvent-Delete.php',
-                    type: 'POST',
-                    data: { depart_ID: depart_ID, delete_event: true },
-                    success: function(response) {
-                        if (response === 'success') {
-                            // If deletion is successful, remove the corresponding card from the UI
-                            $('#event-' + depart_ID).remove();
-                        } else {
-                            alert('Error deleting event.');
-                        }
-                    },
-                    error: function() {
-                        alert('Error deleting event. Please try again later.');
-                    }
-                });
-            }
-        </script>
-
-        <!--Update-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-            const crudModalUpdate = document.getElementById("crud-modal-update");
-            const updateEventForm = document.getElementById("updateEventForm");
-
-            const openModalButtons = document.querySelectorAll("[data-modal-toggle='crud-modal-update']");
-
-            openModalButtons.forEach((button) => {
-                button.addEventListener("click", function () {
-                    const departId = this.closest(".max-w-sm").dataset.departId;
-                    const departmentName = this.closest(".max-w-sm").dataset.departmentName;
-                    const teamname = this.closest(".max-w-sm").dataset.teamname;
-                    const description = this.closest(".max-w-sm").dataset.description;
-                    const generatedId = this.closest(".max-w-sm").dataset.generatedId;
-
-                    // Populate the input fields with data from the clicked event
-                    updateEventForm.elements["depart_ID"].value = departId;
-                    updateEventForm.elements["departmentname"].value = departmentName;
-                    updateEventForm.elements["teamname"].value = teamname;
-                    updateEventForm.elements["description"].value = description;
-                    updateEventForm.elements["generated_id"].value = generatedId;
-
-                    // Show the modal
-                    crudModalUpdate.classList.remove("hidden");
-                    crudModalUpdate.setAttribute("aria-hidden", "false");
-                }); 
-            });
-        });
-        </script>
-
-        <!--Search-->
-        <script>
-            // Function to handle search functionality
-            function handleSearch() {
-                // Get the search query from the input field
-                const searchQuery = document.getElementById('default-search').value.toLowerCase();
-
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
                 // Get all cards
                 const cards = document.querySelectorAll('#sportsContainer .max-w-sm');
 
@@ -970,7 +650,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
 
-<<<<<<< HEAD
         <!--counter-->
         <script>
             // Count the number of cards and update the span element
@@ -979,27 +658,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 document.getElementById('card-count').textContent = cardCount;
             });
         </script>
-=======
-        <!--number of cards counter-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Get the sports container
-                const sportsContainer = document.getElementById("sportsContainer");
-                // Get the span for displaying card count
-                const cardCountSpan = document.getElementById("cardCount");
-
-                // Function to update card count
-                function updateCardCount() {
-                    // Get the number of cards inside the sports container
-                    const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
-                    // Update the text content of the span
-                    cardCountSpan.textContent = cardCount;
-                }
-                updateCardCount();
-            });
-        </script>
-    </body>
-</html>
->>>>>>> 9b64f92c6a04c46aa0f6c15d04f7182c805487d8
     </body>
 </html>
