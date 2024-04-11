@@ -911,25 +911,25 @@
             });
         </script>
 
-<script>
-        // Add event listener to checkboxes
-        document.querySelectorAll('input[name="event-checkbox"]').forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    // Create card and append to selected-cards container
-                    var card = document.createElement('div');
-                    card.textContent = this.value;
-                    card.className = 'selected-card'; // Add class for styling
-                    document.getElementById('selected-cards').appendChild(card);
-                } else {
-                    // Remove card from selected-cards container
-                    var cardToRemove = document.querySelector('.selected-card[value="' + this.value + '"]');
-                    if (cardToRemove) {
-                        cardToRemove.parentNode.removeChild(cardToRemove);
+        <script>
+            // Add event listener to checkboxes
+            document.querySelectorAll('input[name="event-checkbox"]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Create card and append to selected-cards container
+                        var card = document.createElement('div');
+                        card.textContent = this.value;
+                        card.className = 'selected-card'; // Add class for styling
+                        document.getElementById('selected-cards').appendChild(card);
+                    } else {
+                        // Remove card from selected-cards container
+                        var cardToRemove = document.querySelector('.selected-card[value="' + this.value + '"]');
+                        if (cardToRemove) {
+                            cardToRemove.parentNode.removeChild(cardToRemove);
+                        }
                     }
-                }
+                });
             });
-        });
-    </script>
+        </script>
     </body>
 </html>
