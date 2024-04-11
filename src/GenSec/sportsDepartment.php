@@ -502,7 +502,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
 
                                                                 // Output HTML for each card with dynamic data
                                                                 echo '<div id="event-' . $generated_id . '" class="max-w-sm bg-white border p-3 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700">';
-                                                                    echo '<img src="' . $department_image . '" class="w-full h-34 object-cover" alt="' . $departmentname . '">'; // Display the image
+                                                                    echo '<img src="' . $department_image . '" class="w-full h-34 object-cover" alt="' . $departmentname . '""' . $teamname . '""' . $description. '">'; // Display the image
                                                                     echo '<div class="flex justify-between items-center pb-4">';
                                                                     echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $departmentname . '</h5>';
                                      
@@ -530,7 +530,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                         echo '<h5 class="mb-1 text-md text-center font-medium text-gray-900 dark:text-white">' . $description . '</h5>';
                                                                         echo '<div class="flex flex-col items-center justify-center">';
                                                                         echo '<h5 class="mb-1 text-md text-center text-gray-500 dark:text-gray-400">' . $teamname . '</h5>';
-                                                                        echo '<h5 class="text-sm text-gray-500"></h5>';
+                                                                        echo '<span class="text-sm text-gray-500"></span>';
                                                                     echo '</div>';
                                                                     echo '</div>';
                                                                 echo '</div>'; // Close max-w-sm div
@@ -793,10 +793,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                 button.addEventListener("click", function () {
                     console.log("Button clicked"); // Confirm button click
                     const card = this.closest(".max-w-sm");
-                    const depart_ID = card.dataset.depart_ID;
-                    const departmentname = card.dataset.departmentname;
-                    const teamname = card.dataset.teamname;
-                    const description = card.dataset.description;
+                    const depart_ID =card.id.split("-")[1];
+                    const departmentname = card.querySelector(".text-md").textContent.trim();;
+                    const teamname = card.querySelector(".text-md").textContent.trim();;
+                    const description = card.querySelector(".text-md").textContent.trim();;
 
                    
                     // Log retrieved data for debugging
@@ -807,7 +807,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
               
 
                     // Populate the input fields with data from the clicked event
-                    updateEventForm.elements["depart_ID"].value=depart_ID;
+                    updateEventForm.elements["depart_ID"].value = depart_ID;
                     updateEventForm.elements["departmentname"].value = departmentname;
                     updateEventForm.elements["teamname"].value = teamname;
                     updateEventForm.elements["description"].value = description;
