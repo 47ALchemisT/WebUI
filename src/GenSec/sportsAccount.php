@@ -1,3 +1,4 @@
+<!--Add-->
 <?php    
         include("config.php");
         session_start();
@@ -36,7 +37,7 @@
               VALUES ('$firstname', '$lastname','$username','$email', '$job','$password')";
     
                 if (mysqli_query($conn, $sql)) {
-                echo "<script> alert('Account registration successfully completed');window.location='accountFinal.php' </script>";
+                echo "<script> alert('Account registration successfully completed');window.location='sportsAccount.php' </script>";
             } else {
                         echo "<script> alert('Failed to register account, you might try it again :p'); </script>";
                     }
@@ -45,6 +46,47 @@
     }
     }
     
+?>
+<!--Update-->
+<?php
+    include("config.php");
+
+    // Check if the connection to the database is successful
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Check if the form is submitted (POST request)
+    if (count($_POST) > 0) {
+        // Prepare the SQL statement for updating user details
+        $stmt = $conn->prepare("UPDATE user SET firstname=?, lastname=?, username=?, email=?, job=?, password=? WHERE ID=?");
+        
+        // Bind parameters to the prepared statement
+        $stmt->bind_param("ssssssi", $_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['job'], $_POST['password'], $_POST['ID']);
+        
+        // Execute the statement
+        $stmt->execute();
+
+        // Check if any rows were affected by the update
+        if ($stmt->affected_rows > 0) { 
+            echo "<script>alert('Successfully Updated');window.location='accountFinal.php'</script>";
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+    }
+
+    // Initialize an empty array to store user details
+    $row = [];
+
+    // Check if the ID is provided in the URL (GET request)
+    if (isset($_GET['ID'])) {
+        // Fetch user details based on the provided ID
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE ID= '". $_GET['ID']. "'");
+        
+        // Fetch a single row as an associative array
+        $row = mysqli_fetch_array($result);
+    }
 ?>
 
 
@@ -340,7 +382,7 @@
                                                         </form>
                                                     </div>        
                                                     <div class="flex items-center space-x-4">
-                                                        <h1 class="text-md text-gray-700 font-bold"><span>12</span> Sports</h1>
+                                                        <h1 class="text-md text-gray-700 font-bold"><span id="card-count">12</span> Accounts</h1>
                                                         <!--Sort button-->                                            
                                                         <button id="sortButton" class="text-gray-700 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
                                                             <i class='bx bx-sort-up text-2xl pb-1'></i>
@@ -384,7 +426,7 @@
                                                                 echo '<ul class="p-2" aria-labelledby="dropdownButton">';
                                                                 // Edit option with onclick event to call openEditModal function
                                                                 echo '<li>';
-                                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 font-medium text-sm w-full text-left rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2"></i>Edit</button>';
+                                                                echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="block px-4 py-2 mb-2 font-medium text-sm w-full text-left rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i class="fa-solid fa-file-pen mr-2" ></i>Edit</button>';
                                                                 echo '</li>';
                                                                 // Delete option with onclick event to call deleteEvent function
                                                                 echo '<li>';
@@ -625,7 +667,7 @@
                                 </div>
 
                                 <!--Update Modal-->
-                                <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div id="crud-modal-update"  tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-xl max-h-full">
                                         <!-- Modal content -->
                                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -642,10 +684,10 @@
                                                 </button>
                                             </div>
                                             <!-- Modal body --> <input type="hidden" name="ID" id="ID" value="">
-                                            <form class="p-4 md:p-5" id="updateEventForm" action="sportsVenue-Update.php" method="POST" onsubmit="updateEvent(event)">
+                                            <form class="p-4 md:p-5" id="updateEventForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                                 <div class="mb-4">
                                                     <div class="grid grid-cols-2 gap-5">
-                                                        <input type="hidden" name="ID" id="ID" value="">
+                                                        <input type="hidden" name="ID" id="ID" value="<?php echo $row['ID']; ?>">
                                                         <!-- File input -->
                                                         <div class="flex items-center justify-center h-full w-full mb-4">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -662,17 +704,17 @@
                                                         <div class="flex flex-col">
                                                             <div class="col-span-1">
                                                                 <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                                                                <input type="text" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter first name" required="">
+                                                                <input type="text" value="<?php echo isset($row['firstname']) ? $row['firstname'] : ''; ?>"  name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter first name" required="">
                                                             </div>
 
                                                             <div class="col-span-1 mt-2">
                                                                 <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                                                                <input type="text" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter last name" required="">
+                                                                <input type="text" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter last name" required="">
                                                             </div>
 
                                                             <div class="col-span-1 mt-2">
                                                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="youremail@thedomain" required="">
+                                                                <input type="email" value="<?php echo $row['email']; ?>" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="youremail@thedomain" required="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -681,17 +723,17 @@
                                                         <div>
                                                             <div class="col-span-1">
                                                                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                                                                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter username..." required="">
+                                                                <input type="text" value="<?php echo $row['username']; ?>"  name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter username..." required="">
                                                             </div>
                                                             <div class="col-span-1 mt-2">
                                                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                                                <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                                                <input type="password" value="<?php echo $row['password'];?>" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
                                                             </div>
                                                         </div>
                                                         <div>
                                                             <div class="col-span-1">
                                                                 <label for="jobtype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job type</label>
-                                                                <input type="text" name="jobtype" id="jobtype" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter job type" required="">
+                                                                <input type="text" value="<?php echo $row['job']; ?>" name="jobtype" id="jobtype" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter job type" required="">
                                                             </div>
                                                             <div class="col-span-1 mt-2">
                                                                 <label for="password2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Re-type password</label>
@@ -709,6 +751,7 @@
                                         </div>
                                     </div>
                                 </div> 
+                                
                             </div>        
                         </div>
                     </div>
@@ -748,6 +791,15 @@
 
             // Add event listener to the search input field
             document.getElementById('default-search').addEventListener('input', handleSearch);
+        </script>
+
+        <!--counter-->
+        <script>
+            // Count the number of cards and update the span element
+            document.addEventListener("DOMContentLoaded", function () {
+                var cardCount = document.querySelectorAll('.max-w-sm').length;
+                document.getElementById('card-count').textContent = cardCount;
+            });
         </script>
 
     </body>

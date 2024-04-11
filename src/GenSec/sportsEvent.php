@@ -311,91 +311,23 @@
                                             <div class="flex items-center h-full">
                                                 <ul class="flex items-center space-x-3 mt-1.5"  id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
                                                     <li role="presentation">
-                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
                                                             <i class='bx bxs-grid-alt'></i>
                                                         </button>
                                                     </li>
                                                     <li role="presentation">
-                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
+                                                        <button class="text-gray-400 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium text-2xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
                                                             <i class='bx bx-list-ul'></i>
                                                         </button>
                                                     </li>
                                                 </ul>
                                             </div>
 
-                                            <button class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
+                                            <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal" class="text-gray-400 border-2 border-gray-400 hover:text-blue-600 hover:border-blue-500 font-medium rounded-xl text-sm py-2 px-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
                                                 <h1><i class="fa-solid fa-cloud-arrow-up text-md mr-2"></i>Activate</h1>
                                             </button>
 
                                         </div>
-                                        <!--Add Modal-->
-                                        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                            <div class="relative p-4 w-full max-w-md max-h-full">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                            Add Sport
-                                                        </h3>
-                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                            </svg>
-                                                            <span class="sr-only">Close modal</span>
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <form class="p-4 md:p-5" id="addEventForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                                        <div class="grid gap-4 mb-4 grid-cols-2">
-                                                            <div class="col-span-2">
-                                                                <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                                <input type="text" name="event_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type sports name" required="">
-                                                            </div>
-
-                                                            <div class="col-span-2 sm:col-span-1">
-                                                                <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                                                                <select name="event_type" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Select</option>
-                                                                    <option value="Minor">Minor</option>
-                                                                    <option value="Major">Major</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-span-2 sm:col-span-1">
-                                                                <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                                <select name="event_category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                    <option selected="" disabled selected hidden required>Select</option>
-                                                                    <option value="Men">Men</option>
-                                                                    <option value="Women">Women</option>
-                                                                    <option value="Mixed">Mixed</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-span-2 mt-2">
-                                                                <div class="flex items-center justify-center w-full">
-                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
-                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                                                            </svg>
-                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                                        </div>
-                                                                        <input id="dropzone-file" type="file" class="hidden" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="w-full flex justify-end">
-                                                        <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            Add
-                                                        </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
                                     </div>
                                 </div>
                                 <!-- list of sports -->
@@ -475,10 +407,10 @@
                                                 </div>
                                             </div>   
                                             <div class="w-full">
-                                                <div class="w-full flex items-center justify-between">
-                                                    <h1 class="text-md text-gray-700 font-semibold"><span>12</span> Sports</h1>
-                                                        <button id="sortButton" class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-transform transform-gpu hover:scale-105">
-                                                            <i class='bx bx-sort-up pb-1'></i>
+                                                <div class="w-full flex items-center justify-end space-x-3">
+                                                    <h1 class="text-md text-gray-700 font-semibold"><span id="card-count">12</span> Sports</h1>
+                                                        <button id="sortButton" class="text-gray-400 border-gray-400 p-2.5 rounded-xl hover:text-blue-600 hover:border-blue-500 font-medium text-xl text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            <i class='bx bx-sort-up text-2xl'></i>
                                                         </button>
                                                 </div>
                                                 <div id="sportsContainer" class=" grid grid-cols-4 gap-5 w-full mt-3">
@@ -664,6 +596,74 @@
                                         </div>
 
                                     </div>
+                                        <!--Add Modal-->
+                                        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                            Add Sport
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <form class="p-4 md:p-5" id="addEventForm" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                                        <div class="grid gap-4 mb-4 grid-cols-2">
+                                                            <div class="col-span-2">
+                                                                <label for="event_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                                                <input type="text" name="event_name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type sports name" required="">
+                                                            </div>
+
+                                                            <div class="col-span-2 sm:col-span-1">
+                                                                <label for="event_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                                                                <select name="event_type" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                    <option selected="" disabled selected hidden required>Select</option>
+                                                                    <option value="Minor">Minor</option>
+                                                                    <option value="Major">Major</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-span-2 sm:col-span-1">
+                                                                <label for="event_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                                                <select name="event_category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                    <option selected="" disabled selected hidden required>Select</option>
+                                                                    <option value="Men">Men</option>
+                                                                    <option value="Women">Women</option>
+                                                                    <option value="Mixed">Mixed</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-span-2 mt-2">
+                                                                <div class="flex items-center justify-center w-full">
+                                                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                                                        <div class="flex flex-col items-center justify-center pt-4 pb-5">
+                                                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                                            </svg>
+                                                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                        </div>
+                                                                        <input id="dropzone-file" type="file" class="hidden" />
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w-full flex justify-end">
+                                                        <button type="submit" name="submit_Btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            Add
+                                                        </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div> 
                                         <!--Update Modal-->                          
                                         <div id="crud-modal-update" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative p-4 w-full max-w-md max-h-full">
@@ -732,6 +732,81 @@
                                             </div>
                                         </div>
                                     </div> 
+                                        <!--Activate-->
+                                        <!-- Extra Large Modal -->
+                                        
+                                        <div id="extralarge-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-7xl max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                                            Select sports to activate
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="extralarge-modal">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="p-4 md:p-5 space-y-4">
+                                                       <div class="grid grid-cols-2 gap-5">
+                                                            <div>
+                                                                <div>
+                                                                    <?php
+                                                                        // Include the database connection file
+                                                                        include("config.php");
+
+                                                                        // Fetch data from the database
+                                                                        $sql = "SELECT * FROM eventcategory";
+                                                                        $result = mysqli_query($conn, $sql);
+
+                                                                        // Check if records exist
+                                                                        if (mysqli_num_rows($result) > 0) {
+                                                                            echo '<div class="grid grid-cols-4 gap-3">';
+
+                                                                            // Loop through each row of data
+                                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                                // Extract data from the current row
+                                                                                $event_name = $row['event_name'];
+
+                                                                                // Output HTML for each checkbox with dynamic data
+                                                                                echo '<div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">';
+                                                                                echo '<input id="event-checkbox-' . $event_name . '" type="checkbox" value="' . $event_name . '" name="event-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">';
+                                                                                echo '<label for="event-checkbox-' . $event_name . '" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">' . $event_name . '</label>';
+                                                                                echo '</div>';
+                                                                            }
+
+                                                                            echo '</div>';
+                                                                        } else {
+                                                                            // Display a message if no records are found
+                                                                            echo "No events found";
+                                                                        }
+
+                                                                        // Close database connection
+                                                                        mysqli_close($conn);
+                                                                    ?>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="selected-cards" class="">
+                                                                <div>
+                                                                    <p class="text-sm text-gray-700">the selected cards</p>
+                                                                </div>
+                                                            </div>    
+                                                       </div>
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                        <button data-modal-hide="extralarge-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                                                        <button data-modal-hide="extralarge-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>        
                         </div>
@@ -827,22 +902,33 @@
             document.getElementById('default-search').addEventListener('input', handleSearch);
         </script>
 
-        <!--number of cards counter-->
+        <!--counter-->
         <script>
+            // Count the number of cards and update the span element
             document.addEventListener("DOMContentLoaded", function () {
-                // Get the sports container
-                const sportsContainer = document.getElementById("sportsContainer");
-                // Get the span for displaying card count
-                const cardCountSpan = document.getElementById("cardCount");
+                var cardCount = document.querySelectorAll('.max-w-sm').length;
+                document.getElementById('card-count').textContent = cardCount;
+            });
+        </script>
 
-                // Function to update card count
-                function updateCardCount() {
-                    // Get the number of cards inside the sports container
-                    const cardCount = sportsContainer.querySelectorAll(".max-w-sm").length;
-                    // Update the text content of the span
-                    cardCountSpan.textContent = cardCount;
-                }
-                updateCardCount();
+        <script>
+            // Add event listener to checkboxes
+            document.querySelectorAll('input[name="event-checkbox"]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Create card and append to selected-cards container
+                        var card = document.createElement('div');
+                        card.textContent = this.value;
+                        card.className = 'selected-card'; // Add class for styling
+                        document.getElementById('selected-cards').appendChild(card);
+                    } else {
+                        // Remove card from selected-cards container
+                        var cardToRemove = document.querySelector('.selected-card[value="' + this.value + '"]');
+                        if (cardToRemove) {
+                            cardToRemove.parentNode.removeChild(cardToRemove);
+                        }
+                    }
+                });
             });
         </script>
     </body>
