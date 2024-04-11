@@ -1,5 +1,4 @@
 <?php
-    include 'connection.php';
 
 include('config.php');
 $query="SELECT * from department";
@@ -506,7 +505,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                     echo '<img src="' . $department_image . '" class="w-full h-34 object-cover" alt="' . $departmentname . '">'; // Display the image
                                                                     echo '<div class="flex justify-between items-center pb-4">';
                                                                     echo '<h5 class="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">' . $departmentname . '</h5>';
-
+                                     
                                                                     echo '<button id="dropdownButton-' . $generated_id . '" data-dropdown-toggle="dropdown-' . $generated_id . '" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-blue-500/10 hover:text-blue-600 active:bg-blue-500/30 dark:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">';
                                                                         echo '<span class="sr-only">Open dropdown</span>';
                                                                         echo '<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">';
@@ -528,10 +527,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                     echo '</div>';
                                                                     echo '</div>';
                                                                     echo '<div class="flex flex-col items-center mt-4 pb-6">';
-                                                                        echo '<h5 class="mb-1 text-sm text-center font-medium text-gray-900 dark:text-white">' . $description . '</h5>';
+                                                                        echo '<h5 class="mb-1 text-md text-center font-medium text-gray-900 dark:text-white">' . $description . '</h5>';
                                                                         echo '<div class="flex flex-col items-center justify-center">';
-                                                                        echo '<span class="text-sm text-center text-gray-500 dark:text-gray-400">' . $teamname . '</span>';
-                                                                        echo '<span class="text-sm text-gray-500"></span>';
+                                                                        echo '<h5 class="mb-1 text-md text-center text-gray-500 dark:text-gray-400">' . $teamname . '</h5>';
+                                                                        echo '<h5 class="text-sm text-gray-500"></h5>';
                                                                     echo '</div>';
                                                                     echo '</div>';
                                                                 echo '</div>'; // Close max-w-sm div
@@ -653,7 +652,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                                                 echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
                                                                     echo '<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . $generated_id . '</td>';
                                                                     echo '<td class="px-6 py-4">' . $departmentname . '</td>';
-                                                                    echo '<td class="px-6 py-4">' . $teamname . '</td>';
+                                                                    echo '<td class="px-6 py-4">' . $teamname . ' </td>';
                                                                     echo '<td class="px-6 py-4">' . $description . '</td>';
                                                                     echo '<td class="px-6 py-4">';
                                                                         echo '<button data-modal-target="crud-modal-update" data-modal-toggle="crud-modal-update" data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>';
@@ -694,7 +693,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
                                             <!-- Modal body -->
                                             <form class="p-4 md:p-5" id="updateEventForm" action="sportsDepartment-Update.php" method="POST" onsubmit="updateEvent(event)">
                                                 <div class="grid gap-4 mb-4 grid-cols-2">
-                                                    <input type="hidden" name="depart_ID" id="depart_ID" value="">
+                                                    <input type="hidden" name="depart_ID" id="depart_ID" >
                                                     <div class="col-span-2 mt-2">
                                                         <div class="flex items-center justify-center w-full">
                                                             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -793,10 +792,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit_Btn'])) {
             openModalButtons.forEach((button) => {
                 button.addEventListener("click", function () {
                     console.log("Button clicked"); // Confirm button click
-                    const depart_ID = this.closest(".max-w-sm").dataset.depart_ID;
-                    const departmentname = this.closest(".max-w-sm").dataset.departmentname;
-                    const teamname = this.closest(".max-w-sm").dataset.teamname;
-                    const description = this.closest(".max-w-sm").dataset.description;
+                    const card = this.closest(".max-w-sm");
+                    const depart_ID = card.dataset.depart_ID;
+                    const departmentname = card.dataset.departmentname;
+                    const teamname = card.dataset.teamname;
+                    const description = card.dataset.description;
+
                    
                     // Log retrieved data for debugging
                     console.log("depart_ID:", depart_ID);
