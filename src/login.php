@@ -23,7 +23,7 @@ if(isset($_POST['login_Btn'])){
             if($userRole === 'Admin') {
                 header('Location: GenSec/sportsDashboard.php');
             } elseif($userRole === 'College Committee') {
-                header('Location: College Committee/ColCommain.php');
+                header('Location: CollegeHead/CHDashboard.php');
             } else {
                 // Handle other roles or redirect to a default dashboard
             }
